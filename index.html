@@ -1,0 +1,201 @@
+<!doctype html>
+<html lang="zh-Hant">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>五行美學 - Interface Preview</title>
+    <style>
+      :root {
+        --ivory: #f7f1e8;
+        --paper: #fffaf2;
+        --ink: #20211e;
+        --muted: #6f6a5f;
+        --line: #d8cbb8;
+        --gold: #a77b42;
+        --cinnabar: #a94334;
+        --sage: #63796a;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background: radial-gradient(circle at 82% 8%, rgba(169, 67, 52, 0.12), transparent 26%),
+          linear-gradient(135deg, #fbf5ea 0%, #efe3d1 52%, #e8dfd2 100%);
+        color: var(--ink);
+        font-family: ui-serif, "Songti TC", "PingFang TC", serif;
+        padding: clamp(18px, 4vw, 56px);
+      }
+
+      main { max-width: 1080px; margin: 0 auto; }
+      .brand { display: inline-flex; padding: 8px 12px; border: 1px solid rgba(167,123,66,.34); border-radius: 999px; color: var(--gold); background: rgba(255,250,242,.68); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
+      h1 { margin: 18px 0 0; font-size: clamp(2.8rem, 8vw, 5.8rem); line-height: 1; max-width: 860px; }
+      .slogan { margin: 18px 0 0; color: var(--cinnabar); font: 800 clamp(1.18rem, 2.6vw, 1.8rem)/1.38 ui-sans-serif, system-ui, sans-serif; }
+      .lead { max-width: 700px; margin: 18px 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+      .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
+      .pills span { border: 1px solid rgba(167,123,66,.34); border-radius: 999px; background: rgba(255,250,242,.7); padding: 8px 11px; font: 750 .86rem ui-sans-serif, system-ui, sans-serif; }
+      .position { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; margin: 18px 0; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.78); }
+      .eyebrow { margin: 0 0 12px; color: var(--gold); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
+      h2 { margin: 0; font-size: clamp(1.35rem, 3vw, 2.2rem); line-height: 1.12; }
+      p { overflow-wrap: anywhere; }
+      .position p { margin: 0; color: var(--muted); line-height: 1.75; }
+      .studio { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; align-items: start; }
+      .panel { border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.78); padding: 24px; box-shadow: 0 24px 70px rgba(32,33,30,.14); }
+      label { display: grid; gap: 8px; margin-bottom: 14px; font: 750 .92rem ui-sans-serif, system-ui, sans-serif; }
+      input, textarea { width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,250,242,.92); padding: 12px; }
+      textarea { min-height: 82px; }
+      .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+      .chips button { width: auto; min-height: 0; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,250,242,.86); color: var(--ink); font: 750 .86rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
+      .chips button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+      button { width: 100%; min-height: 52px; border: 0; border-radius: 10px; background: var(--ink); color: var(--paper); font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
+      .palette { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 18px 0; }
+      .color { overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.72); }
+      .swatch { height: 62px; }
+      .color strong, .color small { display: block; padding: 0 11px; }
+      .color strong { padding-top: 10px; }
+      .color small { color: var(--muted); padding-bottom: 12px; }
+      .rec { border-top: 1px solid var(--line); padding: 16px 0; }
+      .rec h3 { margin: 0 0 8px; font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
+      .rec p { margin: 0; color: var(--muted); line-height: 1.7; }
+      .daily { margin-top: 16px; padding: 16px; border-left: 4px solid var(--cinnabar); border-radius: 8px; background: rgba(169,67,52,.08); }
+      .status { margin: 10px 0 0; color: var(--muted); font: 750 .88rem ui-sans-serif, system-ui, sans-serif; }
+      @media (max-width: 860px) { .studio, .position { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) { body { padding: 14px; } .fields, .palette { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="brand">五行美學</div>
+        <h1>今日唔知著乜好？</h1>
+        <p class="slogan">只需 3 分鐘，就幫你揀好 OOTD。</p>
+        <p class="lead">根據你的生辰八字、五行氣場、個人風格與今日場合，配對最適合你的日常穿搭，再延伸成配色、材質、家居與品牌視覺建議。</p>
+        <div class="pills"><span>出生資料</span><span>風格偏好</span><span>空間 / 品牌需求</span><span>五行分析</span><span>美學建議</span></div>
+      </section>
+      <section class="position">
+        <div><p class="eyebrow">產品定位</p><h2>私人五行美學顧問。</h2></div>
+        <p>MVP 專為重視品味、文化感與生活質感的人而設。輸入出生資料、風格偏好和目前需求，即可生成可執行的美學建議。</p>
+      </section>
+      <section class="studio">
+        <section class="panel">
+          <p class="eyebrow">輸入資料</p>
+          <h2>建立美學命盤</h2>
+          <label>名稱<input id="name" placeholder="你的名字 / 暱稱" value="" /></label>
+          <div class="fields"><label>出生日期<input id="birthDate" type="date" value="" /></label><label>出生時間<input id="birthTime" type="time" value="" /></label></div>
+          <div class="chips" id="scenarioChips">
+            <button class="active" type="button">個人穿搭 + 生活空間</button>
+            <button type="button">家居</button>
+            <button type="button">品牌視覺</button>
+            <button type="button">內容風格</button>
+          </div>
+          <label>個人風格偏好<textarea id="style">東方現代、低調奢華、自然材質、乾淨線條</textarea></label>
+          <label>空間 / 品牌 / 生活需求<textarea id="needs">想建立更穩定、有辨識度、有質感的個人美學。</textarea></label>
+          <button id="generate" type="button">生成五行美學建議</button>
+          <p class="status" id="status">可先改資料，再按生成。</p>
+        </section>
+        <section class="panel" id="result">
+          <p class="eyebrow">AI 建議</p>
+          <h2>金為主，土為輔</h2>
+          <p class="lead">以金的俐落秩序建立辨識度，再用土的穩定溫柔補足層次。</p>
+          <div class="palette">
+            <div class="color"><div class="swatch" style="background:#E9E4D8"></div><strong>月白</strong><small>背景與留白</small></div>
+            <div class="color"><div class="swatch" style="background:#A7A9A6"></div><strong>霧銀</strong><small>金屬細節</small></div>
+            <div class="color"><div class="swatch" style="background:#20211F"></div><strong>墨黑</strong><small>高級對比</small></div>
+          </div>
+          <div class="rec"><h3>穿搭</h3><p>乾淨線條、結構外套、霧銀配件，避免過度裝飾。</p></div>
+          <div class="rec"><h3>家居 / 空間</h3><p>入口、書桌、床邊先整理，主色用月白與岩灰。</p></div>
+          <div class="rec"><h3>品牌視覺</h3><p>大量留白、清晰中軸、細線框架，建立可信感。</p></div>
+          <div class="daily"><strong>每日建議</strong><p>今日選一件金屬感小物，整理一個視覺角落。</p></div>
+        </section>
+      </section>
+    </main>
+    <script>
+      const elementProfiles = {
+        金: {
+          secondary: "土",
+          summary: "以金的俐落秩序建立辨識度，再用土的穩定溫柔補足層次。",
+          colors: [["月白", "#E9E4D8", "背景與留白"], ["霧銀", "#A7A9A6", "金屬細節"], ["墨黑", "#20211F", "高級對比"]],
+          outfit: "乾淨線條、結構外套、霧銀配件，避免過度裝飾。",
+          home: "入口、書桌、床邊先整理，主色用月白與岩灰。",
+          brand: "大量留白、清晰中軸、細線框架，建立可信感。",
+          daily: "今日選一件金屬感小物，整理一個視覺角落。"
+        },
+        木: {
+          secondary: "水",
+          summary: "以木的生長感帶出親和力，再用水的流動線條提升靈感。",
+          colors: [["松綠", "#5F7460", "主視覺"], ["茶白", "#EFE6D7", "背景"], ["深海藍", "#243A45", "沉穩對比"]],
+          outfit: "選直筒剪裁、天然棉麻、綠或藍色系，整體保持輕盈。",
+          home: "加入木紋、植物、自然光，讓空間有呼吸感。",
+          brand: "適合溫柔、療癒、教育、生活方式品牌。",
+          daily: "今日做一個讓生活更順手的小整理，風格會更自然。"
+        },
+        水: {
+          secondary: "金",
+          summary: "以水的柔和流動創造神秘感，再用金的線條收束質感。",
+          colors: [["墨藍", "#182E38", "主色"], ["霧灰", "#AEB5B3", "中性色"], ["珍珠白", "#F4F0E8", "提亮"]],
+          outfit: "用垂墜布料、深色單品、銀色飾物，呈現安靜而精緻的氣場。",
+          home: "用低飽和色、玻璃、鏡面和柔和燈光提升空間層次。",
+          brand: "內容可更有故事感，視覺適合慢節奏、留白與細節特寫。",
+          daily: "今日少一點顏色，多一點質感，會更合你。"
+        },
+        火: {
+          secondary: "木",
+          summary: "以火的明亮感染力提升存在感，再用木的自然感避免過度張揚。",
+          colors: [["朱砂", "#A94334", "重點色"], ["暖白", "#FFF5E8", "留白"], ["栗棕", "#6B4032", "穩定底色"]],
+          outfit: "保留一個亮點，例如紅棕唇色、耳環或外套，其他單品要乾淨。",
+          home: "用暖光、藝術畫、香氛與小面積紅色增加生命力。",
+          brand: "適合個人品牌、分享型內容、活動與高互動社群。",
+          daily: "今日用一個清楚亮點表達自己，不需要全身都搶眼。"
+        },
+        土: {
+          secondary: "火",
+          summary: "以土的安定質感建立信任，再用火的暖意增加親近感。",
+          colors: [["陶土", "#B77A55", "溫度"], ["米白", "#F2E7D6", "背景"], ["岩灰", "#68635A", "平衡"]],
+          outfit: "選米白、卡其、棕色與柔軟針織，質感比花款重要。",
+          home: "用陶器、石材、木材、織物，讓空間更穩定舒服。",
+          brand: "視覺要厚實可靠，適合顧問、生活、健康與美學服務。",
+          daily: "今日先選舒服得體的底色，再加一點暖色細節。"
+        }
+      };
+
+      let scenario = "個人穿搭 + 生活空間";
+      document.querySelectorAll("#scenarioChips button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll("#scenarioChips button").forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+          scenario = button.textContent;
+        });
+      });
+
+      function pickElement() {
+        const date = document.querySelector("#birthDate").value || "";
+        const time = document.querySelector("#birthTime").value || "";
+        const seed = Array.from(date + time + scenario).reduce((total, char) => total + char.charCodeAt(0), 0);
+        return ["金", "木", "水", "火", "土"][seed % 5];
+      }
+
+      document.querySelector("#generate").addEventListener("click", () => {
+        const element = pickElement();
+        const profile = elementProfiles[element];
+        const style = document.querySelector("#style").value || "東方現代、簡潔、高級";
+        const needs = document.querySelector("#needs").value || "建立更一致的個人美學";
+        document.querySelector("#status").textContent = "已根據你的生辰、風格偏好與需求生成。";
+        document.querySelector("#result").innerHTML = `
+          <p class="eyebrow">AI 建議</p>
+          <h2>${element}為主，${profile.secondary}為輔</h2>
+          <p class="lead">${profile.summary}</p>
+          <div class="palette">
+            ${profile.colors.map(([name, hex, usage]) => `<div class="color"><div class="swatch" style="background:${hex}"></div><strong>${name}</strong><small>${usage}</small></div>`).join("")}
+          </div>
+          <div class="rec"><h3>你的偏好</h3><p>${style}</p></div>
+          <div class="rec"><h3>需求場景</h3><p>${scenario}｜${needs}</p></div>
+          <div class="rec"><h3>穿搭</h3><p>${profile.outfit}</p></div>
+          <div class="rec"><h3>家居 / 空間</h3><p>${profile.home}</p></div>
+          <div class="rec"><h3>品牌視覺</h3><p>${profile.brand}</p></div>
+          <div class="daily"><strong>每日建議</strong><p>${profile.daily}</p></div>
+        `;
+      });
+    </script>
+  </body>
+</html>
