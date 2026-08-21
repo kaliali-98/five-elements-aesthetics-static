@@ -20,25 +20,69 @@
 
       body {
         margin: 0;
-        background: radial-gradient(circle at 82% 8%, rgba(169, 67, 52, 0.12), transparent 26%),
-          linear-gradient(135deg, #fbf5ea 0%, #efe3d1 52%, #e8dfd2 100%);
+        background:
+          radial-gradient(circle at 16% 12%, rgba(167, 123, 66, 0.16), transparent 24%),
+          radial-gradient(circle at 86% 6%, rgba(169, 67, 52, 0.12), transparent 26%),
+          radial-gradient(circle at 74% 92%, rgba(95, 116, 96, 0.13), transparent 28%),
+          linear-gradient(115deg, rgba(32, 33, 30, 0.035) 0 1px, transparent 1px 18px),
+          linear-gradient(160deg, #fffaf2 0%, #f3eadb 46%, #e8dfd2 100%);
+        background-attachment: fixed;
         color: var(--ink);
         font-family: ui-serif, "Songti TC", "PingFang TC", serif;
         padding: clamp(18px, 4vw, 56px);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 78% 22%, transparent 0 74px, rgba(167,123,66,.16) 75px 76px, transparent 77px 112px, rgba(167,123,66,.1) 113px 114px, transparent 115px),
+          conic-gradient(from 22.5deg at 78% 22%, transparent 0 10deg, rgba(32,33,30,.055) 10deg 11deg, transparent 11deg 45deg, rgba(167,123,66,.08) 45deg 46deg, transparent 46deg 90deg),
+          radial-gradient(circle at 20% 78%, transparent 0 52px, rgba(169,67,52,.12) 53px 54px, transparent 55px 86px, rgba(32,33,30,.055) 87px 88px, transparent 89px),
+          conic-gradient(from 0deg at 20% 78%, rgba(167,123,66,.08) 0 1deg, transparent 1deg 45deg, rgba(32,33,30,.05) 45deg 46deg, transparent 46deg 90deg),
+          linear-gradient(90deg, rgba(167,123,66,.07) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(167,123,66,.045) 1px, transparent 1px);
+        background-size: auto, auto, auto, auto, 96px 96px, 96px 96px;
+        mask-image: linear-gradient(135deg, rgba(0,0,0,.58), transparent 72%);
       }
 
       main { max-width: 1080px; margin: 0 auto; }
-      .brand { display: inline-flex; padding: 8px 12px; border: 1px solid rgba(167,123,66,.34); border-radius: 999px; color: var(--gold); background: rgba(255,250,242,.68); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
+      .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; padding: 8px 13px 8px 8px; border: 1px solid rgba(167,123,66,.34); border-radius: 999px; color: var(--gold); background: rgba(255,250,242,.68); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
+      .logo-mark { width: 34px; height: 34px; flex: 0 0 auto; }
+      .lang-toggle { width: auto !important; min-width: 140px; min-height: 40px; border: 1px solid rgba(167,123,66,.38); border-radius: 999px; background: rgba(255,250,242,.78); color: var(--ink); padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
+      .lang-toggle span { padding: 5px 9px; border-radius: 999px; }
+      .lang-toggle span.active { background: var(--ink); color: var(--paper); }
       h1 { margin: 18px 0 0; font-size: clamp(2.8rem, 8vw, 5.8rem); line-height: 1; max-width: 860px; }
       .slogan { margin: 18px 0 0; color: var(--cinnabar); font: 800 clamp(1.18rem, 2.6vw, 1.8rem)/1.38 ui-sans-serif, system-ui, sans-serif; }
       .lead { max-width: 700px; margin: 18px 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+      .story { max-width: 780px; margin: 22px 0 0; padding: 18px 20px; border-left: 3px solid rgba(167,123,66,.62); background: rgba(255,250,242,.52); color: var(--muted); line-height: 1.85; }
+      .story p { margin: 0; }
+      .story p + p { margin-top: 8px; }
       .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
       .pills span { border: 1px solid rgba(167,123,66,.34); border-radius: 999px; background: rgba(255,250,242,.7); padding: 8px 11px; font: 750 .86rem ui-sans-serif, system-ui, sans-serif; }
-      .position { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; margin: 18px 0; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.78); }
+      .login-panel { max-width: 360px; margin: 20px 0 18px; padding: 26px 28px 28px; border: 1px solid rgba(216,203,184,.7); border-top: 8px solid var(--gold); border-radius: 8px; background: rgba(255,250,242,.88); box-shadow: 0 24px 70px rgba(32,33,30,.12); }
+      .login-panel p { margin: 0; color: var(--muted); line-height: 1.7; }
+      .login-form { display: grid; gap: 10px; }
+      .auth-title { margin: 0 0 10px; color: var(--gold); font: 850 1.28rem ui-sans-serif, system-ui, sans-serif; }
+      .auth-switch { width: auto !important; min-height: 0; justify-self: start; margin-top: 16px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--muted); font: 800 .92rem ui-sans-serif, system-ui, sans-serif; }
+      .member-greeting { display: none; margin: 4px 0 8px; padding: 11px 13px; border: 1px solid rgba(167,123,66,.28); border-radius: 8px; background: rgba(167,123,66,.1); color: var(--ink); font: 800 .92rem ui-sans-serif, system-ui, sans-serif; }
+      .member-greeting.show { display: block; }
+      .auth-error { display: none; margin: 0; color: var(--cinnabar); font: 800 .86rem ui-sans-serif, system-ui, sans-serif; }
+      .auth-error.show { display: block; }
+      body.logged-in .login-panel { display: none; }
+      .app-step { display: none; margin-top: 22px; }
+      body.logged-in .app-step { display: block; }
+      .step-greeting { margin: 0 0 16px; padding: 14px 16px; border: 1px solid rgba(167,123,66,.3); border-radius: 10px; background: rgba(255,250,242,.72); color: var(--ink); font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
+      .register-only { display: none; }
+      .login-panel.register-mode .register-only { display: grid; }
+      .login-note { font: 750 .84rem ui-sans-serif, system-ui, sans-serif; color: var(--muted); }
       .eyebrow { margin: 0 0 12px; color: var(--gold); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
       h2 { margin: 0; font-size: clamp(1.35rem, 3vw, 2.2rem); line-height: 1.12; }
       p { overflow-wrap: anywhere; }
-      .position p { margin: 0; color: var(--muted); line-height: 1.75; }
       .studio { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; align-items: start; }
       .panel { border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.78); padding: 24px; box-shadow: 0 24px 70px rgba(32,33,30,.14); }
       label { display: grid; gap: 8px; margin-bottom: 14px; font: 750 .92rem ui-sans-serif, system-ui, sans-serif; }
@@ -48,7 +92,8 @@
       .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
       .chips button { width: auto; min-height: 0; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,250,242,.86); color: var(--ink); font: 750 .86rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
       .chips button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
-      button { width: 100%; min-height: 52px; border: 0; border-radius: 10px; background: var(--ink); color: var(--paper); font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
+      button { width: 100%; min-height: 52px; border: 0; border-radius: 10px; background: var(--ink); color: var(--paper); font: 850 1rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
+      #authSubmitButton { background: var(--ink); box-shadow: 0 10px 22px rgba(32,33,30,.18); }
       .palette { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 18px 0; }
       .color { overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.72); }
       .swatch { height: 62px; }
@@ -58,39 +103,132 @@
       .rec { border-top: 1px solid var(--line); padding: 16px 0; }
       .rec h3 { margin: 0 0 8px; font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
       .rec p { margin: 0; color: var(--muted); line-height: 1.7; }
+      .ootd { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0; }
+      .ootd div { border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.72); padding: 14px; }
+      .ootd strong { display: block; font: 850 .92rem ui-sans-serif, system-ui, sans-serif; }
+      .ootd span { display: block; margin-top: 6px; color: var(--muted); line-height: 1.55; }
       .daily { margin-top: 16px; padding: 16px; border-left: 4px solid var(--cinnabar); border-radius: 8px; background: rgba(169,67,52,.08); }
+      .color-note { margin: -4px 0 18px; padding: 14px 16px; border: 1px solid rgba(167,123,66,.28); border-radius: 10px; background: rgba(255,250,242,.56); color: var(--muted); line-height: 1.7; }
       .status { margin: 10px 0 0; color: var(--muted); font: 750 .88rem ui-sans-serif, system-ui, sans-serif; }
-      @media (max-width: 860px) { .studio, .position { grid-template-columns: 1fr; } }
-      @media (max-width: 560px) { body { padding: 14px; } .fields, .palette { grid-template-columns: 1fr; } }
+      .chat-panel { position: fixed; right: 22px; bottom: 22px; z-index: 20; width: min(360px, calc(100vw - 28px)); transform-origin: bottom right; transition: transform .22s ease, opacity .22s ease; }
+      .chat-panel.collapsed { opacity: 0; pointer-events: none; transform: scale(.92) translateY(12px); }
+      .chat-card { border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.96); padding: 18px; box-shadow: 0 24px 80px rgba(32,33,30,.22); }
+      .chat-head { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
+      .chat-actions { display: inline-flex; align-items: center; gap: 8px; }
+      .chat-lang { padding: 6px 8px; border: 1px solid rgba(167,123,66,.24); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.48); font: 800 .68rem ui-sans-serif, system-ui, sans-serif; }
+      .chat-close { width: 34px !important; min-width: 34px; min-height: 34px; border-radius: 999px; background: rgba(32,33,30,.08); color: var(--ink); font-size: 1.1rem; line-height: 1; }
+      .chat-window { display: grid; gap: 10px; max-height: 300px; overflow: auto; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.62); }
+      .message { max-width: 82%; padding: 11px 13px; border-radius: 10px; line-height: 1.65; color: var(--muted); background: rgba(255,255,255,.72); }
+      .message.user { justify-self: end; color: var(--paper); background: var(--ink); }
+      .message.bot { justify-self: start; border: 1px solid rgba(167,123,66,.26); }
+      .chat-form { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 12px; }
+      .chat-form button { width: auto; min-width: 92px; }
+      .chat-launcher { position: fixed; right: 22px; bottom: 22px; z-index: 19; width: 46px !important; height: 46px; min-height: 46px; border-radius: 999px; border: 1px solid rgba(167,123,66,.38); background: #fffaf2; color: var(--ink); display: grid; place-items: center; box-shadow: 0 12px 30px rgba(32,33,30,.18); transition: transform .2s ease, opacity .2s ease; }
+      .chat-launcher:hover { transform: translateY(-2px); }
+      .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
+      .ai-bubble-icon { width: 24px; height: 24px; color: var(--ink); }
+      @media (max-width: 860px) { .studio, .login-panel { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) { body { padding: 14px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
     </style>
   </head>
   <body>
     <main>
       <section>
-        <div class="brand">五行美學</div>
-        <h1>今日唔知著乜好？</h1>
-        <p class="slogan">只需 3 分鐘，就幫你揀好 OOTD。</p>
-        <p class="lead">根據你的生辰八字、五行氣場、個人風格與今日場合，配對最適合你的日常穿搭，再延伸成配色、材質、家居與品牌視覺建議。</p>
-        <div class="pills"><span>出生資料</span><span>風格偏好</span><span>空間 / 品牌需求</span><span>五行分析</span><span>美學建議</span></div>
+        <div class="topbar">
+        <div class="brand">
+          <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="五行美學 logo">
+            <circle cx="32" cy="32" r="29" fill="#fffaf2" stroke="#a77b42" stroke-width="2" />
+            <path d="M32 13 L50 26 L43 48 H21 L14 26 Z" fill="none" stroke="#20211e" stroke-width="2.2" stroke-linejoin="round" opacity=".82" />
+            <circle cx="32" cy="13" r="4.5" fill="#a7a9a6" />
+            <circle cx="50" cy="26" r="4.5" fill="#5f7460" />
+            <circle cx="43" cy="48" r="4.5" fill="#182e38" />
+            <circle cx="21" cy="48" r="4.5" fill="#a94334" />
+            <circle cx="14" cy="26" r="4.5" fill="#b77a55" />
+            <circle cx="32" cy="32" r="8" fill="#20211e" />
+            <text x="32" y="36.5" text-anchor="middle" fill="#fffaf2" font-size="11" font-family="serif" font-weight="700">五</text>
+          </svg>
+          <span id="brandName">五行美學</span>
+        </div>
+          <button class="lang-toggle" id="langToggle" type="button"><span class="active">繁</span><span>简</span><span>EN</span></button>
+        </div>
+        <h1 id="heroTitle">今日唔知著乜好？</h1>
+        <p class="slogan" id="heroSlogan">只需 3 分鐘，就幫你揀好 OOTD。</p>
+        <div class="story">
+          <p id="storyOne">每日出門前，最頭痛唔係冇衫著，而係唔知今日邊一套先最啱自己。</p>
+          <p id="storyTwo">五行美學會根據你嘅生辰八字、膚色、今日氣場，幫你搵一套有氣質，同埋著得出街嘅 OOTD。</p>
+          <p id="storyThree">唔使自拍，唔使影晒成個衣櫃，保留私隱之餘，每日都有少少新鮮感。</p>
+        </div>
       </section>
-      <section class="position">
-        <div><p class="eyebrow">產品定位</p><h2>私人五行美學顧問。</h2></div>
-        <p>MVP 專為重視品味、文化感與生活質感的人而設。輸入出生資料、風格偏好和目前需求，即可生成可執行的美學建議。</p>
+      <section class="login-panel" id="loginPanel">
+        <div class="login-form">
+          <h2 class="auth-title" id="loginEyebrow">登入</h2>
+          <label><span id="nicknameLabel">暱稱</span><input id="nickname" autocomplete="nickname" required /></label>
+          <label><span id="emailLabel">電郵地址</span><input id="authEmail" type="email" autocomplete="email" required /></label>
+          <label><span id="passwordLabel">密碼</span><input id="authPassword" type="password" autocomplete="current-password" required /></label>
+          <label class="register-only"><span id="confirmPasswordLabel">確認密碼</span><input id="confirmPassword" type="password" autocomplete="new-password" /></label>
+          <button id="authSubmitButton" type="button">登入</button>
+          <p class="auth-error" id="authError">請先填好暱稱、電郵地址同密碼。</p>
+          <p class="member-greeting" id="memberGreeting"></p>
+          <button class="auth-switch" id="authSwitchButton" type="button">註冊帳戶</button>
+        </div>
       </section>
-      <section class="studio">
+      <section class="app-step" id="styleStep">
+        <p class="step-greeting" id="stepGreeting">你好！下一步輸入生辰資料。</p>
+        <div class="studio">
         <section class="panel">
-          <p class="eyebrow">輸入資料</p>
-          <h2>建立美學命盤</h2>
-          <label>名稱<input id="name" placeholder="你的名字 / 暱稱" value="" /></label>
-          <div class="fields"><label>出生日期<input id="birthDate" type="date" value="" /></label><label>出生時間<input id="birthTime" type="time" value="" /></label></div>
+          <p class="eyebrow" id="inputEyebrow">輸入資料</p>
+          <h2 id="inputTitle">建立美學命盤</h2>
+          <div class="fields"><label><span id="birthDateLabel">出生日期</span><input id="birthDate" type="date" value="" /></label><label><span id="birthTimeLabel">出生時間</span><input id="birthTime" type="time" value="" /></label></div>
           <div class="chips" id="scenarioChips">
-            <button class="active" type="button">個人穿搭 + 生活空間</button>
-            <button type="button">家居</button>
-            <button type="button">品牌視覺</button>
-            <button type="button">內容風格</button>
+            <button class="active" type="button" data-key="work">上班穿搭</button>
+            <button type="button" data-key="date">約會穿搭</button>
+            <button type="button" data-key="interview">面試穿搭</button>
+            <button type="button" data-key="weekend">週末穿搭</button>
+            <button type="button" data-key="wedding">喜宴穿搭</button>
           </div>
-          <label>個人風格偏好<textarea id="style">東方現代、低調奢華、自然材質、乾淨線條</textarea></label>
-          <label>空間 / 品牌 / 生活需求<textarea id="needs">想建立更穩定、有辨識度、有質感的個人美學。</textarea></label>
+          <label id="skinToneLabel">皮膚色調</label>
+          <div class="chips" id="skinToneChips">
+            <button type="button" data-key="warm">暖色調</button>
+            <button type="button" data-key="cool">冷色調</button>
+          </div>
+          <p class="status" id="wardrobeHint">沒有的單品可以不選，系統會用百搭基本款生成。</p>
+          <label id="topLabel">上身</label>
+          <div class="chips" id="topChips">
+            <button type="button" data-key="tshirt">T恤</button>
+            <button type="button" data-key="shirt">恤衫</button>
+            <button type="button" data-key="knit">針織衫</button>
+            <button type="button" data-key="tank">背心</button>
+          </div>
+          <label id="bottomLabel">下身</label>
+          <div class="chips" id="bottomChips">
+            <button type="button" data-key="jeans">牛仔褲</button>
+            <button type="button" data-key="tailored">西褲</button>
+            <button type="button" data-key="straight">直腳褲</button>
+            <button type="button" data-key="skirt">半身裙</button>
+            <button type="button" data-key="longSkirt">長裙</button>
+            <button type="button" data-key="wide">闊腳褲</button>
+          </div>
+          <label id="setLabel">套裝</label>
+          <div class="chips" id="setChips">
+            <button type="button" data-key="dress">連身裙</button>
+            <button type="button" data-key="suit">套裝西裝</button>
+            <button type="button" data-key="jumpsuit">連身褲</button>
+          </div>
+          <label id="outerLabel">外套</label>
+          <div class="chips" id="outerChips">
+            <button type="button" data-key="blazer">西裝外套</button>
+            <button type="button" data-key="cardigan">針織外套</button>
+            <button type="button" data-key="denim">牛仔外套</button>
+          </div>
+          <label id="shoeLabel">鞋款</label>
+          <div class="chips" id="shoeChips">
+            <button type="button" data-key="leather">皮鞋</button>
+            <button type="button" data-key="sneakers">波鞋</button>
+            <button type="button" data-key="sandals">涼鞋</button>
+            <button type="button" data-key="heels">高跟鞋</button>
+            <button type="button" data-key="flats">平底鞋</button>
+          </div>
           <button id="generate" type="button">生成五行美學建議</button>
           <p class="status" id="status">可先改資料，再按生成。</p>
         </section>
@@ -99,103 +237,731 @@
           <h2>金為主，土為輔</h2>
           <p class="lead">以金的俐落秩序建立辨識度，再用土的穩定溫柔補足層次。</p>
           <div class="palette">
-            <div class="color"><div class="swatch" style="background:#E9E4D8"></div><strong>月白</strong><small>背景與留白</small></div>
-            <div class="color"><div class="swatch" style="background:#A7A9A6"></div><strong>霧銀</strong><small>金屬細節</small></div>
-            <div class="color"><div class="swatch" style="background:#20211F"></div><strong>墨黑</strong><small>高級對比</small></div>
+            <div class="color"><div class="swatch" style="background:#E9E4D8"></div><strong>月白</strong><small>主色</small></div>
+            <div class="color"><div class="swatch" style="background:#A7A9A6"></div><strong>霧銀</strong><small>底色</small></div>
+            <div class="color"><div class="swatch" style="background:#20211F"></div><strong>墨黑</strong><small>點綴色</small></div>
           </div>
+          <div class="color-note">沒有指定顏色也可以。用相近色、底色，或者袋、鞋、飾物等小物代替就可以；五行色只是今日配色方向，不是硬性規定。</div>
           <div class="rec"><h3>穿搭</h3><p>乾淨線條、結構外套、霧銀配件，避免過度裝飾。</p></div>
-          <div class="rec"><h3>家居 / 空間</h3><p>入口、書桌、床邊先整理，主色用月白與岩灰。</p></div>
-          <div class="rec"><h3>品牌視覺</h3><p>大量留白、清晰中軸、細線框架，建立可信感。</p></div>
           <div class="daily"><strong>每日建議</strong><p>今日選一件金屬感小物，整理一個視覺角落。</p></div>
         </section>
+        </div>
+      </section>
+      <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open AI chat">
+        <svg class="ai-bubble-icon" viewBox="0 0 32 32" aria-hidden="true">
+          <path d="M8.5 9.5h15a4 4 0 0 1 4 4v5.5a4 4 0 0 1-4 4H16l-5.7 4v-4H8.5a4 4 0 0 1-4-4v-5.5a4 4 0 0 1 4-4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
+          <path d="M13 16h6M13 19h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+          <path d="M22.5 5.5l.7 1.7 1.8.7-1.8.7-.7 1.7-.7-1.7-1.8-.7 1.8-.7.7-1.7Z" fill="currentColor"/>
+        </svg>
+      </button>
+      <section class="chat-panel collapsed" id="chatPanel">
+        <div class="chat-card">
+        <div class="chat-head">
+          <div>
+            <p class="eyebrow" id="chatEyebrow">AI 小助手</p>
+            <h2 id="chatTitle">問我今日點襯。</h2>
+          </div>
+          <div class="chat-actions">
+            <span class="chat-lang" id="chatLang">繁</span>
+            <button class="chat-close" id="chatClose" type="button" aria-label="關閉 AI 聊天室">×</button>
+          </div>
+        </div>
+        <div class="chat-window" id="chatWindow"></div>
+        <div class="chat-form">
+          <input id="chatInput" type="text" placeholder="例如：今日返工可以點著？" />
+          <button id="chatSend" type="button">送出</button>
+        </div>
+        </div>
       </section>
     </main>
     <script>
-      const elementProfiles = {
-        金: {
-          secondary: "土",
-          summary: "以金的俐落秩序建立辨識度，再用土的穩定溫柔補足層次。",
-          colors: [["月白", "#E9E4D8", "背景與留白"], ["霧銀", "#A7A9A6", "金屬細節"], ["墨黑", "#20211F", "高級對比"]],
-          outfit: "乾淨線條、結構外套、霧銀配件，避免過度裝飾。",
-          home: "入口、書桌、床邊先整理，主色用月白與岩灰。",
-          brand: "大量留白、清晰中軸、細線框架，建立可信感。",
-          daily: "今日選一件金屬感小物，整理一個視覺角落。"
+      const optionLabels = {
+        scenario: {
+          work: { zh: "上班穿搭", en: "Work Outfit" },
+          date: { zh: "約會穿搭", en: "Date Outfit" },
+          interview: { zh: "面試穿搭", en: "Interview Outfit" },
+          weekend: { zh: "週末穿搭", en: "Weekend Outfit" },
+          wedding: { zh: "喜宴穿搭", en: "Wedding Guest Outfit" }
         },
-        木: {
-          secondary: "水",
-          summary: "以木的生長感帶出親和力，再用水的流動線條提升靈感。",
-          colors: [["松綠", "#5F7460", "主視覺"], ["茶白", "#EFE6D7", "背景"], ["深海藍", "#243A45", "沉穩對比"]],
-          outfit: "選直筒剪裁、天然棉麻、綠或藍色系，整體保持輕盈。",
-          home: "加入木紋、植物、自然光，讓空間有呼吸感。",
-          brand: "適合溫柔、療癒、教育、生活方式品牌。",
-          daily: "今日做一個讓生活更順手的小整理，風格會更自然。"
+        skin: {
+          neutral: { zh: "色彩方向", en: "Color Direction" },
+          warm: { zh: "暖色調", en: "Warm Undertone" },
+          cool: { zh: "冷色調", en: "Cool Undertone" }
         },
-        水: {
-          secondary: "金",
-          summary: "以水的柔和流動創造神秘感，再用金的線條收束質感。",
-          colors: [["墨藍", "#182E38", "主色"], ["霧灰", "#AEB5B3", "中性色"], ["珍珠白", "#F4F0E8", "提亮"]],
-          outfit: "用垂墜布料、深色單品、銀色飾物，呈現安靜而精緻的氣場。",
-          home: "用低飽和色、玻璃、鏡面和柔和燈光提升空間層次。",
-          brand: "內容可更有故事感，視覺適合慢節奏、留白與細節特寫。",
-          daily: "今日少一點顏色，多一點質感，會更合你。"
+        top: {
+          tshirt: { zh: "T恤", en: "T-shirt" },
+          shirt: { zh: "恤衫", en: "Shirt" },
+          knit: { zh: "針織衫", en: "Knit Top" },
+          tank: { zh: "背心", en: "Tank Top" }
         },
-        火: {
-          secondary: "木",
-          summary: "以火的明亮感染力提升存在感，再用木的自然感避免過度張揚。",
-          colors: [["朱砂", "#A94334", "重點色"], ["暖白", "#FFF5E8", "留白"], ["栗棕", "#6B4032", "穩定底色"]],
-          outfit: "保留一個亮點，例如紅棕唇色、耳環或外套，其他單品要乾淨。",
-          home: "用暖光、藝術畫、香氛與小面積紅色增加生命力。",
-          brand: "適合個人品牌、分享型內容、活動與高互動社群。",
-          daily: "今日用一個清楚亮點表達自己，不需要全身都搶眼。"
+        bottom: {
+          jeans: { zh: "牛仔褲", en: "Jeans" },
+          tailored: { zh: "西褲", en: "Tailored Pants" },
+          straight: { zh: "直腳褲", en: "Straight-leg Pants" },
+          skirt: { zh: "半身裙", en: "Skirt" },
+          longSkirt: { zh: "長裙", en: "Long Skirt" },
+          wide: { zh: "闊腳褲", en: "Wide-leg Pants" }
         },
-        土: {
-          secondary: "火",
-          summary: "以土的安定質感建立信任，再用火的暖意增加親近感。",
-          colors: [["陶土", "#B77A55", "溫度"], ["米白", "#F2E7D6", "背景"], ["岩灰", "#68635A", "平衡"]],
-          outfit: "選米白、卡其、棕色與柔軟針織，質感比花款重要。",
-          home: "用陶器、石材、木材、織物，讓空間更穩定舒服。",
-          brand: "視覺要厚實可靠，適合顧問、生活、健康與美學服務。",
-          daily: "今日先選舒服得體的底色，再加一點暖色細節。"
+        set: {
+          dress: { zh: "連身裙", en: "Dress" },
+          suit: { zh: "套裝西裝", en: "Suit Set" },
+          jumpsuit: { zh: "連身褲", en: "Jumpsuit" },
+          none: { zh: "不穿套裝，以上下身配搭為主", en: "No one-piece or set; style top and bottom instead" }
+        },
+        outer: {
+          blazer: { zh: "西裝外套", en: "Blazer" },
+          cardigan: { zh: "針織外套", en: "Knit Cardigan" },
+          denim: { zh: "牛仔外套", en: "Denim Jacket" }
+        },
+        shoes: {
+          leather: { zh: "皮鞋", en: "Leather Shoes" },
+          sneakers: { zh: "波鞋", en: "Sneakers" },
+          sandals: { zh: "涼鞋", en: "Sandals" },
+          heels: { zh: "高跟鞋", en: "Heels" },
+          flats: { zh: "平底鞋", en: "Flats" }
+        },
+        bag: {
+          leather: { zh: "小皮袋", en: "Small Leather Bag" },
+          shoulder: { zh: "腋下袋", en: "Shoulder Bag" },
+          tote: { zh: "簡潔 tote bag", en: "Minimal Tote" },
+          chain: { zh: "鏈條小袋", en: "Chain Bag" },
+          quiet: { zh: "低調手提袋", en: "Low-key Handbag" }
         }
       };
 
-      let scenario = "個人穿搭 + 生活空間";
+      const uiText = {
+        zh: {
+          htmlLang: "zh-Hant",
+          toggle: "<span class=\"active\">繁</span><span>简</span><span>EN</span>",
+          brand: "五行美學",
+          heroTitle: "今日唔知著乜好？",
+          heroSlogan: "只需 3 分鐘，就幫你揀好 OOTD。",
+          storyOne: "每日出門前，最頭痛唔係冇衫著，而係唔知今日邊一套先最啱自己。",
+          storyTwo: "五行美學會根據你嘅生辰八字、膚色、今日氣場，幫你搵一套有氣質，同埋著得出街嘅 OOTD。",
+          storyThree: "唔使自拍，唔使影晒成個衣櫃，保留私隱之餘，每日都有少少新鮮感。",
+          loginEyebrow: "登入",
+          emailLabel: "電郵地址",
+          passwordLabel: "密碼",
+          nicknameLabel: "暱稱",
+          authRequired: "請先填好暱稱、電郵地址同密碼。",
+          registerRequired: "請先填好暱稱、電郵地址、密碼同確認密碼。",
+          loginButton: "登入",
+          loginTab: "登入",
+          registerEyebrow: "註冊帳戶",
+          switchToRegister: "註冊帳戶",
+          switchToLogin: "已有帳戶？登入",
+          confirmPasswordLabel: "確認密碼",
+          registerButton: "註冊",
+          memberGreeting: (name) => `${name}，你好！`,
+          stepGreeting: (name) => `${name}，你好！下一步輸入生辰資料，幫你配對今日 OOTD。`,
+          inputEyebrow: "輸入資料",
+          inputTitle: "建立美學命盤",
+          chatEyebrow: "AI 小助手",
+          chatTitle: "問我今日點襯。",
+          chatPlaceholder: "例如：今日返工可以點著？",
+          chatSend: "送出",
+          chatLang: "繁",
+          chatOpenLabel: "打開 AI 聊天室",
+          chatCloseLabel: "關閉 AI 聊天室",
+          chatWelcome: "你好，我係你嘅五行穿搭助手。你可以問我今日著咩色、點襯返工、約會、面試或者喜宴。",
+          chatFallback: "我會建議你先揀今日場合，再按「生成五行美學建議」。如果你想即刻問，可以講：今日著咩色？或者返工點襯？",
+          chatColorReply: "今日可以跟五行配色方向行：主色唔一定要完全一樣，用相近色、袋、鞋或者飾物代替都得。",
+          chatWorkReply: "返工建議用乾淨線條同低調配色，上身可以揀恤衫或針織衫，下身用西褲、直腳褲或牛仔褲都可以。",
+          chatDateReply: "約會可以保留一個溫柔細節，例如柔和色上衣、小手袋、淡香水或者微光飾物，唔需要太刻意。",
+          chatPrivacyReply: "唔使上傳自拍或衣櫃相。呢個版本只用你輸入嘅資料同選項去生成建議。",
+          birthDateLabel: "出生日期",
+          birthTimeLabel: "出生時間",
+          skinToneLabel: "皮膚色調",
+          wardrobeHint: "沒有的單品可以不選，系統會用百搭基本款生成。",
+          topLabel: "上身",
+          bottomLabel: "下身",
+          setLabel: "套裝",
+          outerLabel: "外套",
+          shoeLabel: "鞋款",
+          generate: "生成五行美學建議",
+          idleStatus: "可先改資料，再按生成。",
+          doneStatus: "已根據你的生辰、今日日期、皮膚色調、衣櫃分類與場合生成。",
+          ai: "AI 建議",
+          defaultTitle: "金為主，土為輔",
+          defaultLead: "以金的俐落秩序建立辨識度，再用土的穩定溫柔補足層次。",
+          outfit: "穿搭",
+          dailyAdvice: "每日建議",
+          colorNote: "沒有指定顏色也可以。用相近色、底色，或者袋、鞋、飾物等小物代替就可以；五行色只是今日配色方向，不是硬性規定。",
+          defaultOutfit: "乾淨線條、結構外套、霧銀配件，避免過度裝飾。",
+          defaultDaily: "今日選一件金屬感小物，整理一個視覺角落。",
+          today: "今日日期",
+          scenario: "場合",
+          stylePoint: "造型重點",
+          avoid: "今日避開",
+          colorDirection: "色彩方向",
+          personalLead: (personal, daily, summary) => `你的個人底色偏向${personal}：${summary} 今日流日加入${daily}的節奏，所以建議會每日更新，不會日日一樣。`,
+          titleLine: (daily, secondary) => `今日以${daily}為主，${secondary}為輔`,
+          lookLine: (mood, touch) => `今日氣質：${mood}。小心機：${touch}。`,
+          emptyTop: "未選上身，系統會用百搭上身生成。",
+          emptyBottom: "未選下身，系統會用百搭下身生成。",
+          emptyOuter: "未選外套，系統會按場合決定要不要外套。",
+          emptySet: "未選套裝，系統會按場合決定要不要套裝。",
+          emptyShoes: "未選鞋款，系統會按場合配鞋。",
+          includedTop: "已由套裝包含上身",
+          includedBottom: "已由套裝包含下身",
+          separators: "、"
+        },
+        cn: {
+          htmlLang: "zh-Hans",
+          toggle: "<span>繁</span><span class=\"active\">简</span><span>EN</span>",
+          brand: "五行美学",
+          heroTitle: "今天穿什麼好呢？",
+          heroSlogan: "只花 3 分钟，就帮你选好 OOTD。",
+          storyOne: "每天出门前，最糾結的是不知道今天穿哪一套才最适合自己。",
+          storyTwo: "五行美学会根據你的生辰八字、肤色和今天气场，帮你找一套有气质，也真的穿得出门的 OOTD。",
+          storyThree: "不用自拍，不用拍完整个衣橱，保留隐私的同时，每天多一点新鲜感。",
+          loginEyebrow: "登录",
+          emailLabel: "电子邮箱",
+          passwordLabel: "密码",
+          nicknameLabel: "昵称",
+          authRequired: "请先填好昵称、电子邮箱和密码。",
+          registerRequired: "请先填好昵称、电子邮箱、密码和确认密码。",
+          loginButton: "登录",
+          loginTab: "登录",
+          registerEyebrow: "注册账户",
+          switchToRegister: "注册账户",
+          switchToLogin: "已有账户？登录",
+          confirmPasswordLabel: "确认密码",
+          registerButton: "注册",
+          memberGreeting: (name) => `${name}，你好！`,
+          stepGreeting: (name) => `${name}，你好！下一步输入生辰资料，帮你配对今天 OOTD。`,
+          inputEyebrow: "输入资料",
+          inputTitle: "建立美学命盘",
+          chatEyebrow: "AI 小助手",
+          chatTitle: "问我今天怎么搭。",
+          chatPlaceholder: "例如：今天上班可以怎么穿？",
+          chatSend: "发送",
+          chatLang: "简",
+          chatOpenLabel: "打开 AI 聊天室",
+          chatCloseLabel: "关闭 AI 聊天室",
+          chatWelcome: "你好，我是你的五行穿搭助手。你可以问我今天穿什么颜色，或者上班、约会、面试、喜宴怎么搭。",
+          chatFallback: "我建议你先选择今天的场合，再按「生成五行美学建议」。如果想直接问，可以说：今天穿什么颜色？或者上班怎么搭？",
+          chatColorReply: "今天可以跟着五行配色方向走：不一定要完全同色，用相近色、包、鞋或饰品代替也可以。",
+          chatWorkReply: "上班建议用干净线条和低调配色，上身可以选衬衫或针织衫，下身用西裤、直筒裤或牛仔裤都可以。",
+          chatDateReply: "约会可以保留一个温柔细节，例如柔和色上衣、小包、淡香水或微光饰品，不需要太刻意。",
+          chatPrivacyReply: "不用上传自拍或衣橱照片。这个版本只会根据你输入的资料和选项生成建议。",
+          birthDateLabel: "出生日期",
+          birthTimeLabel: "出生时间",
+          skinToneLabel: "皮肤色调",
+          wardrobeHint: "没有的单品可以不选，系统会用百搭基础款生成。",
+          topLabel: "上身",
+          bottomLabel: "下身",
+          setLabel: "套装",
+          outerLabel: "外套",
+          shoeLabel: "鞋款",
+          generate: "生成五行美学建议",
+          idleStatus: "可先改资料，再按生成。",
+          doneStatus: "已根据你的出生资料、今日日期、皮肤色调、衣橱分类与场合生成。",
+          ai: "AI 建议",
+          defaultTitle: "金为主，土为辅",
+          defaultLead: "以金的利落秩序建立辨识度，再用土的稳定温柔补足层次。",
+          outfit: "穿搭",
+          dailyAdvice: "每日建议",
+          colorNote: "没有指定颜色也可以。用相近色、基础色，或者包、鞋、饰品等小物代替就可以；五行色只是今日配色方向，不是硬性规定。",
+          defaultOutfit: "干净线条、结构外套、雾银配件，避免过度装饰。",
+          defaultDaily: "今日选一件金属感小物，整理一个视觉角落。",
+          today: "今日日期",
+          scenario: "场合",
+          stylePoint: "造型重点",
+          avoid: "今日避开",
+          colorDirection: "色彩方向",
+          personalLead: (personal, daily, summary) => `你的个人底色偏向${personal}：${summary} 今日流日加入${daily}的节奏，所以建议会每日更新，不会每天一样。`,
+          titleLine: (daily, secondary) => `今日以${daily}为主，${secondary}为辅`,
+          lookLine: (mood, touch) => `今日气质：${mood}。小心机：${touch}。`,
+          emptyTop: "未选上身，系统会用百搭上身生成。",
+          emptyBottom: "未选下身，系统会用百搭下身生成。",
+          emptyOuter: "未选外套，系统会按场合决定要不要外套。",
+          emptySet: "未选套装，系统会按场合决定要不要套装。",
+          emptyShoes: "未选鞋款，系统会按场合配鞋。",
+          includedTop: "已由套装包含上身",
+          includedBottom: "已由套装包含下身",
+          separators: "、"
+        },
+        en: {
+          htmlLang: "en",
+          toggle: "<span>繁</span><span>简</span><span class=\"active\">EN</span>",
+          brand: "Five Elements Aesthetics",
+          heroTitle: "Not sure what to wear today?",
+          heroSlogan: "In just 3 minutes, get your OOTD picked for you.",
+          storyOne: "Before heading out each day, the hardest part is not having nothing to wear. It is deciding which outfit feels right for who you are today.",
+          storyTwo: "Five Elements Aesthetics uses your birth profile, skin tone, and today’s energy to find an OOTD that feels refined, intentional, and truly wearable.",
+          storyThree: "No selfie. No full wardrobe photo. Keep your privacy, while bringing a little freshness into every day.",
+          loginEyebrow: "Login",
+          emailLabel: "Email Address",
+          passwordLabel: "Password",
+          nicknameLabel: "Nickname",
+          authRequired: "Please fill in your nickname, email address, and password.",
+          registerRequired: "Please fill in your nickname, email address, password, and confirm password.",
+          loginButton: "Log In",
+          loginTab: "Log In",
+          registerEyebrow: "Create Account",
+          switchToRegister: "Create Account",
+          switchToLogin: "Already have an account? Log In",
+          confirmPasswordLabel: "Confirm Password",
+          registerButton: "Sign Up",
+          memberGreeting: (name) => `Hello, ${name}!`,
+          stepGreeting: (name) => `Hello, ${name}! Next, enter your birth details to generate today’s OOTD.`,
+          inputEyebrow: "Your Inputs",
+          inputTitle: "Create Your Style Profile",
+          chatEyebrow: "AI Assistant",
+          chatTitle: "Ask me how to style today.",
+          chatPlaceholder: "Example: What should I wear to work today?",
+          chatSend: "Send",
+          chatLang: "EN",
+          chatOpenLabel: "Open AI chat",
+          chatCloseLabel: "Close AI chat",
+          chatWelcome: "Hi, I am your Five Elements styling assistant. Ask me about colors, work outfits, date looks, interviews, or wedding guest styling.",
+          chatFallback: "I suggest choosing today’s occasion first, then generating your Five Elements OOTD. You can also ask: What color should I wear today? or How should I dress for work?",
+          chatColorReply: "Use today’s Five Elements palette as a direction, not a strict rule. Similar shades, a bag, shoes, or accessories can carry the color.",
+          chatWorkReply: "For work, choose clean lines and understated colors. A shirt or knit top with tailored pants, straight-leg pants, or neat jeans works well.",
+          chatDateReply: "For a date, keep one soft detail: a gentle-toned top, small bag, light fragrance, or subtle jewelry. It does not need to feel overdone.",
+          chatPrivacyReply: "No selfie or wardrobe photo is needed. This version only uses the details and options you enter.",
+          birthDateLabel: "Birth Date",
+          birthTimeLabel: "Birth Time",
+          skinToneLabel: "Skin Undertone",
+          wardrobeHint: "Skip anything you do not own. The system will use versatile basics instead.",
+          topLabel: "Top",
+          bottomLabel: "Bottom",
+          setLabel: "One-piece / Set",
+          outerLabel: "Outerwear",
+          shoeLabel: "Shoes",
+          generate: "Generate My OOTD",
+          idleStatus: "Adjust your inputs, then generate.",
+          doneStatus: "Generated from your birth info, today’s date, undertone, wardrobe categories, and occasion.",
+          ai: "AI Suggestion",
+          defaultTitle: "Metal as the main element, Earth as support",
+          defaultLead: "Use Metal’s clean structure for definition, softened by Earth’s grounded warmth.",
+          outfit: "Outfit",
+          dailyAdvice: "Daily Advice",
+          colorNote: "No exact color required. Use a similar shade, a neutral base, or small items like a bag, shoes, or accessories. Five Elements colors are a styling direction, not a strict rule.",
+          defaultOutfit: "Clean lines, structured outerwear, and mist-silver accessories. Avoid over-decoration.",
+          defaultDaily: "Choose one metallic detail today and tidy one visual corner.",
+          today: "Today’s Date",
+          scenario: "Occasion",
+          stylePoint: "Styling Point",
+          avoid: "Avoid Today",
+          colorDirection: "Color Direction",
+          personalLead: (personal, daily, summary) => `Your personal base leans ${personal}: ${summary} Today adds ${daily} energy, so the recommendation refreshes with each date instead of staying the same every day.`,
+          titleLine: (daily, secondary) => `${daily} leads today, supported by ${secondary}`,
+          lookLine: (mood, touch) => `Today’s mood: ${mood}. Finishing touch: ${touch}.`,
+          emptyTop: "No top selected. The system will use a versatile top.",
+          emptyBottom: "No bottom selected. The system will use a versatile bottom.",
+          emptyOuter: "No outerwear selected. The system will decide based on the occasion.",
+          emptySet: "No one-piece or set selected. The system will decide based on the occasion.",
+          emptyShoes: "No shoes selected. The system will choose shoes based on the occasion.",
+          includedTop: "Included in the one-piece / set",
+          includedBottom: "Included in the one-piece / set",
+          separators: ", "
+        }
+      };
+
+      const elementProfiles = {
+        metal: {
+          zhName: "金", enName: "Metal", secondary: "earth",
+          colors: [["月白", "Moon White", "#E9E4D8", "主色", "Main Color"], ["霧銀", "Mist Silver", "#A7A9A6", "底色", "Base Color"], ["墨黑", "Ink Black", "#20211F", "點綴色", "Accent Color"]],
+          zh: { summary: "以金的俐落秩序建立辨識度，再用土的穩定溫柔補足層次。", outfit: "乾淨線條、結構外套、霧銀配件，避免過度裝飾。", daily: "今日選一件金屬感小物，整理一個視覺角落。" },
+          en: { summary: "Use Metal’s clean structure for definition, softened by Earth’s grounded warmth.", outfit: "Clean lines, structured outerwear, and mist-silver accessories. Avoid over-decoration.", daily: "Choose one metallic detail today and tidy one visual corner." }
+        },
+        wood: {
+          zhName: "木", enName: "Wood", secondary: "water",
+          colors: [["松綠", "Pine Green", "#5F7460", "主色", "Main Color"], ["茶白", "Tea White", "#EFE6D7", "底色", "Base Color"], ["深海藍", "Deep Sea Blue", "#243A45", "點綴色", "Accent Color"]],
+          zh: { summary: "以木的生長感帶出親和力，再用水的流動線條提升靈感。", outfit: "選直筒剪裁、天然棉麻、綠或藍色系，整體保持輕盈。", daily: "今日做一個讓生活更順手的小整理，風格會更自然。" },
+          en: { summary: "Use Wood’s natural growth energy for approachability, supported by Water’s fluid calm.", outfit: "Choose straight cuts, natural textures, and green or blue tones while keeping the whole look light.", daily: "Make one small part of life easier today; your style will feel more natural." }
+        },
+        water: {
+          zhName: "水", enName: "Water", secondary: "metal",
+          colors: [["墨藍", "Ink Blue", "#182E38", "主色", "Main Color"], ["霧灰", "Mist Grey", "#AEB5B3", "底色", "Base Color"], ["珍珠白", "Pearl White", "#F4F0E8", "點綴色", "Accent Color"]],
+          zh: { summary: "以水的柔和流動創造神秘感，再用金的線條收束質感。", outfit: "用垂墜布料、深色單品、銀色飾物，呈現安靜而精緻的氣場。", daily: "今日少一點顏色，多一點質感，會更合你。" },
+          en: { summary: "Use Water’s softness and mystery, balanced with Metal’s refined structure.", outfit: "Use draped fabric, darker pieces, and silver details for a quiet, refined presence.", daily: "Use fewer colors and more texture today." }
+        },
+        fire: {
+          zhName: "火", enName: "Fire", secondary: "wood",
+          colors: [["朱砂", "Cinnabar", "#A94334", "主色", "Main Color"], ["暖白", "Warm White", "#FFF5E8", "底色", "Base Color"], ["栗棕", "Chestnut Brown", "#6B4032", "點綴色", "Accent Color"]],
+          zh: { summary: "以火的明亮感染力提升存在感，再用木的自然感避免過度張揚。", outfit: "保留一個亮點，例如紅棕唇色、耳環或外套，其他單品要乾淨。", daily: "今日用一個清楚亮點表達自己，不需要全身都搶眼。" },
+          en: { summary: "Use Fire’s vivid presence, softened by Wood’s natural ease.", outfit: "Keep one clear highlight, such as a red-brown lip, earrings, or outerwear, and keep the rest clean.", daily: "Express yourself with one clear highlight today." }
+        },
+        earth: {
+          zhName: "土", enName: "Earth", secondary: "fire",
+          colors: [["陶土", "Clay", "#B77A55", "主色", "Main Color"], ["米白", "Ivory", "#F2E7D6", "底色", "Base Color"], ["岩灰", "Stone Grey", "#68635A", "點綴色", "Accent Color"]],
+          zh: { summary: "以土的安定質感建立信任，再用火的暖意增加親近感。", outfit: "選米白、卡其、棕色與柔軟針織，質感比花款重要。", daily: "今日先選舒服得體的底色，再加一點暖色細節。" },
+          en: { summary: "Use Earth’s grounded texture for trust, supported by Fire’s warmth.", outfit: "Choose ivory, khaki, brown, and soft knit textures. Texture matters more than pattern.", daily: "Start with a comfortable neutral base, then add one warm detail." }
+        }
+      };
+
+      const scenarioLooks = {
+        work: { zh: { title: "高級但不費力的返工 look", twist: "加一件有質感外套，成個人即刻精神。", avoid: "避開太皺、太貼身、太多 logo。" }, en: { title: "A polished work look without trying too hard", twist: "Add one textured outer layer to look instantly more put together.", avoid: "Avoid pieces that are too wrinkled, too tight, or covered in logos." } },
+        date: { zh: { title: "有親和力但不刻意的約會 look", twist: "留一個溫柔細節，例如微光飾物或柔和色手袋。", avoid: "避開全身太硬朗或太正式。" }, en: { title: "A warm date look that does not feel overdone", twist: "Keep one soft detail, such as subtle jewelry or a gentle-toned bag.", avoid: "Avoid making the whole outfit too rigid or formal." } },
+        interview: { zh: { title: "可信、清爽、有記憶點的面試 look", twist: "用一個小面積顏色做記憶點，但整體要穩。", avoid: "避開太搶眼、太休閒或太多飾物。" }, en: { title: "A trustworthy, fresh interview look with one memorable detail", twist: "Use a small area of color as a memory point while keeping the overall look steady.", avoid: "Avoid anything too loud, too casual, or too accessory-heavy." } },
+        weekend: { zh: { title: "舒服但仍然有品味的週末 look", twist: "用帽、袋或疊穿做層次，舒服都可以好看。", avoid: "避開成套太家居感，至少保留一個精緻位。" }, en: { title: "A comfortable weekend look that still feels considered", twist: "Use a cap, bag, or layering to add shape. Comfort can still look refined.", avoid: "Avoid looking too much like loungewear; keep at least one refined detail." } },
+        wedding: { zh: { title: "得體、有光澤、影相好看的喜宴 look", twist: "加一個微光澤細節，例如珍珠、緞面、金屬耳環或小手袋。", avoid: "避開全白、太隨便、太搶新娘焦點或行動不方便的單品。" }, en: { title: "A graceful wedding guest look that photographs well", twist: "Add one soft-shine detail, such as pearls, satin, metal earrings, or a small bag.", avoid: "Avoid all-white looks, pieces that are too casual, anything that distracts from the bride, or items that are hard to move in." } }
+      };
+
+      const dailyMoods = {
+        zh: ["清冷高級", "溫柔有光", "俐落醒神", "低調貴氣", "自然鬆弛"],
+        en: ["cool and refined", "soft with a glow", "sharp and fresh", "quietly elegant", "natural and relaxed"]
+      };
+      const finishingTouches = {
+        zh: ["霧面金屬飾物", "小面積亮色手袋", "乾淨腰帶", "淡香水", "有線條感髮型"],
+        en: ["matte metallic jewelry", "a small bright bag", "a clean belt", "soft perfume", "a neat, shaped hairstyle"]
+      };
+      const skinToneGuides = {
+        neutral: { zh: "先用中性色最穩陣，例如白、灰、黑、牛仔、大地色。用小面積顏色試水溫，不需要一開始全身轉色。", en: "Start with neutrals such as white, grey, black, denim, and earth tones. Test color in small details first." },
+        warm: { zh: "暖色調｜更適合米白、奶茶、卡其、焦糖、橄欖綠、暖紅與金色系。配金色飾物、啡色皮具或暖調唇色，氣色會更柔和。", en: "Warm Undertone | Ivory, milk tea, khaki, caramel, olive, warm red, and gold tones tend to work well. Gold jewelry and brown leather soften the look." },
+        cool: { zh: "冷色調｜更適合純白、灰、黑、海軍藍、墨綠、酒紅、銀色與冷粉色系。配銀色飾物、黑色皮具或冷調紅唇，會更乾淨俐落。", en: "Cool Undertone | Pure white, grey, black, navy, deep green, burgundy, silver, and cool pink tend to work well. Silver jewelry and black leather keep the look crisp." }
+      };
+
+      const simplifiedChars = {
+        "個": "个", "係": "系", "唔": "唔", "嘅": "嘅", "啲": "啲", "咗": "咗", "喺": "喺",
+        "麼": "么", "這": "这", "那": "那", "裡": "里", "為": "为", "與": "与", "會": "会",
+        "時": "时", "後": "后", "對": "对", "氣": "气", "場": "场", "質": "质", "單": "单",
+        "曬": "晒", "無": "无", "關": "关", "開": "开", "視": "视", "覺": "觉", "議": "议",
+        "輸": "输", "入": "入", "資": "资", "料": "料", "顧": "顾", "問": "问", "專": "专",
+        "設": "设", "膚": "肤", "調": "调", "櫃": "柜", "品": "品", "執": "执", "行": "行",
+        "據": "据", "據": "据", "潔": "洁", "線": "线", "條": "条", "銀": "银", "飾": "饰",
+        "過": "过", "選": "选", "稱": "称", "暱": "昵", "號": "号", "間": "间", "啡": "啡",
+        "褲": "裤", "襯": "衬", "針": "针", "織": "织", "襯": "衬", "闊": "阔", "腳": "脚",
+        "連": "连", "裝": "装", "褲": "裤", "塊": "块", "薦": "荐", "輔": "辅", "穩": "稳",
+        "補": "补", "層": "层", "點": "点", "綴": "缀", "塵": "尘", "習": "习", "廣": "广",
+        "產": "产", "兒": "儿", "長": "长", "溫": "温", "輕": "轻", "數": "数", "體": "体",
+        "試": "试", "轉": "转", "適": "适", "圍": "围", "讓": "让", "斷": "断", "據": "据",
+        "復": "复", "雜": "杂", "幫": "帮", "揀": "拣", "頭": "头", "淨": "净", "圖": "图",
+        "與": "与", "優": "优", "級": "级", "動": "动", "隨": "随", "禮": "礼", "邊": "边",
+        "鳳": "凤", "龍": "龙", "歡": "欢", "應": "应", "義": "义", "標": "标", "記": "记",
+        "產": "产", "飽": "饱", "讀": "读", "寫": "写", "啟": "启", "稱": "称", "叢": "丛"
+      };
+      function toSimplified(value) {
+        if (Array.isArray(value)) return value.map(toSimplified);
+        if (typeof value !== "string") return value;
+        return value.replace(/[個麼這裡為與會時後對氣場質單無關開視覺議輸資顧問專設膚調櫃執據潔線條銀飾過選稱暱號間褲針織闊腳連裝薦輔穩補層點綴長溫輕體試轉適讓復雜幫揀頭淨動隨]/g, (char) => simplifiedChars[char] || char);
+      }
+
+      let lang = "zh";
+      let authMode = "login";
+      let memberName = "";
+      let scenario = "work";
+      let skinTone = "neutral";
+      const selectedTop = new Set();
+      const selectedBottom = new Set();
+      const selectedSet = new Set();
+      const selectedOuter = new Set();
+      const selectedShoes = new Set();
+
+      function t(key) {
+        const value = (uiText[lang] && uiText[lang][key]) || uiText.zh[key];
+        if (typeof value === "function") {
+          return (...args) => lang === "cn" ? toSimplified(value(...args)) : value(...args);
+        }
+        return lang === "cn" ? toSimplified(value) : value;
+      }
+      function label(group, key) {
+        const value = optionLabels[group][key][lang] || optionLabels[group][key].zh;
+        return lang === "cn" ? toSimplified(value) : value;
+      }
+      function elementName(key) {
+        const value = lang === "en" ? elementProfiles[key].enName : elementProfiles[key].zhName;
+        return lang === "cn" ? toSimplified(value) : value;
+      }
+      function profileText(profile, key) {
+        const value = profile[lang === "en" ? "en" : "zh"][key];
+        return lang === "cn" ? toSimplified(value) : value;
+      }
+      function colorName(zhName, enName) { return lang === "en" ? enName : (lang === "cn" ? toSimplified(zhName) : zhName); }
+      function colorUsage(zhUsage, enUsage) { return lang === "en" ? enUsage : (lang === "cn" ? toSimplified(zhUsage) : zhUsage); }
+      function setText(id, value) { document.querySelector(id).textContent = value; }
+
+      function syncStaticText() {
+        document.documentElement.lang = lang === "cn" ? "zh-Hans" : t("htmlLang");
+        setText("#brandName", t("brand"));
+        document.querySelector("#langToggle").innerHTML = t("toggle");
+        setText("#heroTitle", t("heroTitle"));
+        setText("#heroSlogan", t("heroSlogan"));
+        setText("#storyOne", t("storyOne"));
+        setText("#storyTwo", t("storyTwo"));
+        setText("#storyThree", t("storyThree"));
+        setText("#loginEyebrow", t("loginEyebrow"));
+        setText("#nicknameLabel", t("nicknameLabel"));
+        setText("#emailLabel", t("emailLabel"));
+        setText("#passwordLabel", t("passwordLabel"));
+        setText("#loginEyebrow", authMode === "login" ? t("loginEyebrow") : t("registerEyebrow"));
+        setText("#confirmPasswordLabel", t("confirmPasswordLabel"));
+        setText("#authSubmitButton", authMode === "login" ? t("loginButton") : t("registerButton"));
+        setText("#authSwitchButton", authMode === "login" ? t("switchToRegister") : t("switchToLogin"));
+        setText("#authError", authMode === "login" ? t("authRequired") : t("registerRequired"));
+        setText("#inputEyebrow", t("inputEyebrow"));
+        setText("#inputTitle", t("inputTitle"));
+        setText("#chatEyebrow", t("chatEyebrow"));
+        setText("#chatTitle", t("chatTitle"));
+        document.querySelector("#chatInput").placeholder = t("chatPlaceholder");
+        setText("#chatSend", t("chatSend"));
+        setText("#chatLang", t("chatLang"));
+        document.querySelector("#chatLauncher").setAttribute("aria-label", t("chatOpenLabel"));
+        document.querySelector("#chatClose").setAttribute("aria-label", t("chatCloseLabel"));
+        if (memberName) {
+          setText("#memberGreeting", t("memberGreeting")(memberName));
+          setText("#stepGreeting", t("stepGreeting")(memberName));
+        }
+        if (!document.querySelector("#chatWindow").dataset.started) resetChat();
+        setText("#birthDateLabel", t("birthDateLabel"));
+        setText("#birthTimeLabel", t("birthTimeLabel"));
+        setText("#skinToneLabel", t("skinToneLabel"));
+        setText("#wardrobeHint", t("wardrobeHint"));
+        setText("#topLabel", t("topLabel"));
+        setText("#bottomLabel", t("bottomLabel"));
+        setText("#setLabel", t("setLabel"));
+        setText("#outerLabel", t("outerLabel"));
+        setText("#shoeLabel", t("shoeLabel"));
+        setText("#generate", t("generate"));
+        if (!document.querySelector("#status").dataset.generated) setText("#status", t("idleStatus"));
+        syncOptionText();
+        if (document.querySelector("#status").dataset.generated) {
+          document.querySelector("#generate").click();
+        } else {
+          renderDefaultResult();
+        }
+      }
+
+      function syncOptionText() {
+        document.querySelectorAll("#scenarioChips button").forEach((button) => button.textContent = label("scenario", button.dataset.key));
+        document.querySelectorAll("#skinToneChips button").forEach((button) => button.textContent = label("skin", button.dataset.key));
+        document.querySelectorAll("#topChips button").forEach((button) => button.textContent = label("top", button.dataset.key));
+        document.querySelectorAll("#bottomChips button").forEach((button) => button.textContent = label("bottom", button.dataset.key));
+        document.querySelectorAll("#setChips button").forEach((button) => button.textContent = label("set", button.dataset.key));
+        document.querySelectorAll("#outerChips button").forEach((button) => button.textContent = label("outer", button.dataset.key));
+        document.querySelectorAll("#shoeChips button").forEach((button) => button.textContent = label("shoes", button.dataset.key));
+      }
+
+      function renderDefaultResult() {
+        const colors = elementProfiles.metal.colors;
+        document.querySelector("#result").innerHTML = `
+          <p class="eyebrow">${t("ai")}</p>
+          <h2>${t("defaultTitle")}</h2>
+          <p class="lead">${t("defaultLead")}</p>
+          <div class="palette">
+            ${colors.map(([zhName, enName, hex, zhUsage, enUsage]) => `<div class="color"><div class="swatch" style="background:${hex}"></div><strong>${colorName(zhName, enName)}</strong><small>${colorUsage(zhUsage, enUsage)}</small></div>`).join("")}
+          </div>
+          <div class="color-note">${t("colorNote")}</div>
+          <div class="rec"><h3>${t("outfit")}</h3><p>${t("defaultOutfit")}</p></div>
+          <div class="daily"><strong>${t("dailyAdvice")}</strong><p>${t("defaultDaily")}</p></div>
+        `;
+      }
+
+      function addChatMessage(text, type = "bot") {
+        const chatWindow = document.querySelector("#chatWindow");
+        const bubble = document.createElement("div");
+        bubble.className = `message ${type}`;
+        bubble.textContent = text;
+        chatWindow.appendChild(bubble);
+        chatWindow.scrollTop = chatWindow.scrollHeight;
+      }
+
+      function resetChat() {
+        const chatWindow = document.querySelector("#chatWindow");
+        chatWindow.dataset.started = "true";
+        chatWindow.innerHTML = "";
+        addChatMessage(t("chatWelcome"), "bot");
+      }
+
+      function getChatReply(message) {
+        const text = message.toLowerCase();
+        if (/色|顏色|颜色|color|palette/.test(text)) return t("chatColorReply");
+        if (/返工|上班|work|office/.test(text)) return t("chatWorkReply");
+        if (/約會|约会|date/.test(text)) return t("chatDateReply");
+        if (/自拍|相|照片|衣櫃|衣橱|privacy|photo|selfie|wardrobe/.test(text)) return t("chatPrivacyReply");
+        return t("chatFallback");
+      }
+
+      function sendChatMessage() {
+        const input = document.querySelector("#chatInput");
+        const message = input.value.trim();
+        if (!message) return;
+        addChatMessage(message, "user");
+        input.value = "";
+        addChatMessage(getChatReply(message), "bot");
+      }
+
+      document.querySelector("#langToggle").addEventListener("click", () => {
+        lang = lang === "zh" ? "cn" : lang === "cn" ? "en" : "zh";
+        delete document.querySelector("#chatWindow").dataset.started;
+        syncStaticText();
+      });
+
+      function setAuthMode(mode) {
+        authMode = mode;
+        document.querySelector("#loginPanel").classList.toggle("register-mode", mode === "register");
+        document.querySelector("#authPassword").autocomplete = mode === "login" ? "current-password" : "new-password";
+        syncStaticText();
+      }
+
+      document.querySelector("#authSwitchButton").addEventListener("click", () => setAuthMode(authMode === "login" ? "register" : "login"));
+
+      document.querySelector("#authSubmitButton").addEventListener("click", () => {
+        const nameInput = document.querySelector("#nickname").value.trim();
+        const emailInput = document.querySelector("#authEmail").value.trim();
+        const passwordInput = document.querySelector("#authPassword").value.trim();
+        const confirmInput = document.querySelector("#confirmPassword").value.trim();
+        const error = document.querySelector("#authError");
+        const missingRequired = !nameInput || !emailInput || !passwordInput || (authMode === "register" && !confirmInput);
+        if (missingRequired) {
+          error.textContent = authMode === "login" ? t("authRequired") : t("registerRequired");
+          error.classList.add("show");
+          return;
+        }
+        error.classList.remove("show");
+        const displayName = nameInput;
+        memberName = displayName;
+        const greeting = document.querySelector("#memberGreeting");
+        greeting.textContent = t("memberGreeting")(displayName);
+        greeting.classList.add("show");
+        document.querySelector("#stepGreeting").textContent = t("stepGreeting")(displayName);
+        document.querySelector("#authEmail").blur();
+        document.querySelector("#authPassword").blur();
+        document.querySelector("#confirmPassword").blur();
+        window.setTimeout(() => {
+          document.body.classList.add("logged-in");
+          document.querySelector("#styleStep").scrollIntoView({ behavior: "smooth", block: "start" });
+        }, 850);
+      });
+
+      document.querySelector("#chatSend").addEventListener("click", sendChatMessage);
+      document.querySelector("#chatInput").addEventListener("keydown", (event) => {
+        if (event.key === "Enter") sendChatMessage();
+      });
+      document.querySelector("#chatLauncher").addEventListener("click", () => {
+        document.querySelector("#chatPanel").classList.remove("collapsed");
+        document.querySelector("#chatLauncher").classList.add("hidden");
+        document.querySelector("#chatInput").focus();
+      });
+      document.querySelector("#chatClose").addEventListener("click", () => {
+        document.querySelector("#chatPanel").classList.add("collapsed");
+        document.querySelector("#chatLauncher").classList.remove("hidden");
+      });
+
       document.querySelectorAll("#scenarioChips button").forEach((button) => {
         button.addEventListener("click", () => {
           document.querySelectorAll("#scenarioChips button").forEach((item) => item.classList.remove("active"));
           button.classList.add("active");
-          scenario = button.textContent;
+          scenario = button.dataset.key;
         });
       });
+      document.querySelectorAll("#skinToneChips button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll("#skinToneChips button").forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+          skinTone = button.dataset.key;
+        });
+      });
+      function bindMultiSelect(selector, store) {
+        document.querySelectorAll(`${selector} button`).forEach((button) => {
+          button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            if (button.classList.contains("active")) store.add(button.dataset.key);
+            else store.delete(button.dataset.key);
+          });
+        });
+      }
+      bindMultiSelect("#topChips", selectedTop);
+      bindMultiSelect("#bottomChips", selectedBottom);
+      bindMultiSelect("#setChips", selectedSet);
+      bindMultiSelect("#outerChips", selectedOuter);
+      bindMultiSelect("#shoeChips", selectedShoes);
 
-      function pickElement() {
+      function sumText(text) {
+        return Array.from(text).reduce((total, char) => total + char.charCodeAt(0), 0);
+      }
+
+      function getTodayKey() {
+        const today = new Date();
+        return today.toLocaleDateString(lang === "en" ? "en-GB" : lang === "cn" ? "zh-CN" : "zh-HK", { year: "numeric", month: "2-digit", day: "2-digit" });
+      }
+
+      function pickPersonalElement() {
         const date = document.querySelector("#birthDate").value || "";
         const time = document.querySelector("#birthTime").value || "";
-        const seed = Array.from(date + time + scenario).reduce((total, char) => total + char.charCodeAt(0), 0);
-        return ["金", "木", "水", "火", "土"][seed % 5];
+        const seed = sumText(date + time);
+        return ["metal", "wood", "water", "fire", "earth"][seed % 5];
+      }
+
+      function pickDailyElement() {
+        const date = document.querySelector("#birthDate").value || "";
+        const time = document.querySelector("#birthTime").value || "";
+        const seed = sumText(date + time + getTodayKey());
+        return ["metal", "wood", "water", "fire", "earth"][seed % 5];
+      }
+
+      function pickFrom(list, salt = "") {
+        const date = document.querySelector("#birthDate").value || "";
+        const time = document.querySelector("#birthTime").value || "";
+        return list[sumText(date + time + scenario + getTodayKey() + salt + list.join("")) % list.length];
+      }
+
+      function pickWardrobe(store, group, fallback, salt) {
+        const selected = Array.from(store).map((key) => label(group, key));
+        return pickFrom(selected.length ? selected : fallback.map((key) => label(group, key)), salt);
+      }
+
+      function buildDailyOutfit() {
+        const set = pickWardrobe(selectedSet, "set", ["dress", "suit", "jumpsuit", "none"], "set");
+        const onePieceLabels = [label("set", "dress"), label("set", "suit"), label("set", "jumpsuit")];
+        const isOnePiece = onePieceLabels.includes(set);
+        const bottom = isOnePiece ? t("includedBottom") : pickWardrobe(selectedBottom, "bottom", ["jeans", "tailored", "straight", "skirt", "longSkirt", "wide"], "bottom");
+        const top = isOnePiece ? t("includedTop") : pickWardrobe(selectedTop, "top", ["tshirt", "shirt", "knit", "tank"], "top");
+        const outer = pickWardrobe(selectedOuter, "outer", ["blazer", "cardigan", "denim"], "outer");
+        const shoes = pickWardrobe(selectedShoes, "shoes", ["leather", "sneakers", "sandals", "heels", "flats"], "shoes");
+        const bag = pickFrom(Object.keys(optionLabels.bag).map((key) => label("bag", key)), "bag");
+        return [[t("topLabel"), top], [t("bottomLabel"), bottom], [t("outerLabel"), outer], [t("setLabel"), set], [t("shoeLabel"), shoes], [lang === "en" ? "Bag" : "袋", bag]];
+      }
+
+      function selectedText(store, group, emptyText) {
+        return store.size ? Array.from(store).map((key) => label(group, key)).join(t("separators")) : emptyText;
       }
 
       document.querySelector("#generate").addEventListener("click", () => {
-        const element = pickElement();
-        const profile = elementProfiles[element];
-        const style = document.querySelector("#style").value || "東方現代、簡潔、高級";
-        const needs = document.querySelector("#needs").value || "建立更一致的個人美學";
-        document.querySelector("#status").textContent = "已根據你的生辰、風格偏好與需求生成。";
+        const personalElement = pickPersonalElement();
+        const dailyElement = pickDailyElement();
+        const profile = elementProfiles[dailyElement];
+        const personalProfile = elementProfiles[personalElement];
+        const textLang = lang === "en" ? "en" : "zh";
+        const look = scenarioLooks[scenario][textLang];
+        const mood = pickFrom(dailyMoods[textLang]);
+        const touch = pickFrom(finishingTouches[textLang]);
+        const outfitItems = buildDailyOutfit();
+        const todayKey = getTodayKey();
+        const status = document.querySelector("#status");
+        status.dataset.generated = "true";
+        status.textContent = t("doneStatus");
         document.querySelector("#result").innerHTML = `
-          <p class="eyebrow">AI 建議</p>
-          <h2>${element}為主，${profile.secondary}為輔</h2>
-          <p class="lead">${profile.summary}</p>
+          <p class="eyebrow">${t("ai")}</p>
+          <h2>${t("titleLine")(elementName(dailyElement), elementName(profile.secondary))}</h2>
+          <p class="lead">${t("personalLead")(elementName(personalElement), elementName(dailyElement), profileText(personalProfile, "summary"))}</p>
+          <div class="daily"><strong>${lang === "cn" ? toSimplified(look.title) : look.title}</strong><p>${t("lookLine")(mood, touch)}</p></div>
           <div class="palette">
-            ${profile.colors.map(([name, hex, usage]) => `<div class="color"><div class="swatch" style="background:${hex}"></div><strong>${name}</strong><small>${usage}</small></div>`).join("")}
+            ${profile.colors.map(([zhName, enName, hex, zhUsage, enUsage]) => `<div class="color"><div class="swatch" style="background:${hex}"></div><strong>${colorName(zhName, enName)}</strong><small>${colorUsage(zhUsage, enUsage)}</small></div>`).join("")}
           </div>
-          <div class="rec"><h3>你的偏好</h3><p>${style}</p></div>
-          <div class="rec"><h3>需求場景</h3><p>${scenario}｜${needs}</p></div>
-          <div class="rec"><h3>穿搭</h3><p>${profile.outfit}</p></div>
-          <div class="rec"><h3>家居 / 空間</h3><p>${profile.home}</p></div>
-          <div class="rec"><h3>品牌視覺</h3><p>${profile.brand}</p></div>
-          <div class="daily"><strong>每日建議</strong><p>${profile.daily}</p></div>
+          <div class="color-note">${t("colorNote")}</div>
+          <div class="ootd">
+            ${outfitItems.map(([itemLabel, item]) => `<div><strong>${itemLabel}</strong><span>${item}</span></div>`).join("")}
+          </div>
+          <div class="rec"><h3>${t("today")}</h3><p>${todayKey}</p></div>
+          <div class="rec"><h3>${skinTone === "neutral" ? t("colorDirection") : t("skinToneLabel")}</h3><p>${lang === "cn" ? toSimplified(skinToneGuides[skinTone].zh) : skinToneGuides[skinTone][textLang]}</p></div>
+          <div class="rec"><h3>${t("topLabel")}</h3><p>${selectedText(selectedTop, "top", t("emptyTop"))}</p></div>
+          <div class="rec"><h3>${t("bottomLabel")}</h3><p>${selectedText(selectedBottom, "bottom", t("emptyBottom"))}</p></div>
+          <div class="rec"><h3>${t("outerLabel")}</h3><p>${selectedText(selectedOuter, "outer", t("emptyOuter"))}</p></div>
+          <div class="rec"><h3>${t("setLabel")}</h3><p>${selectedText(selectedSet, "set", t("emptySet"))}</p></div>
+          <div class="rec"><h3>${t("shoeLabel")}</h3><p>${selectedText(selectedShoes, "shoes", t("emptyShoes"))}</p></div>
+          <div class="rec"><h3>${t("scenario")}</h3><p>${label("scenario", scenario)}</p></div>
+          <div class="rec"><h3>${t("outfit")}</h3><p>${profileText(profile, "outfit")}</p></div>
+          <div class="rec"><h3>${t("stylePoint")}</h3><p>${lang === "cn" ? toSimplified(look.twist) : look.twist}</p></div>
+          <div class="rec"><h3>${t("avoid")}</h3><p>${lang === "cn" ? toSimplified(look.avoid) : look.avoid}</p></div>
+          <div class="daily"><strong>${t("dailyAdvice")}</strong><p>${profileText(profile, "daily")}</p></div>
         `;
       });
+
+      syncStaticText();
     </script>
   </body>
 </html>
