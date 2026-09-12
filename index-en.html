@@ -1,0 +1,465 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Five Elements Aesthetics - OOTD Preview</title>
+    <style>
+      :root {
+        --ivory: #f7f1e8;
+        --paper: #fffaf2;
+        --ink: #20211e;
+        --muted: #6f6a5f;
+        --line: #d8cbb8;
+        --gold: #a77b42;
+        --cinnabar: #a94334;
+        --sage: #63796a;
+      }
+
+      * { box-sizing: border-box; }
+
+      body {
+        margin: 0;
+        background:
+          radial-gradient(circle at 16% 12%, rgba(167, 123, 66, 0.16), transparent 24%),
+          radial-gradient(circle at 86% 6%, rgba(169, 67, 52, 0.12), transparent 26%),
+          radial-gradient(circle at 74% 92%, rgba(95, 116, 96, 0.13), transparent 28%),
+          linear-gradient(115deg, rgba(32, 33, 30, 0.035) 0 1px, transparent 1px 18px),
+          linear-gradient(160deg, #fffaf2 0%, #f3eadb 46%, #e8dfd2 100%);
+        background-attachment: fixed;
+        color: var(--ink);
+        font-family: ui-serif, "Songti TC", "PingFang TC", serif;
+        padding: clamp(18px, 4vw, 56px);
+        min-height: 100vh;
+      }
+
+      body::before {
+        content: "";
+        position: fixed;
+        inset: 0;
+        pointer-events: none;
+        background:
+          radial-gradient(circle at 78% 22%, transparent 0 74px, rgba(167,123,66,.16) 75px 76px, transparent 77px 112px, rgba(167,123,66,.1) 113px 114px, transparent 115px),
+          conic-gradient(from 22.5deg at 78% 22%, transparent 0 10deg, rgba(32,33,30,.055) 10deg 11deg, transparent 11deg 45deg, rgba(167,123,66,.08) 45deg 46deg, transparent 46deg 90deg),
+          radial-gradient(circle at 20% 78%, transparent 0 52px, rgba(169,67,52,.12) 53px 54px, transparent 55px 86px, rgba(32,33,30,.055) 87px 88px, transparent 89px),
+          conic-gradient(from 0deg at 20% 78%, rgba(167,123,66,.08) 0 1deg, transparent 1deg 45deg, rgba(32,33,30,.05) 45deg 46deg, transparent 46deg 90deg),
+          linear-gradient(90deg, rgba(167,123,66,.07) 1px, transparent 1px),
+          linear-gradient(0deg, rgba(167,123,66,.045) 1px, transparent 1px);
+        background-size: auto, auto, auto, auto, 96px 96px, 96px 96px;
+        mask-image: linear-gradient(135deg, rgba(0,0,0,.58), transparent 72%);
+      }
+
+      main { max-width: 1080px; margin: 0 auto; }
+      .brand { display: inline-flex; align-items: center; gap: 10px; padding: 8px 13px 8px 8px; border: 1px solid rgba(167,123,66,.34); border-radius: 999px; color: var(--gold); background: rgba(255,250,242,.68); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
+      .logo-mark { width: 34px; height: 34px; flex: 0 0 auto; }
+      h1 { margin: 18px 0 0; font-size: clamp(2.8rem, 8vw, 5.8rem); line-height: 1; max-width: 860px; }
+      .slogan { margin: 18px 0 0; color: var(--cinnabar); font: 800 clamp(1.18rem, 2.6vw, 1.8rem)/1.38 ui-sans-serif, system-ui, sans-serif; }
+      .lead { max-width: 700px; margin: 18px 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
+      .story { max-width: 780px; margin: 22px 0 0; padding: 18px 20px; border-left: 3px solid rgba(167,123,66,.62); background: rgba(255,250,242,.52); color: var(--muted); line-height: 1.85; }
+      .story p { margin: 0; }
+      .story p + p { margin-top: 8px; }
+      .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
+      .pills span { border: 1px solid rgba(167,123,66,.34); border-radius: 999px; background: rgba(255,250,242,.7); padding: 8px 11px; font: 750 .86rem ui-sans-serif, system-ui, sans-serif; }
+      .position { display: grid; grid-template-columns: .8fr 1.2fr; gap: 22px; margin: 18px 0; padding: 24px; border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.78); }
+      .eyebrow { margin: 0 0 12px; color: var(--gold); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
+      h2 { margin: 0; font-size: clamp(1.35rem, 3vw, 2.2rem); line-height: 1.12; }
+      p { overflow-wrap: anywhere; }
+      .position p { margin: 0; color: var(--muted); line-height: 1.75; }
+      .studio { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; align-items: start; }
+      .panel { border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.78); padding: 24px; box-shadow: 0 24px 70px rgba(32,33,30,.14); }
+      label { display: grid; gap: 8px; margin-bottom: 14px; font: 750 .92rem ui-sans-serif, system-ui, sans-serif; }
+      input, textarea { width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,250,242,.92); padding: 12px; }
+      textarea { min-height: 82px; }
+      .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
+      .chips button { width: auto; min-height: 0; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,250,242,.86); color: var(--ink); font: 750 .86rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
+      .chips button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
+      button { width: 100%; min-height: 52px; border: 0; border-radius: 10px; background: var(--ink); color: var(--paper); font: 850 1rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
+      .palette { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 18px 0; }
+      .color { overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.72); }
+      .swatch { height: 62px; }
+      .color strong, .color small { display: block; padding: 0 11px; }
+      .color strong { padding-top: 10px; }
+      .color small { color: var(--muted); padding-bottom: 12px; }
+      .rec { border-top: 1px solid var(--line); padding: 16px 0; }
+      .rec h3 { margin: 0 0 8px; font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
+      .rec p { margin: 0; color: var(--muted); line-height: 1.7; }
+      .ootd { display: grid; grid-template-columns: repeat(3, 1fr); gap: 10px; margin: 18px 0; }
+      .ootd div { border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.72); padding: 14px; }
+      .ootd strong { display: block; font: 850 .92rem ui-sans-serif, system-ui, sans-serif; }
+      .ootd span { display: block; margin-top: 6px; color: var(--muted); line-height: 1.55; }
+      .daily { margin-top: 16px; padding: 16px; border-left: 4px solid var(--cinnabar); border-radius: 8px; background: rgba(169,67,52,.08); }
+      .color-note { margin: -4px 0 18px; padding: 14px 16px; border: 1px solid rgba(167,123,66,.28); border-radius: 10px; background: rgba(255,250,242,.56); color: var(--muted); line-height: 1.7; }
+      .status { margin: 10px 0 0; color: var(--muted); font: 750 .88rem ui-sans-serif, system-ui, sans-serif; }
+      @media (max-width: 860px) { .studio, .position { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) { body { padding: 14px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } }
+    </style>
+  </head>
+  <body>
+    <main>
+      <section>
+        <div class="brand">
+          <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="Five Elements Aesthetics logo">
+            <circle cx="32" cy="32" r="29" fill="#fffaf2" stroke="#a77b42" stroke-width="2" />
+            <path d="M32 13 L50 26 L43 48 H21 L14 26 Z" fill="none" stroke="#20211e" stroke-width="2.2" stroke-linejoin="round" opacity=".82" />
+            <circle cx="32" cy="13" r="4.5" fill="#a7a9a6" />
+            <circle cx="50" cy="26" r="4.5" fill="#5f7460" />
+            <circle cx="43" cy="48" r="4.5" fill="#182e38" />
+            <circle cx="21" cy="48" r="4.5" fill="#a94334" />
+            <circle cx="14" cy="26" r="4.5" fill="#b77a55" />
+            <circle cx="32" cy="32" r="8" fill="#20211e" />
+            <text x="32" y="36.5" text-anchor="middle" fill="#fffaf2" font-size="11" font-family="serif" font-weight="700">F</text>
+          </svg>
+          <span>Five Elements Aesthetics</span>
+        </div>
+        <h1>Not sure what to wear today?</h1>
+        <p class="slogan">In just 3 minutes, get your OOTD picked for you.</p>
+        <div class="story">
+          <p>The hardest part of getting dressed is not having nothing to wear. It is knowing which outfit fits who you need to be today.</p>
+          <p>Five Elements Aesthetics uses your birth profile, today’s energy, and your wardrobe basics to create an OOTD that feels intentional, refined, and wearable.</p>
+          <p>No selfie. No wardrobe photo upload. Keep your privacy while keeping every day fresh.</p>
+        </div>
+        <div class="pills"><span>Birth Info</span><span>Skin Undertone</span><span>Wardrobe Items</span><span>Five Elements</span><span>Daily OOTD</span></div>
+      </section>
+      <section class="position">
+        <div><p class="eyebrow">Product Positioning</p><h2>Your private Five Elements styling advisor.</h2></div>
+        <p>MVP 專為每天糾結Outfit的人而設。輸入Birth Info、Skin Undertone、Wardrobe Items和今日Occasion，即可生成可執行的Daily OOTD。</p>
+      </section>
+      <section class="studio">
+        <section class="panel">
+          <p class="eyebrow">Your Inputs</p>
+          <h2>Create Your Style Profile</h2>
+          <label>Name<input id="name" placeholder="Your name / nickname" value="" /></label>
+          <div class="fields"><label>Birth Date<input id="birthDate" type="date" value="" /></label><label>Birth Time<input id="birthTime" type="time" value="" /></label></div>
+          <div class="chips" id="scenarioChips">
+            <button class="active" type="button">Work Outfit</button>
+            <button type="button">Date Outfit</button>
+            <button type="button">Interview Outfit</button>
+            <button type="button">Weekend Outfit</button>
+            <button type="button">Wedding Guest Outfit</button>
+          </div>
+          <label>Skin Undertone</label>
+          <div class="chips" id="skinToneChips">
+            <button type="button">Warm Undertone</button>
+            <button type="button">Cool Undertone</button>
+          </div>
+          <p class="status">Skip anything you do not own. The system will use versatile basics instead.</p>
+          <label>Top</label>
+          <div class="chips" id="topChips">
+            <button type="button">T-shirt</button>
+            <button type="button">Shirt</button>
+            <button type="button">Knit Top</button>
+            <button type="button">Tank Top</button>
+          </div>
+          <label>Bottom</label>
+          <div class="chips" id="bottomChips">
+            <button type="button">Jeans</button>
+            <button type="button">Tailored Pants</button>
+            <button type="button">Straight-leg Pants</button>
+            <button type="button">Skirt</button>
+            <button type="button">Long Skirt</button>
+            <button type="button">Wide-leg Pants</button>
+          </div>
+          <label>One-piece / Set</label>
+          <div class="chips" id="setChips">
+            <button type="button">Dress</button>
+            <button type="button">One-piece / Set西裝</button>
+            <button type="button">Jumpsuit</button>
+          </div>
+          <label>Outerwear</label>
+          <div class="chips" id="outerChips">
+            <button type="button">西裝Outerwear</button>
+            <button type="button">針織Outerwear</button>
+            <button type="button">牛仔Outerwear</button>
+            <button type="button">不加Outerwear</button>
+          </div>
+          <label>Shoes</label>
+          <div class="chips" id="shoeChips">
+            <button type="button">Leather Shoes</button>
+            <button type="button">Sneakers</button>
+            <button type="button">Sandals</button>
+            <button type="button">Heels</button>
+            <button type="button">Flats</button>
+          </div>
+          <button id="generate" type="button">Generate My OOTD</button>
+          <p class="status" id="status">Adjust your inputs, then generate.</p>
+        </section>
+        <section class="panel" id="result">
+          <p class="eyebrow">AI Recommendation</p>
+          <h2>Metal as the base, supported by Earth</h2>
+          <p class="lead">Use Metal’s clean structure for definition, softened by Earth’s grounded warmth.</p>
+          <div class="palette">
+            <div class="color"><div class="swatch" style="background:#E9E4D8"></div><strong>Moon White</strong><small>Main Color</small></div>
+            <div class="color"><div class="swatch" style="background:#A7A9A6"></div><strong>Mist Silver</strong><small>Base Color</small></div>
+            <div class="color"><div class="swatch" style="background:#20211F"></div><strong>Ink Black</strong><small>Accent Color</small></div>
+          </div>
+          <div class="color-note">沒有指定顏色也可以。用相近色、Base Color，或者袋、鞋、飾物等小物代替就可以；五行色只是今日配色方向，不是硬性規定。</div>
+          <div class="rec"><h3>Outfit</h3><p>乾淨線條、結構Outerwear、Mist Silver配件，避免過度裝飾。</p></div>
+          <div class="daily"><strong>Daily Tip</strong><p>Choose one metallic detail today to sharpen the look.</p></div>
+        </section>
+      </section>
+    </main>
+    <script>
+      const elementProfiles = {
+        Metal: {
+          secondary: "Earth",
+          summary: "Use Metal’s clean structure for definition, softened by Earth’s grounded warmth.",
+          colors: [["Moon White", "#E9E4D8", "Main Color"], ["Mist Silver", "#A7A9A6", "Base Color"], ["Ink Black", "#20211F", "Accent Color"]],
+          outfit: "乾淨線條、結構Outerwear、Mist Silver配件，避免過度裝飾。",
+          home: "入口、書桌、床邊先整理，Main Color用Moon White與Stone Grey。",
+          brand: "大量留白、清晰中軸、細線框架，建立可信感。",
+          daily: "Choose one metallic detail today to sharpen the look."
+        },
+        Wood: {
+          secondary: "Water",
+          summary: "以Wood的生長感帶出親和力，再用Water的流動線條提升靈感。",
+          colors: [["Pine Green", "#5F7460", "Main Color"], ["Tea White", "#EFE6D7", "Base Color"], ["Deep Sea Blue", "#243A45", "Accent Color"]],
+          outfit: "Choose straight cuts, natural textures, and green or blue tones while keeping the look light.",
+          home: "加入Wood紋、植物、自然光，讓空間有呼吸感。",
+          brand: "適合溫柔、療癒、教育、生活方式品牌。",
+          daily: "Make one small styling choice that helps your day flow more naturally."
+        },
+        Water: {
+          secondary: "Metal",
+          summary: "以Water的柔和流動創造神秘感，再用Metal的線條收束質感。",
+          colors: [["Ink Blue", "#182E38", "Main Color"], ["Mist Grey", "#AEB5B3", "Base Color"], ["Pearl White", "#F4F0E8", "Accent Color"]],
+          outfit: "Use draped fabrics, darker pieces, and silver details for a quiet, refined presence.",
+          home: "用低飽和色、玻璃、鏡面和柔和燈光提升空間層次。",
+          brand: "內容可更有故事感，視覺適合慢節奏、留白與細節特寫。",
+          daily: "Use fewer colors and more texture today."
+        },
+        Fire: {
+          secondary: "Wood",
+          summary: "以Fire的明亮感染力提升存在感，再用Wood的自然感避免過度張揚。",
+          colors: [["Cinnabar", "#A94334", "Main Color"], ["Warm White", "#FFF5E8", "Base Color"], ["Chestnut Brown", "#6B4032", "Accent Color"]],
+          outfit: "保留一個亮點，例如紅棕唇色、耳環或Outerwear，其他單品要乾淨。",
+          home: "用暖光、藝術畫、香氛與小面積紅色增加生命力。",
+          brand: "適合個人品牌、分享型內容、活動與高互動社群。",
+          daily: "Use one clear highlight today. The whole outfit does not need to shout."
+        },
+        Earth: {
+          secondary: "Fire",
+          summary: "以Earth的安定質感建立信任，再用Fire的暖意增加親近感。",
+          colors: [["陶Earth", "#B77A55", "Main Color"], ["Ivory", "#F2E7D6", "Base Color"], ["Stone Grey", "#68635A", "Accent Color"]],
+          outfit: "選Ivory、卡其、棕色與柔軟針織，質感比花款重要。",
+          home: "用陶器、石材、Wood材、織物，讓空間更穩定舒服。",
+          brand: "視覺要厚實可靠，適合顧問、生活、健康與美學服務。",
+          daily: "今日先選舒服得體的Base Color，再加一點暖色細節。"
+        }
+      };
+
+      const scenarioLooks = {
+        Work Outfit: {
+          title: "Polished work look without overthinking",
+          formula: ["挺身上衣 / Shirt", "Straight pants / skirt", "乾淨Leather Shoes / loafers"],
+          twist: "加一件有質感Outerwear，成個人即刻精神。",
+          avoid: "Avoid wrinkles, overly tight fits, and too many logos."
+        },
+        Date Outfit: {
+          title: "Warm but effortless date look",
+          formula: ["Soft top", "修身但舒服的Bottom", "Small earrings / bracelet / scent"],
+          twist: "Keep one soft detail, like subtle shine or a gentle-colored bag.",
+          avoid: "Avoid looking too rigid or overly formal."
+        },
+        Interview Outfit: {
+          title: "Trustworthy, fresh interview look",
+          formula: ["簡潔Outerwear", "Solid inner layer", "Low-key but clean shoes"],
+          twist: "Use one small color accent, while keeping the overall look stable.",
+          avoid: "Avoid anything too flashy, too casual, or overly accessorized."
+        },
+        Weekend Outfit: {
+          title: "Relaxed but styled weekend look",
+          formula: ["Relaxed top", "Denim / cotton-linen / wide pants", "帆布鞋 / Sandals"],
+          twist: "Use a hat, bag, or layering to make comfort look intentional.",
+          avoid: "Avoid looking too homey. Keep at least one refined detail."
+        },
+        Wedding Guest Outfit: {
+          title: "Elegant, polished wedding guest look",
+          formula: ["有垂感上衣 / Dress", "修飾比例的Bottom", "Refined bag / accessories"],
+          twist: "加一個微光澤細節，例如珍珠、緞面、Metal屬耳環或小手袋。",
+          avoid: "Avoid all-white, overly casual pieces, anything that steals attention, or items that restrict movement."
+        }
+      };
+
+      const dailyMoods = ["Cool and refined", "Soft with a glow", "Sharp and fresh", "Quietly elevated", "Natural and relaxed"];
+      const finishingTouches = ["霧面Metal屬飾物", "small bright-color bag", "clean belt", "淡香Water", "sleek hairstyle"];
+      const skinToneGuides = {
+        Neutral Direction: {
+          colors: "Neutral colors are the safest start: white, grey, black, denim, and earth tones.",
+          accent: "用小面積顏色試Water溫，不需要一開始全身轉色。"
+        },
+        Warm Undertone: {
+          colors: "更適合Ivory、奶茶、卡其、焦糖、橄欖綠、暖紅與Metal色系。",
+          accent: "配Metal色飾物、啡色皮具或暖調唇色，氣色會更柔和。"
+        },
+        Cool Undertone: {
+          colors: "Best with pure white, grey, black, navy, deep green, burgundy, silver, and cool pink tones.",
+          accent: "Pair with silver accessories, black leather, or cool red lip color for a cleaner look."
+        }
+      };
+      const wardrobeDeck = {
+        top: ["Structured T-shirt", "白色Shirt", "Knit Top", "Tank Top"],
+        bottom: ["Jeans", "Tailored Pants", "Straight-leg Pants", "Skirt", "Long Skirt", "垂感Wide-leg Pants"],
+        outer: ["西裝Outerwear", "針織Outerwear", "牛仔Outerwear", "不加Outerwear"],
+        set: ["Dress", "One-piece / Set西裝", "Jumpsuit", "不穿One-piece / Set，以上Bottom配搭為主"],
+        shoes: ["Leather Shoes", "白色乾淨Sneakers", "幼帶Sandals", "Heels", "尖頭Flats"],
+        bag: ["Small Leather Bag", "Shoulder Bag", "Minimal Tote", "Chain Bag", "Low-key Handbag"]
+      };
+      const itemAliases = {
+        Shirt: "白色Shirt",
+        T-shirt: "Structured T-shirt",
+        Wide-leg Pants: "垂感Wide-leg Pants",
+        Flats: "尖頭Flats",
+        Sneakers: "白色乾淨Sneakers"
+      };
+
+      let scenario = "Work Outfit";
+      let skinTone = "Neutral Direction";
+      const selectedTop = new Set();
+      const selectedBottom = new Set();
+      const selectedSet = new Set();
+      const selectedOuter = new Set();
+      const selectedShoes = new Set();
+      document.querySelectorAll("#scenarioChips button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll("#scenarioChips button").forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+          scenario = button.textContent;
+        });
+      });
+      document.querySelectorAll("#skinToneChips button").forEach((button) => {
+        button.addEventListener("click", () => {
+          document.querySelectorAll("#skinToneChips button").forEach((item) => item.classList.remove("active"));
+          button.classList.add("active");
+          skinTone = button.textContent;
+        });
+      });
+      function bindMultiSelect(selector, store) {
+        document.querySelectorAll(`${selector} button`).forEach((button) => {
+          button.addEventListener("click", () => {
+            button.classList.toggle("active");
+            if (button.classList.contains("active")) {
+              store.add(button.textContent);
+            } else {
+              store.delete(button.textContent);
+            }
+          });
+        });
+      }
+      bindMultiSelect("#topChips", selectedTop);
+      bindMultiSelect("#bottomChips", selectedBottom);
+      bindMultiSelect("#setChips", selectedSet);
+      bindMultiSelect("#outerChips", selectedOuter);
+      document.querySelectorAll("#shoeChips button").forEach((button) => {
+        button.addEventListener("click", () => {
+          button.classList.toggle("active");
+          if (button.classList.contains("active")) {
+            selectedShoes.add(button.textContent);
+          } else {
+            selectedShoes.delete(button.textContent);
+          }
+        });
+      });
+
+      function sumText(text) {
+        return Array.from(text).reduce((total, char) => total + char.charCodeAt(0), 0);
+      }
+
+      function getTodayKey() {
+        const today = new Date();
+        return today.toLocaleDateString("en-HK", { year: "numeric", month: "2-digit", day: "2-digit" });
+      }
+
+      function pickPersonalElement() {
+        const date = document.querySelector("#birthDate").value || "";
+        const time = document.querySelector("#birthTime").value || "";
+        const seed = sumText(date + time);
+        return ["Metal", "Wood", "Water", "Fire", "Earth"][seed % 5];
+      }
+
+      function pickDailyElement() {
+        const date = document.querySelector("#birthDate").value || "";
+        const time = document.querySelector("#birthTime").value || "";
+        const seed = sumText(date + time + scenario + getTodayKey());
+        return ["Metal", "Wood", "Water", "Fire", "Earth"][seed % 5];
+      }
+
+      function pickFrom(list, salt = "") {
+        const date = document.querySelector("#birthDate").value || "";
+        const time = document.querySelector("#birthTime").value || "";
+        return list[sumText(date + time + scenario + getTodayKey() + salt + list.join("")) % list.length];
+      }
+
+      function pickWardrobe(store, fallback, salt) {
+        const selected = Array.from(store).map((item) => itemAliases[item] || item);
+        return pickFrom(selected.length ? selected : fallback, salt);
+      }
+
+      function pickShoes() {
+        const selected = Array.from(selectedShoes).map((item) => itemAliases[item] || item);
+        return pickFrom(selected.length ? selected : wardrobeDeck.shoes, "shoes");
+      }
+
+      function buildDailyOutfit() {
+        const set = pickWardrobe(selectedSet, wardrobeDeck.set, "set");
+        const isOnePiece = ["Dress", "One-piece / Set西裝", "Jumpsuit"].includes(set);
+        const bottom = isOnePiece ? "已由One-piece / Set包含Bottom" : pickWardrobe(selectedBottom, wardrobeDeck.bottom, "bottom");
+        const top = isOnePiece ? "已由One-piece / Set包含Top" : pickWardrobe(selectedTop, wardrobeDeck.top, "top");
+        const outer = pickWardrobe(selectedOuter, wardrobeDeck.outer, "outer");
+        return [
+          ["Top", top],
+          ["Bottom", bottom],
+          ["Outerwear", outer],
+          ["One-piece / Set", set],
+          ["鞋", pickShoes()],
+          ["袋", pickFrom(wardrobeDeck.bag, "bag")]
+        ];
+      }
+
+      document.querySelector("#generate").addEventListener("click", () => {
+        const personalElement = pickPersonalElement();
+        const element = pickDailyElement();
+        const profile = elementProfiles[element];
+        const personalProfile = elementProfiles[personalElement];
+        const look = scenarioLooks[scenario] || scenarioLooks["Work Outfit"];
+        const toneGuide = skinToneGuides[skinTone] || skinToneGuides["Neutral Direction"];
+        const mood = pickFrom(dailyMoods);
+        const touch = pickFrom(finishingTouches);
+        const outfitItems = buildDailyOutfit();
+        const todayKey = getTodayKey();
+        const skinToneLabel = skinTone === "Neutral Direction" ? "Color Direction" : "Skin Undertone";
+        const topText = selectedTop.size ? Array.from(selectedTop).join("、") : "未選Top，系統會用百搭Top生成。";
+        const bottomText = selectedBottom.size ? Array.from(selectedBottom).join("、") : "未選Bottom，系統會用百搭Bottom生成。";
+        const outerText = selectedOuter.size ? Array.from(selectedOuter).join("、") : "未選Outerwear，系統會按Occasion決定要不要Outerwear。";
+        const setText = selectedSet.size ? Array.from(selectedSet).join("、") : "未選One-piece / Set，系統會按Occasion決定要不要One-piece / Set。";
+        const shoeText = selectedShoes.size ? Array.from(selectedShoes).join("、") : "未選Shoes，系統會按Occasion配鞋。";
+        document.querySelector("#status").textContent = "已根據你的生辰、Today、Skin Undertone、衣櫃分類與Occasion生成。";
+        document.querySelector("#result").innerHTML = `
+          <p class="eyebrow">AI Recommendation</p>
+          <h2>Today: ${element} as the main element, ${profile.secondary} as support</h2>
+          <p class="lead">你的個人Base Color偏向${personalElement} — ${personalProfile.summary} Today adds ${element} energy, so the recommendation refreshes each day instead of staying the same.</p>
+          <div class="daily"><strong>${look.title}</strong><p>今日氣質 — ${mood}。小心機 — ${touch}。</p></div>
+          <div class="palette">
+            ${profile.colors.map(([name, hex, usage]) => `<div class="color"><div class="swatch" style="background:${hex}"></div><strong>${name}</strong><small>${usage}</small></div>`).join("")}
+          </div>
+          <div class="color-note">沒有指定顏色也可以。用相近色、Base Color，或者袋、鞋、飾物等小物代替就可以；五行色只是今日配色方向，不是硬性規定。</div>
+          <div class="ootd">
+            ${outfitItems.map(([label, item]) => `<div><strong>${label}</strong><span>${item}</span></div>`).join("")}
+          </div>
+          <div class="rec"><h3>Today</h3><p>${todayKey}</p></div>
+          <div class="rec"><h3>${skinToneLabel}</h3><p>${skinTone === "Neutral Direction" ? "" : `${skinTone}｜`}${toneGuide.colors} ${toneGuide.accent}</p></div>
+          <div class="rec"><h3>Top</h3><p>${topText}</p></div>
+          <div class="rec"><h3>Bottom</h3><p>${bottomText}</p></div>
+          <div class="rec"><h3>Outerwear</h3><p>${outerText}</p></div>
+          <div class="rec"><h3>One-piece / Set</h3><p>${setText}</p></div>
+          <div class="rec"><h3>Shoes</h3><p>${shoeText}</p></div>
+          <div class="rec"><h3>Occasion</h3><p>${scenario}</p></div>
+          <div class="rec"><h3>Outfit</h3><p>${profile.outfit}</p></div>
+          <div class="rec"><h3>Styling Focus</h3><p>${look.twist}</p></div>
+          <div class="rec"><h3>Avoid Today</h3><p>${look.avoid}</p></div>
+          <div class="daily"><strong>Daily Tip</strong><p>${profile.daily}</p></div>
+        `;
+      });
+    </script>
+  </body>
+</html>

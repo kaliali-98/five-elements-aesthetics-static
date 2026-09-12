@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>五行美學 - Interface Preview</title>
+    <meta name="description" content="五行美學 Five Elements Aesthetics 是一個 AI 穿搭建議網站，根據出生資料、膚色、場合及衣櫃選項生成每日 OOTD 建議。" />
+    <title>五行美學 Five Elements Aesthetics</title>
     <style>
       :root {
         --ivory: #f7f1e8;
@@ -49,24 +50,72 @@
         mask-image: linear-gradient(135deg, rgba(0,0,0,.58), transparent 72%);
       }
 
-      main { max-width: 1080px; margin: 0 auto; }
+      main { max-width: 1120px; margin: 0 auto; }
+      .hero-section { padding: 6px 0 18px; }
       .topbar { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
-      .brand { display: inline-flex; align-items: center; gap: 10px; padding: 8px 13px 8px 8px; border: 1px solid rgba(167,123,66,.34); border-radius: 999px; color: var(--gold); background: rgba(255,250,242,.68); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
-      .logo-mark { width: 34px; height: 34px; flex: 0 0 auto; }
+      .brand { display: inline-flex; align-items: center; padding: 0; border: 0; border-radius: 0; background: transparent; }
+      .logo-mark { width: 128px; height: 128px; flex: 0 0 auto; object-fit: contain; display: block; }
       .lang-toggle { width: auto !important; min-width: 140px; min-height: 40px; border: 1px solid rgba(167,123,66,.38); border-radius: 999px; background: rgba(255,250,242,.78); color: var(--ink); padding: 0 8px; display: inline-flex; align-items: center; justify-content: center; gap: 4px; }
       .lang-toggle span { padding: 5px 9px; border-radius: 999px; }
       .lang-toggle span.active { background: var(--ink); color: var(--paper); }
-      h1 { margin: 18px 0 0; font-size: clamp(2.8rem, 8vw, 5.8rem); line-height: 1; max-width: 860px; }
+      h1 { margin: 12px 0 0; font-size: clamp(2.25rem, 5.8vw, 4.35rem); line-height: 1.05; max-width: 760px; }
+      html[lang="en"] h1 { max-width: none; white-space: nowrap; font-size: clamp(2rem, 4.2vw, 3.45rem); }
       .slogan { margin: 18px 0 0; color: var(--cinnabar); font: 800 clamp(1.18rem, 2.6vw, 1.8rem)/1.38 ui-sans-serif, system-ui, sans-serif; }
       .lead { max-width: 700px; margin: 18px 0 0; color: var(--muted); font-size: 1.08rem; line-height: 1.8; }
-      .story { max-width: 780px; margin: 22px 0 0; padding: 18px 20px; border-left: 3px solid rgba(167,123,66,.62); background: rgba(255,250,242,.52); color: var(--muted); line-height: 1.85; }
+      .story { max-width: 760px; margin: 22px 0 0; padding: 18px 20px; border-left: 3px solid rgba(167,123,66,.62); background: rgba(255,250,242,.52); color: var(--muted); line-height: 1.85; }
       .story p { margin: 0; }
       .story p + p { margin-top: 8px; }
+      .logo-mark,
+      #heroTitle,
+      #heroSlogan,
+      .story {
+        animation: introFadeUp 1.05s cubic-bezier(.2,.72,.18,1) both;
+      }
+      #heroTitle { animation-delay: .14s; }
+      #heroSlogan { animation-delay: .28s; }
+      .story { animation-delay: .42s; }
+      @keyframes introFadeUp {
+        from { opacity: 0; transform: translateY(24px); filter: blur(3px); }
+        to { opacity: 1; transform: translateY(0); }
+      }
       .pills { display: flex; flex-wrap: wrap; gap: 8px; margin: 24px 0 18px; }
       .pills span { border: 1px solid rgba(167,123,66,.34); border-radius: 999px; background: rgba(255,250,242,.7); padding: 8px 11px; font: 750 .86rem ui-sans-serif, system-ui, sans-serif; }
-      .login-panel { max-width: 360px; margin: 20px 0 18px; padding: 26px 28px 28px; border: 1px solid rgba(216,203,184,.7); border-top: 8px solid var(--gold); border-radius: 8px; background: rgba(255,250,242,.88); box-shadow: 0 24px 70px rgba(32,33,30,.12); }
+      .pricing { margin: 34px 0 8px; padding-top: 8px; }
+      .pricing-head { display: grid; margin-bottom: 16px; }
+      .pricing-head p { margin: 0; color: var(--muted); line-height: 1.75; font: 750 .94rem ui-sans-serif, system-ui, sans-serif; }
+      .payment-status { margin: 0 0 18px; padding: 12px 0 0; border-top: 1px solid rgba(167,123,66,.28); color: var(--muted); font: 800 .9rem/1.65 ui-sans-serif, system-ui, sans-serif; }
+      .pricing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
+      .plan-card { position: relative; display: grid; grid-template-rows: auto auto 1fr auto; gap: 12px; border: 1px solid rgba(216,203,184,.72); border-radius: 12px; background: rgba(255,250,242,.66); padding: 22px; box-shadow: 0 14px 34px rgba(32,33,30,.07); }
+      .plan-card.featured { border-color: rgba(167,123,66,.58); background: rgba(255,250,242,.88); box-shadow: 0 18px 42px rgba(32,33,30,.1); }
+      .plan-badge { position: absolute; top: -12px; right: 14px; padding: 5px 10px; border-radius: 999px; background: var(--cinnabar); color: var(--paper); font: 850 .72rem ui-sans-serif, system-ui, sans-serif; }
+      .plan-label { color: var(--gold); font: 850 .86rem ui-sans-serif, system-ui, sans-serif; }
+      .plan-card h3 { margin: 0; font: 850 1.14rem ui-sans-serif, system-ui, sans-serif; }
+      .plan-price { margin: 0; font: 850 1.72rem ui-sans-serif, system-ui, sans-serif; }
+      .plan-price span { color: var(--muted); font: 750 .86rem ui-sans-serif, system-ui, sans-serif; }
+      .plan-card ul { display: grid; gap: 8px; margin: 0; padding: 0; list-style: none; color: var(--muted); font: 750 .9rem/1.55 ui-sans-serif, system-ui, sans-serif; }
+      .plan-card li::before { content: "✓"; color: var(--gold); font-weight: 900; margin-right: 8px; }
+      .plan-action { display: inline-flex; align-items: center; justify-content: center; min-height: 44px; margin-top: 4px; border-radius: 10px; background: var(--ink); color: var(--paper); text-decoration: none; font: 850 .92rem ui-sans-serif, system-ui, sans-serif; }
+      .plan-card:not(.featured) .plan-action { background: rgba(32,33,30,.08); color: var(--ink); }
+      .payment-modal { position: fixed; inset: 0; z-index: 40; display: none; align-items: center; justify-content: center; padding: 20px; background: rgba(32,33,30,.42); backdrop-filter: blur(5px); }
+      .payment-modal.show { display: flex; }
+      .payment-card { width: min(440px, 100%); border: 1px solid rgba(216,203,184,.78); border-radius: 16px; background: #fffaf2; padding: 24px; box-shadow: 0 28px 80px rgba(32,33,30,.28); }
+      .payment-head { display: flex; align-items: start; justify-content: space-between; gap: 14px; }
+      .payment-close { width: 34px !important; min-width: 34px; min-height: 34px; border-radius: 999px; background: rgba(32,33,30,.08); color: var(--ink); font-size: 1.1rem; line-height: 1; }
+      .payment-price { margin: 16px 0 0; color: var(--gold); font: 900 2rem ui-sans-serif, system-ui, sans-serif; }
+      .payment-note { margin: 12px 0 0; color: var(--muted); line-height: 1.7; font: 750 .94rem ui-sans-serif, system-ui, sans-serif; }
+      .payment-actions { display: grid; gap: 10px; margin-top: 20px; }
+      .payment-primary { display: inline-flex; align-items: center; justify-content: center; min-height: 48px; border-radius: 10px; background: var(--ink); color: var(--paper); text-decoration: none; font: 850 .94rem ui-sans-serif, system-ui, sans-serif; }
+      .payment-secondary { width: 100%; min-height: 44px; border-radius: 10px; background: rgba(32,33,30,.08); color: var(--ink); }
+      .business-info { margin: 0; padding: 0; background: transparent; text-align: left; }
+      .business-info p { margin: 4px 0 0; color: rgba(111,106,95,.82); line-height: 1.6; font: 700 .78rem ui-sans-serif, system-ui, sans-serif; }
+      .business-info .eyebrow { display: none; }
+      .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 0; }
+      .info-card { padding: 0; border: 0; background: transparent; }
+      .info-card h3 { margin: 0 0 4px; color: rgba(32,33,30,.88); font: 850 .82rem ui-sans-serif, system-ui, sans-serif; }
+      .info-card a { color: var(--gold); font-weight: 850; overflow-wrap: anywhere; }
+      .login-panel { max-width: 760px; margin: 38px auto 20px; padding: 28px 30px 30px; border: 1px solid rgba(216,203,184,.7); border-top: 5px solid var(--gold); border-radius: 10px; background: rgba(255,250,242,.82); box-shadow: 0 18px 48px rgba(32,33,30,.1); }
       .login-panel p { margin: 0; color: var(--muted); line-height: 1.7; }
-      .login-form { display: grid; gap: 10px; }
+      .login-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; align-items: end; }
       .auth-title { margin: 0 0 10px; color: var(--gold); font: 850 1.28rem ui-sans-serif, system-ui, sans-serif; }
       .auth-switch { width: auto !important; min-height: 0; justify-self: start; margin-top: 16px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--muted); font: 800 .92rem ui-sans-serif, system-ui, sans-serif; }
       .member-greeting { display: none; margin: 4px 0 8px; padding: 11px 13px; border: 1px solid rgba(167,123,66,.28); border-radius: 8px; background: rgba(167,123,66,.1); color: var(--ink); font: 800 .92rem ui-sans-serif, system-ui, sans-serif; }
@@ -74,7 +123,7 @@
       .auth-error { display: none; margin: 0; color: var(--cinnabar); font: 800 .86rem ui-sans-serif, system-ui, sans-serif; }
       .auth-error.show { display: block; }
       body.logged-in .login-panel { display: none; }
-      .app-step { display: none; margin-top: 22px; }
+      .app-step { display: none; margin-top: 30px; }
       body.logged-in .app-step { display: block; }
       .step-greeting { margin: 0 0 16px; padding: 14px 16px; border: 1px solid rgba(167,123,66,.3); border-radius: 10px; background: rgba(255,250,242,.72); color: var(--ink); font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
       .register-only { display: none; }
@@ -83,16 +132,25 @@
       .eyebrow { margin: 0 0 12px; color: var(--gold); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
       h2 { margin: 0; font-size: clamp(1.35rem, 3vw, 2.2rem); line-height: 1.12; }
       p { overflow-wrap: anywhere; }
-      .studio { display: grid; grid-template-columns: .9fr 1.1fr; gap: 18px; align-items: start; }
-      .panel { border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.78); padding: 24px; box-shadow: 0 24px 70px rgba(32,33,30,.14); }
+      .studio { display: grid; grid-template-columns: minmax(320px, .92fr) minmax(0, 1.08fr); gap: 18px; align-items: start; }
+      .panel { border: 1px solid var(--line); border-radius: 12px; background: rgba(255,250,242,.78); padding: clamp(22px, 4vw, 34px); box-shadow: 0 18px 48px rgba(32,33,30,.11); }
       label { display: grid; gap: 8px; margin-bottom: 14px; font: 750 .92rem ui-sans-serif, system-ui, sans-serif; }
+      .option-group { padding-top: 22px; margin-top: 22px; border-top: 1px solid rgba(216,203,184,.62); }
+      .option-group:first-of-type { border-top: 0; margin-top: 14px; padding-top: 0; }
+      .option-group > label { margin-bottom: 10px; color: var(--ink); }
       input, textarea { width: 100%; min-height: 46px; border: 1px solid var(--line); border-radius: 8px; background: rgba(255,250,242,.92); padding: 12px; }
       textarea { min-height: 82px; }
       .fields { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
-      .chips { display: flex; flex-wrap: wrap; gap: 8px; margin: 8px 0 16px; }
-      .chips button { width: auto; min-height: 0; padding: 8px 12px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,250,242,.86); color: var(--ink); font: 750 .86rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
+      .chips { display: flex; flex-wrap: wrap; gap: 10px; margin: 8px 0 0; }
+      .chips button { width: auto; min-height: 0; padding: 9px 13px; border-radius: 999px; border: 1px solid var(--line); background: rgba(255,250,242,.86); color: var(--ink); font: 750 .86rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
       .chips button.active { background: var(--ink); color: var(--paper); border-color: var(--ink); }
       button { width: 100%; min-height: 52px; border: 0; border-radius: 10px; background: var(--ink); color: var(--paper); font: 850 1rem ui-sans-serif, system-ui, sans-serif; cursor: pointer; }
+      #generate { margin-top: 28px; }
+      .login-form .auth-title,
+      .login-form #authSubmitButton,
+      .login-form .auth-error,
+      .login-form .member-greeting,
+      .login-form .auth-switch { grid-column: 1 / -1; }
       #authSubmitButton { background: var(--ink); box-shadow: 0 10px 22px rgba(32,33,30,.18); }
       .palette { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 18px 0; }
       .color { overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.72); }
@@ -109,6 +167,10 @@
       .ootd span { display: block; margin-top: 6px; color: var(--muted); line-height: 1.55; }
       .daily { margin-top: 16px; padding: 16px; border-left: 4px solid var(--cinnabar); border-radius: 8px; background: rgba(169,67,52,.08); }
       .color-note { margin: -4px 0 18px; padding: 14px 16px; border: 1px solid rgba(167,123,66,.28); border-radius: 10px; background: rgba(255,250,242,.56); color: var(--muted); line-height: 1.7; }
+      .preview-lock { margin-top: 16px; padding: 18px; border: 1px solid rgba(167,123,66,.36); border-radius: 12px; background: rgba(167,123,66,.1); }
+      .preview-lock h3 { margin: 0; font: 900 1rem ui-sans-serif, system-ui, sans-serif; }
+      .preview-lock p { margin: 8px 0 0; color: var(--muted); line-height: 1.7; }
+      .preview-lock .plan-action { width: 100%; margin-top: 14px; }
       .status { margin: 10px 0 0; color: var(--muted); font: 750 .88rem ui-sans-serif, system-ui, sans-serif; }
       .chat-panel { position: fixed; right: 22px; bottom: 22px; z-index: 20; width: min(360px, calc(100vw - 28px)); transform-origin: bottom right; transition: transform .22s ease, opacity .22s ease; }
       .chat-panel.collapsed { opacity: 0; pointer-events: none; transform: scale(.92) translateY(12px); }
@@ -127,28 +189,28 @@
       .chat-launcher:hover { transform: translateY(-2px); }
       .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
       .ai-bubble-icon { width: 24px; height: 24px; color: var(--ink); }
-      @media (max-width: 860px) { .studio, .login-panel { grid-template-columns: 1fr; } }
-      @media (max-width: 560px) { body { padding: 14px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } }
+      .site-footer { margin: 46px auto 0; padding: 18px 0 0; border-top: 1px solid rgba(216,203,184,.5); color: rgba(111,106,95,.86); font: 750 .82rem/1.6 ui-sans-serif, system-ui, sans-serif; }
+      .copyright { margin: 18px 0 0; text-align: center; color: rgba(111,106,95,.76); font: 750 .78rem/1.6 ui-sans-serif, system-ui, sans-serif; }
+      @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
+      @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
+      @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
       @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
+      @media (prefers-reduced-motion: reduce) {
+        .logo-mark,
+        #heroTitle,
+        #heroSlogan,
+        .story {
+          animation: none;
+        }
+      }
     </style>
   </head>
   <body>
     <main>
-      <section>
+      <section class="hero-section">
         <div class="topbar">
         <div class="brand">
-          <svg class="logo-mark" viewBox="0 0 64 64" role="img" aria-label="五行美學 logo">
-            <circle cx="32" cy="32" r="29" fill="#fffaf2" stroke="#a77b42" stroke-width="2" />
-            <path d="M32 13 L50 26 L43 48 H21 L14 26 Z" fill="none" stroke="#20211e" stroke-width="2.2" stroke-linejoin="round" opacity=".82" />
-            <circle cx="32" cy="13" r="4.5" fill="#a7a9a6" />
-            <circle cx="50" cy="26" r="4.5" fill="#5f7460" />
-            <circle cx="43" cy="48" r="4.5" fill="#182e38" />
-            <circle cx="21" cy="48" r="4.5" fill="#a94334" />
-            <circle cx="14" cy="26" r="4.5" fill="#b77a55" />
-            <circle cx="32" cy="32" r="8" fill="#20211e" />
-            <text x="32" y="36.5" text-anchor="middle" fill="#fffaf2" font-size="11" font-family="serif" font-weight="700">五</text>
-          </svg>
-          <span id="brandName">五行美學</span>
+          <img class="logo-mark" src="./logo.png" alt="五行美學 logo" />
         </div>
           <button class="lang-toggle" id="langToggle" type="button"><span class="active">繁</span><span>简</span><span>EN</span></button>
         </div>
@@ -158,6 +220,75 @@
           <p id="storyOne">每日出門前，最頭痛唔係冇衫著，而係唔知今日邊一套先最啱自己。</p>
           <p id="storyTwo">五行美學會根據你嘅生辰八字、膚色、今日氣場，幫你搵一套有氣質，同埋著得出街嘅 OOTD。</p>
           <p id="storyThree">唔使自拍，唔使影晒成個衣櫃，保留私隱之餘，每日都有少少新鮮感。</p>
+        </div>
+      </section>
+      <section class="pricing" id="pricing" aria-labelledby="pricingTitle">
+        <div class="pricing-head">
+          <div>
+            <p class="eyebrow" id="pricingEyebrow">付費方案</p>
+            <h2 id="pricingTitle">先免費試用，再按需要升級。</h2>
+          </div>
+        </div>
+        <p class="payment-status" id="paymentStatus">付款功能即將開放。現階段可先免費試用；如需查詢付費方案，請電郵聯絡 five.elements.aesthetics@gmail.com。</p>
+        <div class="pricing-grid">
+          <article class="plan-card">
+            <h3 id="freePlanTitle">免費試用</h3>
+            <p class="plan-price">HK$0</p>
+            <ul>
+              <li id="freePlanOne">免費首次體驗</li>
+              <li id="freePlanTwo">生成 1 次今日 OOTD</li>
+              <li id="freePlanThree">體驗五行配色方向</li>
+            </ul>
+            <a class="plan-action" id="freePlanAction" href="#loginPanel">開始試用</a>
+          </article>
+          <article class="plan-card">
+            <h3 id="oneOffPlanTitle">單次生成</h3>
+            <p class="plan-price">HK$9.9 <span id="oneOffPlanUnit">/ 次</span></p>
+            <ul>
+              <li id="oneOffPlanOne">無需訂閱，按需要使用</li>
+              <li id="oneOffPlanTwo">每次生成 1 份今日五行穿搭建議</li>
+              <li id="oneOffPlanThree">適合偶爾需要穿搭靈感的用戶</li>
+            </ul>
+            <a class="plan-action" id="oneOffPlanAction" href="mailto:five.elements.aesthetics@gmail.com?subject=%E4%BA%94%E8%A1%8C%E7%BE%8E%E5%AD%B8%20-%20%E5%96%AE%E6%AC%A1%E7%94%9F%E6%88%90%E6%9F%A5%E8%A9%A2">查詢付費方案</a>
+          </article>
+          <article class="plan-card">
+            <h3 id="monthlyPlanTitle">月費方案</h3>
+            <p class="plan-price">HK$38 <span id="monthlyPlanUnit">/ 月</span></p>
+            <ul>
+              <li id="monthlyPlanOne">每日可生成 1 次穿搭建議</li>
+              <li id="monthlyPlanTwo">支援上班、約會、面試及週末場合</li>
+              <li id="monthlyPlanThree">可按衣櫃單品調整結果</li>
+            </ul>
+            <a class="plan-action" id="monthlyPlanAction" href="mailto:five.elements.aesthetics@gmail.com?subject=%E4%BA%94%E8%A1%8C%E7%BE%8E%E5%AD%B8%20-%20%E6%9C%88%E8%B2%BB%E6%96%B9%E6%A1%88%E6%9F%A5%E8%A9%A2">查詢付費方案</a>
+          </article>
+          <article class="plan-card featured">
+            <span class="plan-badge" id="yearlyPlanBadge">最抵玩</span>
+            <h3 id="yearlyPlanTitle">年費方案</h3>
+            <p class="plan-price">HK$168 <span id="yearlyPlanUnit">/ 年</span></p>
+            <ul>
+              <li id="yearlyPlanOne">平均約 HK$14 / 月</li>
+              <li id="yearlyPlanTwo">比逐月付款更划算</li>
+              <li id="yearlyPlanThree">適合長期建立個人穿搭習慣</li>
+            </ul>
+            <a class="plan-action" id="yearlyPlanAction" href="mailto:five.elements.aesthetics@gmail.com?subject=%E4%BA%94%E8%A1%8C%E7%BE%8E%E5%AD%B8%20-%20%E5%B9%B4%E8%B2%BB%E6%96%B9%E6%A1%88%E6%9F%A5%E8%A9%A2">查詢付費方案</a>
+          </article>
+        </div>
+      </section>
+      <section class="payment-modal" id="paymentModal" aria-hidden="true">
+        <div class="payment-card" role="dialog" aria-modal="true" aria-labelledby="paymentModalTitle">
+          <div class="payment-head">
+            <div>
+              <p class="eyebrow" id="paymentEyebrow">付款確認</p>
+              <h2 id="paymentModalTitle">月費方案</h2>
+            </div>
+            <button class="payment-close" id="paymentClose" type="button" aria-label="關閉付款視窗">×</button>
+          </div>
+          <p class="payment-price" id="paymentPrice">HK$38 / 月</p>
+          <p class="payment-note" id="paymentNote">付款功能準備接入安全付款平台。正式上線後，按此會前往付款頁完成交易。</p>
+          <div class="payment-actions">
+            <a class="payment-primary" id="paymentPrimary" href="#loginPanel">先登入 / 註冊帳戶</a>
+            <button class="payment-secondary" id="paymentSecondary" type="button">稍後再付款</button>
+          </div>
         </div>
       </section>
       <section class="login-panel" id="loginPanel">
@@ -180,27 +311,27 @@
           <p class="eyebrow" id="inputEyebrow">輸入資料</p>
           <h2 id="inputTitle">建立美學命盤</h2>
           <div class="fields"><label><span id="birthDateLabel">出生日期</span><input id="birthDate" type="date" value="" /></label><label><span id="birthTimeLabel">出生時間</span><input id="birthTime" type="time" value="" /></label></div>
-          <div class="chips" id="scenarioChips">
+          <div class="option-group"><div class="chips" id="scenarioChips">
             <button class="active" type="button" data-key="work">上班穿搭</button>
             <button type="button" data-key="date">約會穿搭</button>
             <button type="button" data-key="interview">面試穿搭</button>
             <button type="button" data-key="weekend">週末穿搭</button>
             <button type="button" data-key="wedding">喜宴穿搭</button>
-          </div>
-          <label id="skinToneLabel">皮膚色調</label>
+          </div></div>
+          <div class="option-group"><label id="skinToneLabel">皮膚色調</label>
           <div class="chips" id="skinToneChips">
             <button type="button" data-key="warm">暖色調</button>
             <button type="button" data-key="cool">冷色調</button>
-          </div>
+          </div></div>
           <p class="status" id="wardrobeHint">沒有的單品可以不選，系統會用百搭基本款生成。</p>
-          <label id="topLabel">上身</label>
+          <div class="option-group"><label id="topLabel">上身</label>
           <div class="chips" id="topChips">
             <button type="button" data-key="tshirt">T恤</button>
             <button type="button" data-key="shirt">恤衫</button>
             <button type="button" data-key="knit">針織衫</button>
             <button type="button" data-key="tank">背心</button>
-          </div>
-          <label id="bottomLabel">下身</label>
+          </div></div>
+          <div class="option-group"><label id="bottomLabel">下身</label>
           <div class="chips" id="bottomChips">
             <button type="button" data-key="jeans">牛仔褲</button>
             <button type="button" data-key="tailored">西褲</button>
@@ -208,27 +339,27 @@
             <button type="button" data-key="skirt">半身裙</button>
             <button type="button" data-key="longSkirt">長裙</button>
             <button type="button" data-key="wide">闊腳褲</button>
-          </div>
-          <label id="setLabel">套裝</label>
+          </div></div>
+          <div class="option-group"><label id="setLabel">套裝</label>
           <div class="chips" id="setChips">
             <button type="button" data-key="dress">連身裙</button>
             <button type="button" data-key="suit">套裝西裝</button>
             <button type="button" data-key="jumpsuit">連身褲</button>
-          </div>
-          <label id="outerLabel">外套</label>
+          </div></div>
+          <div class="option-group"><label id="outerLabel">外套</label>
           <div class="chips" id="outerChips">
             <button type="button" data-key="blazer">西裝外套</button>
             <button type="button" data-key="cardigan">針織外套</button>
             <button type="button" data-key="denim">牛仔外套</button>
-          </div>
-          <label id="shoeLabel">鞋款</label>
+          </div></div>
+          <div class="option-group"><label id="shoeLabel">鞋款</label>
           <div class="chips" id="shoeChips">
             <button type="button" data-key="leather">皮鞋</button>
             <button type="button" data-key="sneakers">波鞋</button>
             <button type="button" data-key="sandals">涼鞋</button>
             <button type="button" data-key="heels">高跟鞋</button>
             <button type="button" data-key="flats">平底鞋</button>
-          </div>
+          </div></div>
           <button id="generate" type="button">生成五行美學建議</button>
           <p class="status" id="status">可先改資料，再按生成。</p>
         </section>
@@ -273,8 +404,34 @@
         </div>
         </div>
       </section>
+      <footer class="site-footer">
+        <section class="business-info" aria-labelledby="businessInfoTitle">
+          <p class="eyebrow" id="businessInfoEyebrow">服務資料</p>
+          <h2 id="businessInfoTitle" hidden>服務資料</h2>
+          <div class="info-grid">
+            <article class="info-card">
+              <h3 id="contactTitle">聯絡我們</h3>
+              <p id="contactText">如有付款、帳戶或使用問題，請電郵聯絡：</p>
+              <p><a href="mailto:five.elements.aesthetics@gmail.com">five.elements.aesthetics@gmail.com</a></p>
+            </article>
+            <article class="info-card">
+              <h3 id="refundTitle">付款及退款</h3>
+              <p id="refundText">本服務提供數碼內容及個人化建議。付款完成後一般不設退款；如付款或使用上出現問題，可電郵聯絡處理。</p>
+            </article>
+            <article class="info-card">
+              <h3 id="privacyTitle">私隱提示</h3>
+              <p id="privacyText">本版本只會根據你輸入的資料及選項生成建議，不需要上傳自拍、衣櫃照片或完整個人影像。</p>
+            </article>
+          </div>
+        </section>
+        <p class="copyright">© 2026 五行美學 Five Elements Aesthetics. All rights reserved.</p>
+      </footer>
     </main>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <script>
+      const SUPABASE_URL = "https://ezjccrncouirprelvdtz.supabase.co";
+      const SUPABASE_PUBLISHABLE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImV6amNjcm5jb3VpcnByZWx2ZHR6Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODkyMjYwOTgsImV4cCI6MjEwNDgwMjA5OH0.pFJjRhNsL5ddv_Jd2w4RtF30w8kho1Y89go7s-1V9Mo";
+
       const optionLabels = {
         scenario: {
           work: { zh: "上班穿搭", en: "Work Outfit" },
@@ -339,12 +496,64 @@
           storyOne: "每日出門前，最頭痛唔係冇衫著，而係唔知今日邊一套先最啱自己。",
           storyTwo: "五行美學會根據你嘅生辰八字、膚色、今日氣場，幫你搵一套有氣質，同埋著得出街嘅 OOTD。",
           storyThree: "唔使自拍，唔使影晒成個衣櫃，保留私隱之餘，每日都有少少新鮮感。",
+          pricingEyebrow: "付費方案",
+          pricingTitle: "先免費試用，再按需要升級。",
+          paymentStatus: "付款功能即將開放。現階段可先免費試用；如需查詢付費方案，請電郵聯絡 five.elements.aesthetics@gmail.com。",
+          freePlanTitle: "免費試用",
+          freePlanOne: "免費首次體驗",
+          freePlanTwo: "生成 1 次今日 OOTD",
+          freePlanThree: "體驗五行配色方向",
+          freePlanAction: "開始試用",
+          oneOffPlanTitle: "單次生成",
+          oneOffPlanUnit: "/ 次",
+          oneOffPlanOne: "無需訂閱，按需要使用",
+          oneOffPlanTwo: "每次生成 1 份今日五行穿搭建議",
+          oneOffPlanThree: "適合偶爾需要穿搭靈感的用戶",
+          oneOffPlanAction: "查詢付費方案",
+          monthlyPlanTitle: "月費方案",
+          monthlyPlanUnit: "/ 月",
+          monthlyPlanOne: "每日可生成 1 次穿搭建議",
+          monthlyPlanTwo: "支援上班、約會、面試及週末場合",
+          monthlyPlanThree: "可按衣櫃單品調整結果",
+          monthlyPlanAction: "查詢付費方案",
+          yearlyPlanBadge: "最抵玩",
+          yearlyPlanTitle: "年費方案",
+          yearlyPlanUnit: "/ 年",
+          yearlyPlanOne: "平均約 HK$14 / 月",
+          yearlyPlanTwo: "比逐月付款更划算",
+          yearlyPlanThree: "適合長期建立個人穿搭習慣",
+          yearlyPlanAction: "查詢付費方案",
+          paymentEyebrow: "付款確認",
+          paymentNote: "付款連結暫未設定。設定 Stripe 付款連結後，按此計劃會直接前往安全付款頁完成交易。",
+          paymentPrimary: "先登入 / 註冊帳戶",
+          paymentSecondary: "明白，關閉",
+          paymentCloseLabel: "關閉付款視窗",
+          paymentPlans: {
+            oneOff: { title: "單次生成", price: "HK$9.9 / 次" },
+            monthly: { title: "月費方案", price: "HK$38 / 月" },
+            yearly: { title: "年費方案", price: "HK$168 / 年" }
+          },
+          businessInfoEyebrow: "服務資料",
+          businessInfoTitle: "服務資料",
+          contactTitle: "聯絡我們",
+          contactText: "如有付款、帳戶或使用問題，請電郵聯絡：",
+          refundTitle: "付款及退款",
+          refundText: "本服務提供數碼內容及個人化建議。付款完成後一般不設退款；如付款或使用上出現問題，可電郵聯絡處理。",
+          privacyTitle: "私隱提示",
+          privacyText: "本版本只會根據你輸入的資料及選項生成建議，不需要上傳自拍、衣櫃照片或完整個人影像。",
           loginEyebrow: "登入",
           emailLabel: "電郵地址",
           passwordLabel: "密碼",
           nicknameLabel: "暱稱",
           authRequired: "請先填好暱稱、電郵地址同密碼。",
           registerRequired: "請先填好暱稱、電郵地址、密碼同確認密碼。",
+          invalidEmailError: "請輸入正確的電郵地址。",
+          passwordMismatchError: "兩次輸入的密碼不一致。",
+          supabaseMissingError: "Email 驗證功能尚未連接。請先設定 Supabase URL 及公開金鑰。",
+          verifyEmailSent: "驗證電郵已寄出。請到你的 inbox 按驗證連結，完成後再回來登入。",
+          loginFailed: "登入失敗。請確認電郵已驗證，並檢查密碼是否正確。",
+          registerFailed: "註冊失敗。請稍後再試，或檢查此電郵是否已註冊。",
+          sessionReady: "Email 已驗證，已登入。",
           loginButton: "登入",
           loginTab: "登入",
           registerEyebrow: "註冊帳戶",
@@ -354,6 +563,10 @@
           registerButton: "註冊",
           memberGreeting: (name) => `${name}，你好！`,
           stepGreeting: (name) => `${name}，你好！下一步輸入生辰資料，幫你配對今日 OOTD。`,
+          previewStatus: "已生成免費預覽。你可以先睇今日五行配色方向。",
+          lockedTitle: "免費預覽已生成",
+          lockedText: "你可以先睇今日五行配色方向。想查看完整 OOTD、單品配搭、場合細節同避開位，可以升級後解鎖。",
+          unlockAction: "查看付費方案",
           inputEyebrow: "輸入資料",
           inputTitle: "建立美學命盤",
           chatEyebrow: "AI 小助手",
@@ -380,6 +593,10 @@
           shoeLabel: "鞋款",
           generate: "生成五行美學建議",
           idleStatus: "可先改資料，再按生成。",
+          missingBirthDateError: "請輸入你的出生日期。",
+          futureBirthDateError: "請輸入正確的出生日期。",
+          missingSkinToneError: "請選擇你的皮膚色調。",
+          missingWardrobeError: (item) => `請選擇${item}。`,
           doneStatus: "已根據你的生辰、今日日期、皮膚色調、衣櫃分類與場合生成。",
           ai: "AI 建議",
           defaultTitle: "金為主，土為輔",
@@ -410,17 +627,69 @@
           htmlLang: "zh-Hans",
           toggle: "<span>繁</span><span class=\"active\">简</span><span>EN</span>",
           brand: "五行美学",
-          heroTitle: "今天穿什麼好呢？",
-          heroSlogan: "只花 3 分钟，就帮你选好 OOTD。",
+          heroTitle: "今天穿什么？",
+          heroSlogan: "3 分钟，帮你搭好 OOTD。",
           storyOne: "每天出门前，最糾結的是不知道今天穿哪一套才最适合自己。",
           storyTwo: "五行美学会根據你的生辰八字、肤色和今天气场，帮你找一套有气质，也真的穿得出门的 OOTD。",
           storyThree: "不用自拍，不用拍完整个衣橱，保留隐私的同时，每天多一点新鲜感。",
+          pricingEyebrow: "付费方案",
+          pricingTitle: "先免费试用，再按需要升级。",
+          paymentStatus: "付款功能即将开放。现阶段可先免费试用；如需查询付费方案，请电邮联系 five.elements.aesthetics@gmail.com。",
+          freePlanTitle: "免费试用",
+          freePlanOne: "免费首次体验",
+          freePlanTwo: "生成 1 次今日 OOTD",
+          freePlanThree: "体验五行配色方向",
+          freePlanAction: "开始试用",
+          oneOffPlanTitle: "单次生成",
+          oneOffPlanUnit: "/ 次",
+          oneOffPlanOne: "无需订阅，按需要使用",
+          oneOffPlanTwo: "每次生成 1 份今日五行穿搭建议",
+          oneOffPlanThree: "适合偶尔需要穿搭灵感的用户",
+          oneOffPlanAction: "查询付费方案",
+          monthlyPlanTitle: "月费方案",
+          monthlyPlanUnit: "/ 月",
+          monthlyPlanOne: "每日可生成 1 次穿搭建议",
+          monthlyPlanTwo: "支持上班、约会、面试及周末场合",
+          monthlyPlanThree: "可按衣橱单品调整结果",
+          monthlyPlanAction: "查询付费方案",
+          yearlyPlanBadge: "最划算",
+          yearlyPlanTitle: "年费方案",
+          yearlyPlanUnit: "/ 年",
+          yearlyPlanOne: "平均约 HK$14 / 月",
+          yearlyPlanTwo: "比逐月付款更划算",
+          yearlyPlanThree: "适合长期建立个人穿搭习惯",
+          yearlyPlanAction: "查询付费方案",
+          paymentEyebrow: "付款确认",
+          paymentNote: "付款链接暂未设置。设置 Stripe 付款链接后，按此计划会直接前往安全付款页完成交易。",
+          paymentPrimary: "先登录 / 注册账户",
+          paymentSecondary: "明白，关闭",
+          paymentCloseLabel: "关闭付款窗口",
+          paymentPlans: {
+            oneOff: { title: "单次生成", price: "HK$9.9 / 次" },
+            monthly: { title: "月费方案", price: "HK$38 / 月" },
+            yearly: { title: "年费方案", price: "HK$168 / 年" }
+          },
+          businessInfoEyebrow: "服务资料",
+          businessInfoTitle: "服务资料",
+          contactTitle: "联系我们",
+          contactText: "如有付款、账户或使用问题，请电邮联系：",
+          refundTitle: "付款及退款",
+          refundText: "本服务提供数字内容及个性化建议。付款完成后一般不设退款；如付款或使用上出现问题，可电邮联系处理。",
+          privacyTitle: "隐私提示",
+          privacyText: "本版本只会根据你输入的资料及选项生成建议，不需要上传自拍、衣橱照片或完整个人影像。",
           loginEyebrow: "登录",
           emailLabel: "电子邮箱",
           passwordLabel: "密码",
           nicknameLabel: "昵称",
           authRequired: "请先填好昵称、电子邮箱和密码。",
           registerRequired: "请先填好昵称、电子邮箱、密码和确认密码。",
+          invalidEmailError: "请输入正确的电子邮箱。",
+          passwordMismatchError: "两次输入的密码不一致。",
+          supabaseMissingError: "Email 验证功能尚未连接。请先设置 Supabase URL 及公开密钥。",
+          verifyEmailSent: "验证电邮已寄出。请到你的 inbox 按验证链接，完成后再回来登录。",
+          loginFailed: "登录失败。请确认电邮已验证，并检查密码是否正确。",
+          registerFailed: "注册失败。请稍后再试，或检查此电邮是否已注册。",
+          sessionReady: "Email 已验证，已登录。",
           loginButton: "登录",
           loginTab: "登录",
           registerEyebrow: "注册账户",
@@ -430,6 +699,10 @@
           registerButton: "注册",
           memberGreeting: (name) => `${name}，你好！`,
           stepGreeting: (name) => `${name}，你好！下一步输入生辰资料，帮你配对今天 OOTD。`,
+          previewStatus: "已生成免费预览。你可以先看今天五行配色方向。",
+          lockedTitle: "免费预览已生成",
+          lockedText: "你可以先看今天五行配色方向。想查看完整 OOTD、单品搭配、场合细节和避开项，可以升级后解锁。",
+          unlockAction: "查看付费方案",
           inputEyebrow: "输入资料",
           inputTitle: "建立美学命盘",
           chatEyebrow: "AI 小助手",
@@ -456,6 +729,10 @@
           shoeLabel: "鞋款",
           generate: "生成五行美学建议",
           idleStatus: "可先改资料，再按生成。",
+          missingBirthDateError: "请输入你的出生日期。",
+          futureBirthDateError: "请输入正确的出生日期。",
+          missingSkinToneError: "请选择你的皮肤色调。",
+          missingWardrobeError: (item) => `请选择${item}。`,
           doneStatus: "已根据你的出生资料、今日日期、皮肤色调、衣橱分类与场合生成。",
           ai: "AI 建议",
           defaultTitle: "金为主，土为辅",
@@ -486,17 +763,69 @@
           htmlLang: "en",
           toggle: "<span>繁</span><span>简</span><span class=\"active\">EN</span>",
           brand: "Five Elements Aesthetics",
-          heroTitle: "Not sure what to wear today?",
-          heroSlogan: "In just 3 minutes, get your OOTD picked for you.",
+          heroTitle: "Don’t know what to wear today?",
+          heroSlogan: "Your OOTD, sorted in 3 minutes.",
           storyOne: "Before heading out each day, the hardest part is not having nothing to wear. It is deciding which outfit feels right for who you are today.",
           storyTwo: "Five Elements Aesthetics uses your birth profile, skin tone, and today’s energy to find an OOTD that feels refined, intentional, and truly wearable.",
           storyThree: "No selfie. No full wardrobe photo. Keep your privacy, while bringing a little freshness into every day.",
+          pricingEyebrow: "Plans",
+          pricingTitle: "Start with a free trial, then upgrade when you need more.",
+          paymentStatus: "Payment will be available soon. You can try the free experience first. For paid plan enquiries, please contact five.elements.aesthetics@gmail.com.",
+          freePlanTitle: "Free Trial",
+          freePlanOne: "First experience is free",
+          freePlanTwo: "Generate 1 daily OOTD",
+          freePlanThree: "Try your Five Elements color direction",
+          freePlanAction: "Start Free Trial",
+          oneOffPlanTitle: "One-off Generation",
+          oneOffPlanUnit: "/ use",
+          oneOffPlanOne: "No subscription required",
+          oneOffPlanTwo: "Generate 1 daily Five Elements outfit recommendation",
+          oneOffPlanThree: "Best for occasional styling inspiration",
+          oneOffPlanAction: "Enquire",
+          monthlyPlanTitle: "Monthly Plan",
+          monthlyPlanUnit: "/ month",
+          monthlyPlanOne: "Generate 1 outfit recommendation per day",
+          monthlyPlanTwo: "Supports work, date, interview, and weekend occasions",
+          monthlyPlanThree: "Adjust results based on your wardrobe items",
+          monthlyPlanAction: "Enquire",
+          yearlyPlanBadge: "Best Value",
+          yearlyPlanTitle: "Yearly Plan",
+          yearlyPlanUnit: "/ year",
+          yearlyPlanOne: "Around HK$14 per month",
+          yearlyPlanTwo: "Better value than paying month by month",
+          yearlyPlanThree: "Best for building a long-term personal styling habit",
+          yearlyPlanAction: "Enquire",
+          paymentEyebrow: "Payment Preview",
+          paymentNote: "The payment link has not been connected yet. Once the Stripe payment link is added, this plan will open the secure checkout page directly.",
+          paymentPrimary: "Log in / Create account first",
+          paymentSecondary: "Got it, close",
+          paymentCloseLabel: "Close payment window",
+          paymentPlans: {
+            oneOff: { title: "One-off Generation", price: "HK$9.9 / use" },
+            monthly: { title: "Monthly Plan", price: "HK$38 / month" },
+            yearly: { title: "Yearly Plan", price: "HK$168 / year" }
+          },
+          businessInfoEyebrow: "Service Information",
+          businessInfoTitle: "Service Information",
+          contactTitle: "Contact",
+          contactText: "For payment, account, or service questions, please contact:",
+          refundTitle: "Payments and Refunds",
+          refundText: "This service provides digital content and personalized recommendations. Payments are generally non-refundable after completion. If there is a payment or usage issue, please contact us by email.",
+          privacyTitle: "Privacy Note",
+          privacyText: "This version only uses the details and options you enter to generate recommendations. No selfie, wardrobe photo, or full personal image is required.",
           loginEyebrow: "Login",
           emailLabel: "Email Address",
           passwordLabel: "Password",
           nicknameLabel: "Nickname",
           authRequired: "Please fill in your nickname, email address, and password.",
           registerRequired: "Please fill in your nickname, email address, password, and confirm password.",
+          invalidEmailError: "Please enter a valid email address.",
+          passwordMismatchError: "The two passwords do not match.",
+          supabaseMissingError: "Email verification is not connected yet. Please set the Supabase URL and publishable key first.",
+          verifyEmailSent: "Verification email sent. Please open your inbox, click the verification link, then come back to log in.",
+          loginFailed: "Login failed. Please confirm your email is verified and check your password.",
+          registerFailed: "Sign up failed. Please try again later or check whether this email is already registered.",
+          sessionReady: "Email verified. You are logged in.",
           loginButton: "Log In",
           loginTab: "Log In",
           registerEyebrow: "Create Account",
@@ -506,6 +835,10 @@
           registerButton: "Sign Up",
           memberGreeting: (name) => `Hello, ${name}!`,
           stepGreeting: (name) => `Hello, ${name}! Next, enter your birth details to generate today’s OOTD.`,
+          previewStatus: "Free preview generated. You can see today’s Five Elements color direction first.",
+          lockedTitle: "Free Preview Generated",
+          lockedText: "You can preview today’s Five Elements color direction first. Upgrade to unlock the full OOTD, item styling, occasion details, and what to avoid.",
+          unlockAction: "View Paid Plans",
           inputEyebrow: "Your Inputs",
           inputTitle: "Create Your Style Profile",
           chatEyebrow: "AI Assistant",
@@ -522,7 +855,7 @@
           chatDateReply: "For a date, keep one soft detail: a gentle-toned top, small bag, light fragrance, or subtle jewelry. It does not need to feel overdone.",
           chatPrivacyReply: "No selfie or wardrobe photo is needed. This version only uses the details and options you enter.",
           birthDateLabel: "Birth Date",
-          birthTimeLabel: "Birth Time",
+          birthTimeLabel: "Time of Birth",
           skinToneLabel: "Skin Undertone",
           wardrobeHint: "Skip anything you do not own. The system will use versatile basics instead.",
           topLabel: "Top",
@@ -532,6 +865,10 @@
           shoeLabel: "Shoes",
           generate: "Generate My OOTD",
           idleStatus: "Adjust your inputs, then generate.",
+          missingBirthDateError: "Please enter your birth date.",
+          futureBirthDateError: "Please enter a valid birth date.",
+          missingSkinToneError: "Please choose your skin undertone.",
+          missingWardrobeError: (item) => `Please choose ${item}.`,
           doneStatus: "Generated from your birth info, today’s date, undertone, wardrobe categories, and occasion.",
           ai: "AI Suggestion",
           defaultTitle: "Metal as the main element, Earth as support",
@@ -643,8 +980,17 @@
       let lang = "zh";
       let authMode = "login";
       let memberName = "";
+      let selectedPaymentPlan = "monthly";
       let scenario = "work";
-      let skinTone = "neutral";
+      let skinTone = "";
+      const paymentLinks = {
+        oneOff: "",
+        monthly: "",
+        yearly: ""
+      };
+      const supabaseClient = SUPABASE_URL && SUPABASE_PUBLISHABLE_KEY && window.supabase
+        ? window.supabase.createClient(SUPABASE_URL, SUPABASE_PUBLISHABLE_KEY)
+        : null;
       const selectedTop = new Set();
       const selectedBottom = new Set();
       const selectedSet = new Set();
@@ -673,16 +1019,98 @@
       function colorName(zhName, enName) { return lang === "en" ? enName : (lang === "cn" ? toSimplified(zhName) : zhName); }
       function colorUsage(zhUsage, enUsage) { return lang === "en" ? enUsage : (lang === "cn" ? toSimplified(zhUsage) : zhUsage); }
       function setText(id, value) { document.querySelector(id).textContent = value; }
+      function cleanRequiredMark(value) { return value.replace(/\s\*$/, ""); }
+      function getTodayInputValue() {
+        const now = new Date();
+        const localDate = new Date(now.getTime() - now.getTimezoneOffset() * 60000);
+        return localDate.toISOString().slice(0, 10);
+      }
+      function syncBirthDateLimit() {
+        document.querySelector("#birthDate").max = getTodayInputValue();
+      }
+      function isFutureBirthDate() {
+        const value = document.querySelector("#birthDate").value;
+        return value && value > getTodayInputValue();
+      }
+      function isValidEmail(value) {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+      function authRedirectUrl() {
+        if (window.location.protocol === "file:") return undefined;
+        return `${window.location.origin}${window.location.pathname}`;
+      }
+      function showAuthMessage(message, isError = true) {
+        const error = document.querySelector("#authError");
+        error.textContent = message;
+        error.classList.add("show");
+        error.style.color = isError ? "var(--cinnabar)" : "var(--sage)";
+      }
+      function unlockVerifiedUser(name) {
+        memberName = name || memberName || "Guest";
+        const greeting = document.querySelector("#memberGreeting");
+        greeting.textContent = t("memberGreeting")(memberName);
+        greeting.classList.add("show");
+        document.querySelector("#stepGreeting").textContent = t("stepGreeting")(memberName);
+        document.body.classList.add("logged-in");
+      }
+      function requireWardrobeSelection(store, labelKey) {
+        if (store.size) return false;
+        const status = document.querySelector("#status");
+        delete status.dataset.generated;
+        status.textContent = t("missingWardrobeError")(cleanRequiredMark(t(labelKey)));
+        return true;
+      }
 
       function syncStaticText() {
+        syncBirthDateLimit();
         document.documentElement.lang = lang === "cn" ? "zh-Hans" : t("htmlLang");
-        setText("#brandName", t("brand"));
         document.querySelector("#langToggle").innerHTML = t("toggle");
         setText("#heroTitle", t("heroTitle"));
         setText("#heroSlogan", t("heroSlogan"));
         setText("#storyOne", t("storyOne"));
         setText("#storyTwo", t("storyTwo"));
         setText("#storyThree", t("storyThree"));
+        setText("#pricingEyebrow", t("pricingEyebrow"));
+        setText("#pricingTitle", t("pricingTitle"));
+        setText("#paymentStatus", t("paymentStatus"));
+        setText("#freePlanTitle", t("freePlanTitle"));
+        setText("#freePlanOne", t("freePlanOne"));
+        setText("#freePlanTwo", t("freePlanTwo"));
+        setText("#freePlanThree", t("freePlanThree"));
+        setText("#freePlanAction", t("freePlanAction"));
+        setText("#oneOffPlanTitle", t("oneOffPlanTitle"));
+        setText("#oneOffPlanUnit", t("oneOffPlanUnit"));
+        setText("#oneOffPlanOne", t("oneOffPlanOne"));
+        setText("#oneOffPlanTwo", t("oneOffPlanTwo"));
+        setText("#oneOffPlanThree", t("oneOffPlanThree"));
+        setText("#oneOffPlanAction", t("oneOffPlanAction"));
+        setText("#monthlyPlanTitle", t("monthlyPlanTitle"));
+        setText("#monthlyPlanUnit", t("monthlyPlanUnit"));
+        setText("#monthlyPlanOne", t("monthlyPlanOne"));
+        setText("#monthlyPlanTwo", t("monthlyPlanTwo"));
+        setText("#monthlyPlanThree", t("monthlyPlanThree"));
+        setText("#monthlyPlanAction", t("monthlyPlanAction"));
+        setText("#yearlyPlanBadge", t("yearlyPlanBadge"));
+        setText("#yearlyPlanTitle", t("yearlyPlanTitle"));
+        setText("#yearlyPlanUnit", t("yearlyPlanUnit"));
+        setText("#yearlyPlanOne", t("yearlyPlanOne"));
+        setText("#yearlyPlanTwo", t("yearlyPlanTwo"));
+        setText("#yearlyPlanThree", t("yearlyPlanThree"));
+        setText("#yearlyPlanAction", t("yearlyPlanAction"));
+        setText("#paymentEyebrow", t("paymentEyebrow"));
+        setText("#paymentNote", t("paymentNote"));
+        setText("#paymentPrimary", t("paymentPrimary"));
+        setText("#paymentSecondary", t("paymentSecondary"));
+        document.querySelector("#paymentClose").setAttribute("aria-label", t("paymentCloseLabel"));
+        updatePaymentModal(selectedPaymentPlan);
+        setText("#businessInfoEyebrow", t("businessInfoEyebrow"));
+        setText("#businessInfoTitle", t("businessInfoTitle"));
+        setText("#contactTitle", t("contactTitle"));
+        setText("#contactText", t("contactText"));
+        setText("#refundTitle", t("refundTitle"));
+        setText("#refundText", t("refundText"));
+        setText("#privacyTitle", t("privacyTitle"));
+        setText("#privacyText", t("privacyText"));
         setText("#loginEyebrow", t("loginEyebrow"));
         setText("#nicknameLabel", t("nicknameLabel"));
         setText("#emailLabel", t("emailLabel"));
@@ -745,8 +1173,11 @@
             ${colors.map(([zhName, enName, hex, zhUsage, enUsage]) => `<div class="color"><div class="swatch" style="background:${hex}"></div><strong>${colorName(zhName, enName)}</strong><small>${colorUsage(zhUsage, enUsage)}</small></div>`).join("")}
           </div>
           <div class="color-note">${t("colorNote")}</div>
-          <div class="rec"><h3>${t("outfit")}</h3><p>${t("defaultOutfit")}</p></div>
-          <div class="daily"><strong>${t("dailyAdvice")}</strong><p>${t("defaultDaily")}</p></div>
+          <div class="preview-lock">
+            <h3>${t("lockedTitle")}</h3>
+            <p>${t("lockedText")}</p>
+            <button class="plan-action" type="button" onclick="document.querySelector('#pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });">${t("unlockAction")}</button>
+          </div>
         `;
       }
 
@@ -784,10 +1215,80 @@
         addChatMessage(getChatReply(message), "bot");
       }
 
+      function getPaymentPlan(plan) {
+        const plans = t("paymentPlans");
+        return plans[plan] || plans.monthly;
+      }
+
+      function updatePaymentModal(plan) {
+        const selected = getPaymentPlan(plan);
+        setText("#paymentModalTitle", selected.title);
+        setText("#paymentPrice", selected.price);
+      }
+
+      function openPaymentModal(plan) {
+        selectedPaymentPlan = plan;
+        if (paymentLinks[plan]) {
+          window.location.href = paymentLinks[plan];
+          return;
+        }
+        updatePaymentModal(plan);
+        const modal = document.querySelector("#paymentModal");
+        modal.classList.add("show");
+        modal.setAttribute("aria-hidden", "false");
+      }
+
+      function closePaymentModal() {
+        const modal = document.querySelector("#paymentModal");
+        modal.classList.remove("show");
+        modal.setAttribute("aria-hidden", "true");
+      }
+
+      function replayIntroAnimation() {
+        const introItems = [document.querySelector(".logo-mark"), document.querySelector("#heroTitle"), document.querySelector("#heroSlogan"), document.querySelector(".story")];
+        introItems.forEach((item) => {
+          if (!item) return;
+          item.style.animation = "none";
+          void item.offsetHeight;
+          item.style.animation = "";
+        });
+      }
+
+      if (window.location.hash === "#loginPanel" || window.location.hash === "#styleStep") {
+        history.replaceState(null, "", window.location.pathname + window.location.search);
+        window.scrollTo({ top: 0, left: 0, behavior: "instant" });
+      }
+
       document.querySelector("#langToggle").addEventListener("click", () => {
         lang = lang === "zh" ? "cn" : lang === "cn" ? "en" : "zh";
         delete document.querySelector("#chatWindow").dataset.started;
         syncStaticText();
+        replayIntroAnimation();
+      });
+
+      document.querySelectorAll(".paid-plan-action").forEach((button) => {
+        button.addEventListener("click", (event) => {
+          event.preventDefault();
+          openPaymentModal(button.dataset.plan || "monthly");
+        });
+      });
+
+      document.querySelector("#paymentClose").addEventListener("click", closePaymentModal);
+      document.querySelector("#paymentSecondary").addEventListener("click", closePaymentModal);
+      document.querySelector("#paymentPrimary").addEventListener("click", (event) => {
+        event.preventDefault();
+        closePaymentModal();
+        document.querySelector("#loginPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.querySelector("#freePlanAction").addEventListener("click", (event) => {
+        event.preventDefault();
+        document.querySelector("#loginPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+      });
+      document.querySelector("#paymentModal").addEventListener("click", (event) => {
+        if (event.target.id === "paymentModal") closePaymentModal();
+      });
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closePaymentModal();
       });
 
       function setAuthMode(mode) {
@@ -799,7 +1300,21 @@
 
       document.querySelector("#authSwitchButton").addEventListener("click", () => setAuthMode(authMode === "login" ? "register" : "login"));
 
-      document.querySelector("#authSubmitButton").addEventListener("click", () => {
+      if (supabaseClient) {
+        supabaseClient.auth.getSession().then(({ data }) => {
+          const user = data.session?.user;
+          if (!user) return;
+          unlockVerifiedUser(user.user_metadata?.nickname || user.email);
+          showAuthMessage(t("sessionReady"), false);
+        });
+        supabaseClient.auth.onAuthStateChange((_event, session) => {
+          if (!session?.user) return;
+          unlockVerifiedUser(session.user.user_metadata?.nickname || session.user.email);
+          showAuthMessage(t("sessionReady"), false);
+        });
+      }
+
+      document.querySelector("#authSubmitButton").addEventListener("click", async () => {
         const nameInput = document.querySelector("#nickname").value.trim();
         const emailInput = document.querySelector("#authEmail").value.trim();
         const passwordInput = document.querySelector("#authPassword").value.trim();
@@ -811,20 +1326,53 @@
           error.classList.add("show");
           return;
         }
+        if (!isValidEmail(emailInput)) {
+          error.textContent = t("invalidEmailError");
+          error.classList.add("show");
+          return;
+        }
+        if (authMode === "register" && passwordInput !== confirmInput) {
+          error.textContent = t("passwordMismatchError");
+          error.classList.add("show");
+          return;
+        }
+        if (!supabaseClient) {
+          showAuthMessage(t("supabaseMissingError"));
+          return;
+        }
         error.classList.remove("show");
-        const displayName = nameInput;
-        memberName = displayName;
-        const greeting = document.querySelector("#memberGreeting");
-        greeting.textContent = t("memberGreeting")(displayName);
-        greeting.classList.add("show");
-        document.querySelector("#stepGreeting").textContent = t("stepGreeting")(displayName);
-        document.querySelector("#authEmail").blur();
-        document.querySelector("#authPassword").blur();
-        document.querySelector("#confirmPassword").blur();
-        window.setTimeout(() => {
-          document.body.classList.add("logged-in");
-          document.querySelector("#styleStep").scrollIntoView({ behavior: "smooth", block: "start" });
-        }, 850);
+        document.querySelector("#authSubmitButton").disabled = true;
+        try {
+          if (authMode === "register") {
+            const { error: signUpError } = await supabaseClient.auth.signUp({
+              email: emailInput,
+              password: passwordInput,
+              options: {
+                emailRedirectTo: authRedirectUrl(),
+                data: { nickname: nameInput }
+              }
+            });
+            if (signUpError) throw signUpError;
+            showAuthMessage(t("verifyEmailSent"), false);
+            return;
+          }
+          const { data, error: signInError } = await supabaseClient.auth.signInWithPassword({
+            email: emailInput,
+            password: passwordInput
+          });
+          if (signInError || !data.user) throw signInError;
+          unlockVerifiedUser(data.user.user_metadata?.nickname || nameInput || data.user.email);
+          showAuthMessage(t("sessionReady"), false);
+          window.setTimeout(() => {
+            document.querySelector("#styleStep").scrollIntoView({ behavior: "smooth", block: "start" });
+          }, 450);
+        } catch (authError) {
+          const fallbackMessage = authMode === "register" ? t("registerFailed") : t("loginFailed");
+          const detail = authError?.message ? ` ${authError.message}` : "";
+          showAuthMessage(`${fallbackMessage}${detail}`);
+        } finally {
+          document.querySelector("#authSubmitButton").disabled = false;
+        }
       });
 
       document.querySelector("#chatSend").addEventListener("click", sendChatMessage);
@@ -913,7 +1461,7 @@
         const outer = pickWardrobe(selectedOuter, "outer", ["blazer", "cardigan", "denim"], "outer");
         const shoes = pickWardrobe(selectedShoes, "shoes", ["leather", "sneakers", "sandals", "heels", "flats"], "shoes");
         const bag = pickFrom(Object.keys(optionLabels.bag).map((key) => label("bag", key)), "bag");
-        return [[t("topLabel"), top], [t("bottomLabel"), bottom], [t("outerLabel"), outer], [t("setLabel"), set], [t("shoeLabel"), shoes], [lang === "en" ? "Bag" : "袋", bag]];
+        return [[cleanRequiredMark(t("topLabel")), top], [cleanRequiredMark(t("bottomLabel")), bottom], [cleanRequiredMark(t("outerLabel")), outer], [cleanRequiredMark(t("setLabel")), set], [cleanRequiredMark(t("shoeLabel")), shoes], [lang === "en" ? "Bag" : "袋", bag]];
       }
 
       function selectedText(store, group, emptyText) {
@@ -921,6 +1469,30 @@
       }
 
       document.querySelector("#generate").addEventListener("click", () => {
+        const status = document.querySelector("#status");
+        if (!document.querySelector("#birthDate").value) {
+          delete status.dataset.generated;
+          status.textContent = t("missingBirthDateError");
+          document.querySelector("#birthDate").focus();
+          return;
+        }
+        if (isFutureBirthDate()) {
+          delete status.dataset.generated;
+          status.textContent = t("futureBirthDateError");
+          document.querySelector("#birthDate").focus();
+          return;
+        }
+        if (!skinTone) {
+          delete status.dataset.generated;
+          status.textContent = t("missingSkinToneError");
+          document.querySelector("#skinToneChips").scrollIntoView({ behavior: "smooth", block: "center" });
+          return;
+        }
+        if (requireWardrobeSelection(selectedTop, "topLabel")) return;
+        if (requireWardrobeSelection(selectedBottom, "bottomLabel")) return;
+        if (requireWardrobeSelection(selectedSet, "setLabel")) return;
+        if (requireWardrobeSelection(selectedOuter, "outerLabel")) return;
+        if (requireWardrobeSelection(selectedShoes, "shoeLabel")) return;
         const personalElement = pickPersonalElement();
         const dailyElement = pickDailyElement();
         const profile = elementProfiles[dailyElement];
@@ -931,7 +1503,6 @@
         const touch = pickFrom(finishingTouches[textLang]);
         const outfitItems = buildDailyOutfit();
         const todayKey = getTodayKey();
-        const status = document.querySelector("#status");
         status.dataset.generated = "true";
         status.textContent = t("doneStatus");
         document.querySelector("#result").innerHTML = `
@@ -947,12 +1518,12 @@
             ${outfitItems.map(([itemLabel, item]) => `<div><strong>${itemLabel}</strong><span>${item}</span></div>`).join("")}
           </div>
           <div class="rec"><h3>${t("today")}</h3><p>${todayKey}</p></div>
-          <div class="rec"><h3>${skinTone === "neutral" ? t("colorDirection") : t("skinToneLabel")}</h3><p>${lang === "cn" ? toSimplified(skinToneGuides[skinTone].zh) : skinToneGuides[skinTone][textLang]}</p></div>
-          <div class="rec"><h3>${t("topLabel")}</h3><p>${selectedText(selectedTop, "top", t("emptyTop"))}</p></div>
-          <div class="rec"><h3>${t("bottomLabel")}</h3><p>${selectedText(selectedBottom, "bottom", t("emptyBottom"))}</p></div>
-          <div class="rec"><h3>${t("outerLabel")}</h3><p>${selectedText(selectedOuter, "outer", t("emptyOuter"))}</p></div>
-          <div class="rec"><h3>${t("setLabel")}</h3><p>${selectedText(selectedSet, "set", t("emptySet"))}</p></div>
-          <div class="rec"><h3>${t("shoeLabel")}</h3><p>${selectedText(selectedShoes, "shoes", t("emptyShoes"))}</p></div>
+          <div class="rec"><h3>${skinTone === "neutral" ? t("colorDirection") : cleanRequiredMark(t("skinToneLabel"))}</h3><p>${lang === "cn" ? toSimplified(skinToneGuides[skinTone].zh) : skinToneGuides[skinTone][textLang]}</p></div>
+          <div class="rec"><h3>${cleanRequiredMark(t("topLabel"))}</h3><p>${selectedText(selectedTop, "top", t("emptyTop"))}</p></div>
+          <div class="rec"><h3>${cleanRequiredMark(t("bottomLabel"))}</h3><p>${selectedText(selectedBottom, "bottom", t("emptyBottom"))}</p></div>
+          <div class="rec"><h3>${cleanRequiredMark(t("outerLabel"))}</h3><p>${selectedText(selectedOuter, "outer", t("emptyOuter"))}</p></div>
+          <div class="rec"><h3>${cleanRequiredMark(t("setLabel"))}</h3><p>${selectedText(selectedSet, "set", t("emptySet"))}</p></div>
+          <div class="rec"><h3>${cleanRequiredMark(t("shoeLabel"))}</h3><p>${selectedText(selectedShoes, "shoes", t("emptyShoes"))}</p></div>
           <div class="rec"><h3>${t("scenario")}</h3><p>${label("scenario", scenario)}</p></div>
           <div class="rec"><h3>${t("outfit")}</h3><p>${profileText(profile, "outfit")}</p></div>
           <div class="rec"><h3>${t("stylePoint")}</h3><p>${lang === "cn" ? toSimplified(look.twist) : look.twist}</p></div>
