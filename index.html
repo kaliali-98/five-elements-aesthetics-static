@@ -84,6 +84,8 @@
       .pricing-head { display: grid; margin-bottom: 16px; }
       .pricing-head p { margin: 0; color: var(--muted); line-height: 1.75; font: 750 .94rem ui-sans-serif, system-ui, sans-serif; }
       .payment-status { margin: 0 0 18px; padding: 12px 0 0; border-top: 1px solid rgba(167,123,66,.28); color: var(--muted); font: 800 .9rem/1.65 ui-sans-serif, system-ui, sans-serif; }
+      .secure-payment-note { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; padding: 13px 15px; border: 1px solid rgba(99,121,106,.34); border-radius: 10px; background: rgba(99,121,106,.1); color: var(--ink); font: 850 .9rem/1.55 ui-sans-serif, system-ui, sans-serif; }
+      .secure-payment-note span:first-child { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: var(--sage); color: var(--paper); font-size: .9rem; flex: 0 0 auto; }
       .pricing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
       .plan-card { position: relative; display: grid; grid-template-rows: auto auto 1fr auto; gap: 12px; border: 1px solid rgba(216,203,184,.72); border-radius: 12px; background: rgba(255,250,242,.66); padding: 22px; box-shadow: 0 14px 34px rgba(32,33,30,.07); }
       .plan-card.featured { border-color: rgba(167,123,66,.58); background: rgba(255,250,242,.88); box-shadow: 0 18px 42px rgba(32,33,30,.1); }
@@ -229,7 +231,8 @@
             <h2 id="pricingTitle">先免費試用，再按需要升級。</h2>
           </div>
         </div>
-        <p class="payment-status" id="paymentStatus">付款功能即將開放。現階段可先免費試用；如需查詢付費方案，請電郵聯絡 five.elements.aesthetics@gmail.com。</p>
+        <p class="secure-payment-note" id="securePaymentNote"><span>鎖</span><span>付款會前往 Stripe 官方安全頁，信用卡資料不會儲存在五行美學網站。</span></p>
+        <p class="payment-status" id="paymentStatus">請先登入帳戶，再選擇月費或年費方案；付款成功後會自動開通。</p>
         <div class="pricing-grid">
           <article class="plan-card">
             <h3 id="freePlanTitle">免費試用</h3>
@@ -249,7 +252,7 @@
               <li id="oneOffPlanTwo">每次生成 1 份今日五行穿搭建議</li>
               <li id="oneOffPlanThree">適合偶爾需要穿搭靈感的用戶</li>
             </ul>
-            <a class="plan-action" id="oneOffPlanAction" href="mailto:five.elements.aesthetics@gmail.com?subject=%E4%BA%94%E8%A1%8C%E7%BE%8E%E5%AD%B8%20-%20%E5%96%AE%E6%AC%A1%E7%94%9F%E6%88%90%E6%9F%A5%E8%A9%A2">查詢付費方案</a>
+            <button class="plan-action paid-plan-action" id="oneOffPlanAction" type="button" data-plan="oneOff">安全付款</button>
           </article>
           <article class="plan-card">
             <h3 id="monthlyPlanTitle">月費方案</h3>
@@ -259,7 +262,7 @@
               <li id="monthlyPlanTwo">支援上班、約會、面試及週末場合</li>
               <li id="monthlyPlanThree">可按衣櫃單品調整結果</li>
             </ul>
-            <a class="plan-action" id="monthlyPlanAction" href="mailto:five.elements.aesthetics@gmail.com?subject=%E4%BA%94%E8%A1%8C%E7%BE%8E%E5%AD%B8%20-%20%E6%9C%88%E8%B2%BB%E6%96%B9%E6%A1%88%E6%9F%A5%E8%A9%A2">查詢付費方案</a>
+            <button class="plan-action paid-plan-action" id="monthlyPlanAction" type="button" data-plan="monthly">安全付款</button>
           </article>
           <article class="plan-card featured">
             <span class="plan-badge" id="yearlyPlanBadge">最抵玩</span>
@@ -270,7 +273,7 @@
               <li id="yearlyPlanTwo">比逐月付款更划算</li>
               <li id="yearlyPlanThree">適合長期建立個人穿搭習慣</li>
             </ul>
-            <a class="plan-action" id="yearlyPlanAction" href="mailto:five.elements.aesthetics@gmail.com?subject=%E4%BA%94%E8%A1%8C%E7%BE%8E%E5%AD%B8%20-%20%E5%B9%B4%E8%B2%BB%E6%96%B9%E6%A1%88%E6%9F%A5%E8%A9%A2">查詢付費方案</a>
+            <button class="plan-action paid-plan-action" id="yearlyPlanAction" type="button" data-plan="yearly">安全付款</button>
           </article>
         </div>
       </section>
@@ -284,9 +287,9 @@
             <button class="payment-close" id="paymentClose" type="button" aria-label="關閉付款視窗">×</button>
           </div>
           <p class="payment-price" id="paymentPrice">HK$38 / 月</p>
-          <p class="payment-note" id="paymentNote">付款功能準備接入安全付款平台。正式上線後，按此會前往付款頁完成交易。</p>
+          <p class="payment-note" id="paymentNote">付款將前往 Stripe 官方安全頁完成。信用卡資料不會儲存在五行美學網站。</p>
           <div class="payment-actions">
-            <a class="payment-primary" id="paymentPrimary" href="#loginPanel">先登入 / 註冊帳戶</a>
+            <button class="payment-primary" id="paymentPrimary" type="button">前往 Stripe 安全付款頁</button>
             <button class="payment-secondary" id="paymentSecondary" type="button">稍後再付款</button>
           </div>
         </div>
@@ -498,7 +501,8 @@
           storyThree: "唔使自拍，唔使影晒成個衣櫃，保留私隱之餘，每日都有少少新鮮感。",
           pricingEyebrow: "付費方案",
           pricingTitle: "先免費試用，再按需要升級。",
-          paymentStatus: "付款功能即將開放。現階段可先免費試用；如需查詢付費方案，請電郵聯絡 five.elements.aesthetics@gmail.com。",
+          securePaymentNote: "付款會前往 Stripe 官方安全頁，信用卡資料不會儲存在五行美學網站。",
+          paymentStatus: "請先登入帳戶，再選擇月費或年費方案；付款成功後會自動開通。",
           freePlanTitle: "免費試用",
           freePlanOne: "免費首次體驗",
           freePlanTwo: "生成 1 次今日 OOTD",
@@ -509,23 +513,23 @@
           oneOffPlanOne: "無需訂閱，按需要使用",
           oneOffPlanTwo: "每次生成 1 份今日五行穿搭建議",
           oneOffPlanThree: "適合偶爾需要穿搭靈感的用戶",
-          oneOffPlanAction: "查詢付費方案",
+          oneOffPlanAction: "安全付款",
           monthlyPlanTitle: "月費方案",
           monthlyPlanUnit: "/ 月",
           monthlyPlanOne: "每日可生成 1 次穿搭建議",
           monthlyPlanTwo: "支援上班、約會、面試及週末場合",
           monthlyPlanThree: "可按衣櫃單品調整結果",
-          monthlyPlanAction: "查詢付費方案",
+          monthlyPlanAction: "安全付款",
           yearlyPlanBadge: "最抵玩",
           yearlyPlanTitle: "年費方案",
           yearlyPlanUnit: "/ 年",
           yearlyPlanOne: "平均約 HK$14 / 月",
           yearlyPlanTwo: "比逐月付款更划算",
           yearlyPlanThree: "適合長期建立個人穿搭習慣",
-          yearlyPlanAction: "查詢付費方案",
+          yearlyPlanAction: "安全付款",
           paymentEyebrow: "付款確認",
-          paymentNote: "付款連結暫未設定。設定 Stripe 付款連結後，按此計劃會直接前往安全付款頁完成交易。",
-          paymentPrimary: "先登入 / 註冊帳戶",
+          paymentNote: "付款將前往 Stripe 官方安全頁完成。信用卡資料不會儲存在五行美學網站。",
+          paymentPrimary: "前往 Stripe 安全付款頁",
           paymentSecondary: "明白，關閉",
           paymentCloseLabel: "關閉付款視窗",
           paymentPlans: {
@@ -533,6 +537,10 @@
             monthly: { title: "月費方案", price: "HK$38 / 月" },
             yearly: { title: "年費方案", price: "HK$168 / 年" }
           },
+          checkoutLoginRequired: "請先登入或註冊帳戶，付款成功後系統先可以自動開通你的方案。",
+          checkoutStarting: "正在前往 Stripe 安全付款頁...",
+          checkoutUnavailable: "付款系統未完成設定。請稍後再試，或電郵聯絡 five.elements.aesthetics@gmail.com。",
+          checkoutFailed: "未能開啟付款頁。請稍後再試。",
           businessInfoEyebrow: "服務資料",
           businessInfoTitle: "服務資料",
           contactTitle: "聯絡我們",
@@ -634,7 +642,8 @@
           storyThree: "不用自拍，不用拍完整个衣橱，保留隐私的同时，每天多一点新鲜感。",
           pricingEyebrow: "付费方案",
           pricingTitle: "先免费试用，再按需要升级。",
-          paymentStatus: "付款功能即将开放。现阶段可先免费试用；如需查询付费方案，请电邮联系 five.elements.aesthetics@gmail.com。",
+          securePaymentNote: "付款会前往 Stripe 官方安全页，信用卡资料不会储存在五行美学网站。",
+          paymentStatus: "请先登录账户，再选择月费或年费方案；付款成功后会自动开通。",
           freePlanTitle: "免费试用",
           freePlanOne: "免费首次体验",
           freePlanTwo: "生成 1 次今日 OOTD",
@@ -645,23 +654,23 @@
           oneOffPlanOne: "无需订阅，按需要使用",
           oneOffPlanTwo: "每次生成 1 份今日五行穿搭建议",
           oneOffPlanThree: "适合偶尔需要穿搭灵感的用户",
-          oneOffPlanAction: "查询付费方案",
+          oneOffPlanAction: "安全付款",
           monthlyPlanTitle: "月费方案",
           monthlyPlanUnit: "/ 月",
           monthlyPlanOne: "每日可生成 1 次穿搭建议",
           monthlyPlanTwo: "支持上班、约会、面试及周末场合",
           monthlyPlanThree: "可按衣橱单品调整结果",
-          monthlyPlanAction: "查询付费方案",
+          monthlyPlanAction: "安全付款",
           yearlyPlanBadge: "最划算",
           yearlyPlanTitle: "年费方案",
           yearlyPlanUnit: "/ 年",
           yearlyPlanOne: "平均约 HK$14 / 月",
           yearlyPlanTwo: "比逐月付款更划算",
           yearlyPlanThree: "适合长期建立个人穿搭习惯",
-          yearlyPlanAction: "查询付费方案",
+          yearlyPlanAction: "安全付款",
           paymentEyebrow: "付款确认",
-          paymentNote: "付款链接暂未设置。设置 Stripe 付款链接后，按此计划会直接前往安全付款页完成交易。",
-          paymentPrimary: "先登录 / 注册账户",
+          paymentNote: "付款将前往 Stripe 官方安全页完成。信用卡资料不会储存在五行美学网站。",
+          paymentPrimary: "前往 Stripe 安全付款页",
           paymentSecondary: "明白，关闭",
           paymentCloseLabel: "关闭付款窗口",
           paymentPlans: {
@@ -669,6 +678,10 @@
             monthly: { title: "月费方案", price: "HK$38 / 月" },
             yearly: { title: "年费方案", price: "HK$168 / 年" }
           },
+          checkoutLoginRequired: "请先登录或注册账户，付款成功后系统才可以自动开通你的方案。",
+          checkoutStarting: "正在前往 Stripe 安全付款页...",
+          checkoutUnavailable: "付款系统未完成设置。请稍后再试，或电邮联系 five.elements.aesthetics@gmail.com。",
+          checkoutFailed: "未能开启付款页。请稍后再试。",
           businessInfoEyebrow: "服务资料",
           businessInfoTitle: "服务资料",
           contactTitle: "联系我们",
@@ -770,7 +783,8 @@
           storyThree: "No selfie. No full wardrobe photo. Keep your privacy, while bringing a little freshness into every day.",
           pricingEyebrow: "Plans",
           pricingTitle: "Start with a free trial, then upgrade when you need more.",
-          paymentStatus: "Payment will be available soon. You can try the free experience first. For paid plan enquiries, please contact five.elements.aesthetics@gmail.com.",
+          securePaymentNote: "Payments open on Stripe's secure checkout. Card details are never stored on the Five Elements Aesthetics website.",
+          paymentStatus: "Please log in before choosing a monthly or yearly plan. Your plan activates automatically after successful payment.",
           freePlanTitle: "Free Trial",
           freePlanOne: "First experience is free",
           freePlanTwo: "Generate 1 daily OOTD",
@@ -781,23 +795,23 @@
           oneOffPlanOne: "No subscription required",
           oneOffPlanTwo: "Generate 1 daily Five Elements outfit recommendation",
           oneOffPlanThree: "Best for occasional styling inspiration",
-          oneOffPlanAction: "Enquire",
+          oneOffPlanAction: "Secure Checkout",
           monthlyPlanTitle: "Monthly Plan",
           monthlyPlanUnit: "/ month",
           monthlyPlanOne: "Generate 1 outfit recommendation per day",
           monthlyPlanTwo: "Supports work, date, interview, and weekend occasions",
           monthlyPlanThree: "Adjust results based on your wardrobe items",
-          monthlyPlanAction: "Enquire",
+          monthlyPlanAction: "Secure Checkout",
           yearlyPlanBadge: "Best Value",
           yearlyPlanTitle: "Yearly Plan",
           yearlyPlanUnit: "/ year",
           yearlyPlanOne: "Around HK$14 per month",
           yearlyPlanTwo: "Better value than paying month by month",
           yearlyPlanThree: "Best for building a long-term personal styling habit",
-          yearlyPlanAction: "Enquire",
+          yearlyPlanAction: "Secure Checkout",
           paymentEyebrow: "Payment Preview",
-          paymentNote: "The payment link has not been connected yet. Once the Stripe payment link is added, this plan will open the secure checkout page directly.",
-          paymentPrimary: "Log in / Create account first",
+          paymentNote: "You will continue to Stripe's secure checkout. Card details are not stored on the Five Elements Aesthetics website.",
+          paymentPrimary: "Continue to Stripe Checkout",
           paymentSecondary: "Got it, close",
           paymentCloseLabel: "Close payment window",
           paymentPlans: {
@@ -805,6 +819,10 @@
             monthly: { title: "Monthly Plan", price: "HK$38 / month" },
             yearly: { title: "Yearly Plan", price: "HK$168 / year" }
           },
+          checkoutLoginRequired: "Please log in or create an account first, so the plan can be activated automatically after payment.",
+          checkoutStarting: "Opening Stripe secure checkout...",
+          checkoutUnavailable: "Payment is not fully configured yet. Please try again later or contact five.elements.aesthetics@gmail.com.",
+          checkoutFailed: "Could not open checkout. Please try again later.",
           businessInfoEyebrow: "Service Information",
           businessInfoTitle: "Service Information",
           contactTitle: "Contact",
@@ -980,6 +998,7 @@
       let lang = "zh";
       let authMode = "login";
       let memberName = "";
+      let currentUser = null;
       let selectedPaymentPlan = "monthly";
       let scenario = "work";
       let skinTone = "";
@@ -1053,6 +1072,11 @@
         document.querySelector("#stepGreeting").textContent = t("stepGreeting")(memberName);
         document.body.classList.add("logged-in");
       }
+      async function getActiveSession() {
+        if (!supabaseClient) return null;
+        const { data } = await supabaseClient.auth.getSession();
+        return data.session || null;
+      }
       function requireWardrobeSelection(store, labelKey) {
         if (store.size) return false;
         const status = document.querySelector("#status");
@@ -1072,6 +1096,8 @@
         setText("#storyThree", t("storyThree"));
         setText("#pricingEyebrow", t("pricingEyebrow"));
         setText("#pricingTitle", t("pricingTitle"));
+        document.querySelector("#securePaymentNote span:last-child").textContent = t("securePaymentNote");
+        document.querySelector("#securePaymentNote span:first-child").textContent = lang === "en" ? "SSL" : "鎖";
         setText("#paymentStatus", t("paymentStatus"));
         setText("#freePlanTitle", t("freePlanTitle"));
         setText("#freePlanOne", t("freePlanOne"));
@@ -1226,6 +1252,41 @@
         setText("#paymentPrice", selected.price);
       }
 
+      async function beginCheckout(plan) {
+        const session = await getActiveSession();
+        if (!session?.access_token) {
+          showAuthMessage(t("checkoutLoginRequired"));
+          closePaymentModal();
+          document.querySelector("#loginPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+          return;
+        }
+
+        const primary = document.querySelector("#paymentPrimary");
+        primary.disabled = true;
+        primary.textContent = t("checkoutStarting");
+        try {
+          const response = await fetch("/api/create-checkout-session", {
+            method: "POST",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${session.access_token}`
+            },
+            body: JSON.stringify({ plan })
+          });
+          const payload = await response.json().catch(() => ({}));
+          if (!response.ok || !payload.url) {
+            throw new Error(payload.error || t("checkoutUnavailable"));
+          }
+          window.location.href = payload.url;
+        } catch (error) {
+          showAuthMessage(error?.message || t("checkoutFailed"));
+          closePaymentModal();
+        } finally {
+          primary.disabled = false;
+          primary.textContent = t("paymentPrimary");
+        }
+      }
+
       function openPaymentModal(plan) {
         selectedPaymentPlan = plan;
         if (paymentLinks[plan]) {
@@ -1277,8 +1338,7 @@
       document.querySelector("#paymentSecondary").addEventListener("click", closePaymentModal);
       document.querySelector("#paymentPrimary").addEventListener("click", (event) => {
         event.preventDefault();
-        closePaymentModal();
-        document.querySelector("#loginPanel").scrollIntoView({ behavior: "smooth", block: "start" });
+        beginCheckout(selectedPaymentPlan);
       });
       document.querySelector("#freePlanAction").addEventListener("click", (event) => {
         event.preventDefault();
@@ -1304,11 +1364,13 @@
         supabaseClient.auth.getSession().then(({ data }) => {
           const user = data.session?.user;
           if (!user) return;
+          currentUser = user;
           unlockVerifiedUser(user.user_metadata?.nickname || user.email);
           showAuthMessage(t("sessionReady"), false);
         });
         supabaseClient.auth.onAuthStateChange((_event, session) => {
           if (!session?.user) return;
+          currentUser = session.user;
           unlockVerifiedUser(session.user.user_metadata?.nickname || session.user.email);
           showAuthMessage(t("sessionReady"), false);
         });
@@ -1361,6 +1423,7 @@
             password: passwordInput
           });
           if (signInError || !data.user) throw signInError;
+          currentUser = data.user;
           unlockVerifiedUser(data.user.user_metadata?.nickname || nameInput || data.user.email);
           showAuthMessage(t("sessionReady"), false);
           window.setTimeout(() => {

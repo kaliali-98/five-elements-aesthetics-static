@@ -1,0 +1,9 @@
+{
+  "name": "five-elements-aesthetics-static",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "dependencies": {
+    "stripe": "^19.3.0"
+  }
+}
