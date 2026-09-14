@@ -119,6 +119,7 @@
       .login-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; align-items: end; }
       .auth-title { margin: 0 0 10px; color: var(--gold); font: 850 1.28rem ui-sans-serif, system-ui, sans-serif; }
       .auth-switch { width: auto !important; min-height: 0; justify-self: start; margin-top: 16px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--muted); font: 800 .92rem ui-sans-serif, system-ui, sans-serif; }
+      .auth-forgot { width: auto !important; min-height: 0; justify-self: start; margin-top: 2px; padding: 0; border: 0; border-radius: 0; background: transparent; color: var(--gold); font: 850 .86rem ui-sans-serif, system-ui, sans-serif; }
       .member-greeting { display: none; margin: 4px 0 8px; padding: 11px 13px; border: 1px solid rgba(167,123,66,.28); border-radius: 8px; background: rgba(167,123,66,.1); color: var(--ink); font: 800 .92rem ui-sans-serif, system-ui, sans-serif; }
       .member-greeting.show { display: block; }
       .auth-error { display: none; margin: 0; color: var(--cinnabar); font: 800 .86rem ui-sans-serif, system-ui, sans-serif; }
@@ -129,6 +130,10 @@
       .step-greeting { margin: 0 0 16px; padding: 14px 16px; border: 1px solid rgba(167,123,66,.3); border-radius: 10px; background: rgba(255,250,242,.72); color: var(--ink); font: 850 1rem ui-sans-serif, system-ui, sans-serif; }
       .register-only { display: none; }
       .login-panel.register-mode .register-only { display: grid; }
+      .login-panel.reset-mode #nicknameField,
+      .login-panel.reset-mode #emailField,
+      .login-panel.reset-mode #authForgotButton { display: none; }
+      .login-panel.reset-mode .register-only { display: grid; }
       .login-note { font: 750 .84rem ui-sans-serif, system-ui, sans-serif; color: var(--muted); }
       .eyebrow { margin: 0 0 12px; color: var(--gold); font: 800 .78rem ui-sans-serif, system-ui, sans-serif; }
       h2 { margin: 0; font-size: clamp(1.35rem, 3vw, 2.2rem); line-height: 1.12; }
@@ -151,7 +156,8 @@
       .login-form #authSubmitButton,
       .login-form .auth-error,
       .login-form .member-greeting,
-      .login-form .auth-switch { grid-column: 1 / -1; }
+      .login-form .auth-switch,
+      .login-form .auth-forgot { grid-column: 1 / -1; }
       #authSubmitButton { background: var(--ink); box-shadow: 0 10px 22px rgba(32,33,30,.18); }
       .palette { display: grid; grid-template-columns: repeat(3,1fr); gap: 10px; margin: 18px 0; }
       .color { overflow: hidden; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.72); }
@@ -296,13 +302,14 @@
       <section class="login-panel" id="loginPanel">
         <div class="login-form">
           <h2 class="auth-title" id="loginEyebrow">登入</h2>
-          <label><span id="nicknameLabel">暱稱</span><input id="nickname" autocomplete="nickname" required /></label>
-          <label><span id="emailLabel">電郵地址</span><input id="authEmail" type="email" autocomplete="email" required /></label>
+          <label id="nicknameField"><span id="nicknameLabel">暱稱</span><input id="nickname" autocomplete="nickname" required /></label>
+          <label id="emailField"><span id="emailLabel">電郵地址</span><input id="authEmail" type="email" autocomplete="email" required /></label>
           <label><span id="passwordLabel">密碼</span><input id="authPassword" type="password" autocomplete="current-password" required /></label>
           <label class="register-only"><span id="confirmPasswordLabel">確認密碼</span><input id="confirmPassword" type="password" autocomplete="new-password" /></label>
           <button id="authSubmitButton" type="button">登入</button>
           <p class="auth-error" id="authError">請先填好暱稱、電郵地址同密碼。</p>
           <p class="member-greeting" id="memberGreeting"></p>
+          <button class="auth-forgot" id="authForgotButton" type="button">忘記密碼？</button>
           <button class="auth-switch" id="authSwitchButton" type="button">註冊帳戶</button>
         </div>
       </section>
@@ -560,6 +567,14 @@
           verifyEmailSent: "驗證電郵已寄出。請到你的 inbox 按驗證連結，完成後再回來登入。",
           loginFailed: "登入失敗。請確認電郵已驗證，並檢查密碼是否正確。",
           registerFailed: "註冊失敗。請稍後再試，或檢查此電郵是否已註冊。",
+          forgotPassword: "忘記密碼？",
+          resetPasswordEyebrow: "設定新密碼",
+          resetPasswordButton: "更新密碼",
+          resetPasswordRequired: "請輸入新密碼同確認密碼。",
+          resetPasswordSent: "重設密碼電郵已寄出。請到 inbox 按連結設定新密碼。",
+          resetPasswordUpdated: "密碼已更新，可以繼續使用。",
+          resetPasswordFailed: "未能重設密碼。請稍後再試。",
+          resetEmailRequired: "請先輸入已註冊的電郵地址。",
           sessionReady: "Email 已驗證，已登入。",
           loginButton: "登入",
           loginTab: "登入",
@@ -701,6 +716,14 @@
           verifyEmailSent: "验证电邮已寄出。请到你的 inbox 按验证链接，完成后再回来登录。",
           loginFailed: "登录失败。请确认电邮已验证，并检查密码是否正确。",
           registerFailed: "注册失败。请稍后再试，或检查此电邮是否已注册。",
+          forgotPassword: "忘记密码？",
+          resetPasswordEyebrow: "设置新密码",
+          resetPasswordButton: "更新密码",
+          resetPasswordRequired: "请输入新密码和确认密码。",
+          resetPasswordSent: "重设密码电邮已寄出。请到 inbox 按链接设置新密码。",
+          resetPasswordUpdated: "密码已更新，可以继续使用。",
+          resetPasswordFailed: "未能重设密码。请稍后再试。",
+          resetEmailRequired: "请先输入已注册的电子邮箱。",
           sessionReady: "Email 已验证，已登录。",
           loginButton: "登录",
           loginTab: "登录",
@@ -842,6 +865,14 @@
           verifyEmailSent: "Verification email sent. Please open your inbox, click the verification link, then come back to log in.",
           loginFailed: "Login failed. Please confirm your email is verified and check your password.",
           registerFailed: "Sign up failed. Please try again later or check whether this email is already registered.",
+          forgotPassword: "Forgot password?",
+          resetPasswordEyebrow: "Set New Password",
+          resetPasswordButton: "Update Password",
+          resetPasswordRequired: "Please enter and confirm your new password.",
+          resetPasswordSent: "Password reset email sent. Please open your inbox and click the link to set a new password.",
+          resetPasswordUpdated: "Password updated. You can continue using your account.",
+          resetPasswordFailed: "Could not reset password. Please try again later.",
+          resetEmailRequired: "Please enter your registered email address first.",
           sessionReady: "Email verified. You are logged in.",
           loginButton: "Log In",
           loginTab: "Log In",
@@ -1139,11 +1170,12 @@
         setText("#nicknameLabel", t("nicknameLabel"));
         setText("#emailLabel", t("emailLabel"));
         setText("#passwordLabel", t("passwordLabel"));
-        setText("#loginEyebrow", authMode === "login" ? t("loginEyebrow") : t("registerEyebrow"));
+        setText("#loginEyebrow", authMode === "reset" ? t("resetPasswordEyebrow") : authMode === "login" ? t("loginEyebrow") : t("registerEyebrow"));
         setText("#confirmPasswordLabel", t("confirmPasswordLabel"));
-        setText("#authSubmitButton", authMode === "login" ? t("loginButton") : t("registerButton"));
+        setText("#authSubmitButton", authMode === "reset" ? t("resetPasswordButton") : authMode === "login" ? t("loginButton") : t("registerButton"));
         setText("#authSwitchButton", authMode === "login" ? t("switchToRegister") : t("switchToLogin"));
-        setText("#authError", authMode === "login" ? t("authRequired") : t("registerRequired"));
+        setText("#authForgotButton", t("forgotPassword"));
+        setText("#authError", authMode === "reset" ? t("resetPasswordRequired") : authMode === "login" ? t("authRequired") : t("registerRequired"));
         setText("#inputEyebrow", t("inputEyebrow"));
         setText("#inputTitle", t("inputTitle"));
         setText("#chatEyebrow", t("chatEyebrow"));
@@ -1352,11 +1384,35 @@
       function setAuthMode(mode) {
         authMode = mode;
         document.querySelector("#loginPanel").classList.toggle("register-mode", mode === "register");
+        document.querySelector("#loginPanel").classList.toggle("reset-mode", mode === "reset");
         document.querySelector("#authPassword").autocomplete = mode === "login" ? "current-password" : "new-password";
         syncStaticText();
       }
 
       document.querySelector("#authSwitchButton").addEventListener("click", () => setAuthMode(authMode === "login" ? "register" : "login"));
+      if (new URLSearchParams(window.location.hash.replace(/^#/, "")).get("type") === "recovery") {
+        setAuthMode("reset");
+      }
+      document.querySelector("#authForgotButton").addEventListener("click", async () => {
+        const emailInput = document.querySelector("#authEmail").value.trim();
+        if (!isValidEmail(emailInput)) {
+          showAuthMessage(t("resetEmailRequired"));
+          return;
+        }
+        if (!supabaseClient) {
+          showAuthMessage(t("supabaseMissingError"));
+          return;
+        }
+        try {
+          const { error } = await supabaseClient.auth.resetPasswordForEmail(emailInput, {
+            redirectTo: authRedirectUrl()
+          });
+          if (error) throw error;
+          showAuthMessage(t("resetPasswordSent"), false);
+        } catch (error) {
+          showAuthMessage(`${t("resetPasswordFailed")}${error?.message ? ` ${error.message}` : ""}`);
+        }
+      });
 
       if (supabaseClient) {
         supabaseClient.auth.getSession().then(({ data }) => {
@@ -1369,6 +1425,11 @@
         supabaseClient.auth.onAuthStateChange((_event, session) => {
           if (!session?.user) return;
           currentUser = session.user;
+          if (_event === "PASSWORD_RECOVERY") {
+            setAuthMode("reset");
+            showAuthMessage(t("resetPasswordRequired"), false);
+            return;
+          }
           unlockVerifiedUser(session.user.user_metadata?.nickname || session.user.email);
           showAuthMessage(t("sessionReady"), false);
         });
@@ -1380,18 +1441,20 @@
         const passwordInput = document.querySelector("#authPassword").value.trim();
         const confirmInput = document.querySelector("#confirmPassword").value.trim();
         const error = document.querySelector("#authError");
-        const missingRequired = !nameInput || !emailInput || !passwordInput || (authMode === "register" && !confirmInput);
+        const missingRequired = authMode === "reset"
+          ? (!passwordInput || !confirmInput)
+          : (!nameInput || !emailInput || !passwordInput || (authMode === "register" && !confirmInput));
         if (missingRequired) {
-          error.textContent = authMode === "login" ? t("authRequired") : t("registerRequired");
+          error.textContent = authMode === "reset" ? t("resetPasswordRequired") : authMode === "login" ? t("authRequired") : t("registerRequired");
           error.classList.add("show");
           return;
         }
-        if (!isValidEmail(emailInput)) {
+        if (authMode !== "reset" && !isValidEmail(emailInput)) {
           error.textContent = t("invalidEmailError");
           error.classList.add("show");
           return;
         }
-        if (authMode === "register" && passwordInput !== confirmInput) {
+        if ((authMode === "register" || authMode === "reset") && passwordInput !== confirmInput) {
           error.textContent = t("passwordMismatchError");
           error.classList.add("show");
           return;
@@ -1403,6 +1466,15 @@
         error.classList.remove("show");
         document.querySelector("#authSubmitButton").disabled = true;
         try {
+          if (authMode === "reset") {
+            const { error: updateError } = await supabaseClient.auth.updateUser({
+              password: passwordInput
+            });
+            if (updateError) throw updateError;
+            showAuthMessage(t("resetPasswordUpdated"), false);
+            setAuthMode("login");
+            return;
+          }
           if (authMode === "register") {
             const { error: signUpError } = await supabaseClient.auth.signUp({
               email: emailInput,
@@ -1428,7 +1500,7 @@
             document.querySelector("#styleStep").scrollIntoView({ behavior: "smooth", block: "start" });
           }, 450);
         } catch (authError) {
-          const fallbackMessage = authMode === "register" ? t("registerFailed") : t("loginFailed");
+          const fallbackMessage = authMode === "reset" ? t("resetPasswordFailed") : authMode === "register" ? t("registerFailed") : t("loginFailed");
           const detail = authError?.message ? ` ${authError.message}` : "";
           showAuthMessage(`${fallbackMessage}${detail}`);
         } finally {
