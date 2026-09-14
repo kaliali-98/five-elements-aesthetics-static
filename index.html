@@ -84,8 +84,7 @@
       .pricing-head { display: grid; margin-bottom: 16px; }
       .pricing-head p { margin: 0; color: var(--muted); line-height: 1.75; font: 750 .94rem ui-sans-serif, system-ui, sans-serif; }
       .payment-status { margin: 0 0 18px; padding: 12px 0 0; border-top: 1px solid rgba(167,123,66,.28); color: var(--muted); font: 800 .9rem/1.65 ui-sans-serif, system-ui, sans-serif; }
-      .secure-payment-note { display: flex; align-items: center; gap: 10px; margin: 0 0 16px; padding: 13px 15px; border: 1px solid rgba(99,121,106,.34); border-radius: 10px; background: rgba(99,121,106,.1); color: var(--ink); font: 850 .9rem/1.55 ui-sans-serif, system-ui, sans-serif; }
-      .secure-payment-note span:first-child { display: grid; place-items: center; width: 28px; height: 28px; border-radius: 999px; background: var(--sage); color: var(--paper); font-size: .9rem; flex: 0 0 auto; }
+      .secure-payment-note { margin: 0 0 16px; padding: 13px 15px; border: 1px solid rgba(99,121,106,.34); border-radius: 10px; background: rgba(99,121,106,.1); color: var(--ink); font: 850 .9rem/1.55 ui-sans-serif, system-ui, sans-serif; }
       .pricing-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; }
       .plan-card { position: relative; display: grid; grid-template-rows: auto auto 1fr auto; gap: 12px; border: 1px solid rgba(216,203,184,.72); border-radius: 12px; background: rgba(255,250,242,.66); padding: 22px; box-shadow: 0 14px 34px rgba(32,33,30,.07); }
       .plan-card.featured { border-color: rgba(167,123,66,.58); background: rgba(255,250,242,.88); box-shadow: 0 18px 42px rgba(32,33,30,.1); }
@@ -231,7 +230,7 @@
             <h2 id="pricingTitle">先免費試用，再按需要升級。</h2>
           </div>
         </div>
-        <p class="secure-payment-note" id="securePaymentNote"><span>鎖</span><span>付款會由 Stripe 官方頁面處理，信用卡資料不會儲存在五行美學網站。</span></p>
+        <p class="secure-payment-note" id="securePaymentNote">付款會由 Stripe 官方頁面處理，信用卡資料不會儲存在五行美學網站。</p>
         <p class="payment-status" id="paymentStatus">請先登入帳戶，再選擇月費或年費方案；付款成功後會自動開通。</p>
         <div class="pricing-grid">
           <article class="plan-card">
@@ -1096,8 +1095,7 @@
         setText("#storyThree", t("storyThree"));
         setText("#pricingEyebrow", t("pricingEyebrow"));
         setText("#pricingTitle", t("pricingTitle"));
-        document.querySelector("#securePaymentNote span:last-child").textContent = t("securePaymentNote");
-        document.querySelector("#securePaymentNote span:first-child").textContent = lang === "en" ? "SSL" : "鎖";
+        setText("#securePaymentNote", t("securePaymentNote"));
         setText("#paymentStatus", t("paymentStatus"));
         setText("#freePlanTitle", t("freePlanTitle"));
         setText("#freePlanOne", t("freePlanOne"));
