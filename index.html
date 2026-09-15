@@ -191,8 +191,8 @@
       .message { max-width: 82%; padding: 11px 13px; border-radius: 10px; line-height: 1.65; color: var(--muted); background: rgba(255,255,255,.72); }
       .message.user { justify-self: end; color: var(--paper); background: var(--ink); }
       .message.bot { justify-self: start; border: 1px solid rgba(167,123,66,.26); }
-      .chat-form { display: grid; grid-template-columns: 1fr auto; gap: 10px; margin-top: 12px; }
-      .chat-form button { width: auto; min-width: 92px; }
+      .chat-quick { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
+      .chat-quick button { width: 100%; min-height: 38px; padding: 8px 10px; border-radius: 999px; background: rgba(255,250,242,.86); border: 1px solid rgba(167,123,66,.28); color: var(--ink); font: 800 .74rem ui-sans-serif, system-ui, sans-serif; box-shadow: none; }
       .chat-launcher { position: fixed; right: 22px; bottom: 22px; z-index: 19; width: 46px !important; height: 46px; min-height: 46px; border-radius: 999px; border: 1px solid rgba(167,123,66,.38); background: #fffaf2; color: var(--ink); display: grid; place-items: center; box-shadow: 0 12px 30px rgba(32,33,30,.18); transition: transform .2s ease, opacity .2s ease; }
       .chat-launcher:hover { transform: translateY(-2px); }
       .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
@@ -207,7 +207,7 @@
       @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
       @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
       @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
-      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { right: 18px; bottom: 78px; } .social-button { width: 40px; height: 40px; border-radius: 11px; } .social-button svg { width: 40px; height: 40px; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
+      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { right: 18px; bottom: 78px; } .social-button { width: 40px; height: 40px; border-radius: 11px; } .social-button svg { width: 40px; height: 40px; } .chat-quick { grid-template-columns: 1fr; } }
       @media (hover: none) { .social-button { transform: none; } }
       @media (prefers-reduced-motion: reduce) {
         .logo-mark,
@@ -433,9 +433,13 @@
           </div>
         </div>
         <div class="chat-window" id="chatWindow"></div>
-        <div class="chat-form">
-          <input id="chatInput" type="text" placeholder="例如：今日返工可以點著？" />
-          <button id="chatSend" type="button">送出</button>
+        <div class="chat-quick" id="chatQuick">
+          <button type="button" data-chat-topic="start">點開始？</button>
+          <button type="button" data-chat-topic="payment">付款 / 開通</button>
+          <button type="button" data-chat-topic="account">登入問題</button>
+          <button type="button" data-chat-topic="privacy">私隱 / 自拍</button>
+          <button type="button" data-chat-topic="refund">退款問題</button>
+          <button type="button" data-chat-topic="contact">真人客服</button>
         </div>
         </div>
       </section>
@@ -624,9 +628,13 @@
           inputEyebrow: "輸入資料",
           inputTitle: "建立美學命盤",
           chatEyebrow: "網站小助手",
-          chatTitle: "問我點用五行美學。",
-          chatPlaceholder: "例如：今日返工可以點著？",
-          chatSend: "送出",
+          chatTitle: "常見問題",
+          chatQuickStart: "點開始？",
+          chatQuickPayment: "付款 / 開通",
+          chatQuickAccount: "登入問題",
+          chatQuickPrivacy: "私隱 / 自拍",
+          chatQuickRefund: "退款問題",
+          chatQuickContact: "真人客服",
           chatLang: "繁",
           chatOpenLabel: "打開 AI 聊天室",
           chatCloseLabel: "關閉 AI 聊天室",
@@ -784,9 +792,13 @@
           inputEyebrow: "输入资料",
           inputTitle: "建立美学命盘",
           chatEyebrow: "网站小助手",
-          chatTitle: "问我怎么用五行美学。",
-          chatPlaceholder: "例如：今天上班可以怎么穿？",
-          chatSend: "发送",
+          chatTitle: "常见问题",
+          chatQuickStart: "怎么开始？",
+          chatQuickPayment: "付款 / 开通",
+          chatQuickAccount: "登录问题",
+          chatQuickPrivacy: "隐私 / 自拍",
+          chatQuickRefund: "退款问题",
+          chatQuickContact: "真人客服",
           chatLang: "简",
           chatOpenLabel: "打开 AI 聊天室",
           chatCloseLabel: "关闭 AI 聊天室",
@@ -944,9 +956,13 @@
           inputEyebrow: "Your Inputs",
           inputTitle: "Create Your Style Profile",
           chatEyebrow: "Site Assistant",
-          chatTitle: "Ask how to use Five Elements.",
-          chatPlaceholder: "Example: What should I wear to work today?",
-          chatSend: "Send",
+          chatTitle: "Common Questions",
+          chatQuickStart: "How to start?",
+          chatQuickPayment: "Payment / activation",
+          chatQuickAccount: "Login issues",
+          chatQuickPrivacy: "Privacy / selfies",
+          chatQuickRefund: "Refunds",
+          chatQuickContact: "Human support",
           chatLang: "EN",
           chatOpenLabel: "Open AI chat",
           chatCloseLabel: "Close AI chat",
@@ -1245,8 +1261,12 @@
         setText("#inputTitle", t("inputTitle"));
         setText("#chatEyebrow", t("chatEyebrow"));
         setText("#chatTitle", t("chatTitle"));
-        document.querySelector("#chatInput").placeholder = t("chatPlaceholder");
-        setText("#chatSend", t("chatSend"));
+        document.querySelector('[data-chat-topic="start"]').textContent = t("chatQuickStart");
+        document.querySelector('[data-chat-topic="payment"]').textContent = t("chatQuickPayment");
+        document.querySelector('[data-chat-topic="account"]').textContent = t("chatQuickAccount");
+        document.querySelector('[data-chat-topic="privacy"]').textContent = t("chatQuickPrivacy");
+        document.querySelector('[data-chat-topic="refund"]').textContent = t("chatQuickRefund");
+        document.querySelector('[data-chat-topic="contact"]').textContent = t("chatQuickContact");
         setText("#chatLang", t("chatLang"));
         document.querySelector("#chatLauncher").setAttribute("aria-label", t("chatOpenLabel"));
         document.querySelector("#chatClose").setAttribute("aria-label", t("chatCloseLabel"));
@@ -1318,32 +1338,21 @@
         addChatMessage(t("chatWelcome"), "bot");
       }
 
-      function getChatReply(message) {
-        const text = message.toLowerCase();
-        if (!text || text.length < 2) return t("chatFallback");
-        if (/br|商業登記|商业登记|報稅|报税|tax|稅|税|法律|legal|醫療|医疗|medical|投資|投资|investment/.test(text)) return t("chatBoundaryReply");
-        if (/退款|退錢|退钱|refund|重複扣款|重复扣款|扣錯|扣错/.test(text)) return t("chatRefundReply");
-        if (/聯絡|联系|客服|email|電郵|电邮|contact|support/.test(text)) return t("chatContactReply");
-        if (/最新消息|newsletter|消息|更新|updates/.test(text)) return t("chatUpdatesReply");
-        if (/點開始|点开始|如何開始|如何开始|怎樣開始|怎样开始|怎么開始|怎么开始|點用|点用|使用|流程|start|begin|how.*use|how.*start/.test(text)) return t("chatStartReply");
-        if (/付款|俾錢|畀錢|支付|收款|信用卡|stripe|payment|pay|card|checkout/.test(text)) return t("chatPaymentReply");
-        if (/plan|方案|月費|月费|年費|年费|開通|开通|activate|subscription|訂閱方案|订阅方案/.test(text)) return t("chatPlanReply");
-        if (/免費|免费|free|trial|體驗|体验|試用|试用/.test(text)) return t("chatFreeReply");
-        if (/登入|登录|註冊|注册|帳戶|账户|密碼|密码|忘記|忘记|login|sign in|sign up|account|password/.test(text)) return t("chatAccountReply");
-        if (/自拍|照片|衣櫃|衣橱|privacy|photo|selfie|wardrobe|私隱|隐私/.test(text)) return t("chatPrivacyReply");
-        if (/色|顏色|颜色|color|palette|五行色/.test(text)) return t("chatColorReply");
-        if (/返工|上班|work|office/.test(text)) return t("chatWorkReply");
-        if (/約會|约会|date/.test(text)) return t("chatDateReply");
-        return t("chatFallback");
+      function getChatTopicReply(topic) {
+        const replies = {
+          start: "chatStartReply",
+          payment: "chatPaymentReply",
+          account: "chatAccountReply",
+          privacy: "chatPrivacyReply",
+          refund: "chatRefundReply",
+          contact: "chatContactReply"
+        };
+        return t(replies[topic] || "chatContactReply");
       }
 
-      function sendChatMessage() {
-        const input = document.querySelector("#chatInput");
-        const message = input.value.trim();
-        if (!message) return;
-        addChatMessage(message, "user");
-        input.value = "";
-        addChatMessage(getChatReply(message), "bot");
+      function sendChatTopic(topic, label) {
+        addChatMessage(label, "user");
+        addChatMessage(getChatTopicReply(topic), "bot");
       }
 
       function getPaymentPlan(plan) {
@@ -1583,14 +1592,15 @@
         }
       });
 
-      document.querySelector("#chatSend").addEventListener("click", sendChatMessage);
-      document.querySelector("#chatInput").addEventListener("keydown", (event) => {
-        if (event.key === "Enter") sendChatMessage();
+      document.querySelectorAll("[data-chat-topic]").forEach((button) => {
+        button.addEventListener("click", () => {
+          sendChatTopic(button.dataset.chatTopic, button.textContent.trim());
+        });
       });
       document.querySelector("#chatLauncher").addEventListener("click", () => {
         document.querySelector("#chatPanel").classList.remove("collapsed");
         document.querySelector("#chatLauncher").classList.add("hidden");
-        document.querySelector("#chatInput").focus();
+        document.querySelector("[data-chat-topic]").focus();
       });
       document.querySelector("#chatClose").addEventListener("click", () => {
         document.querySelector("#chatPanel").classList.add("collapsed");
