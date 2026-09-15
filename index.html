@@ -110,18 +110,18 @@
       .business-info { margin: 0; padding: 0; background: transparent; text-align: left; }
       .business-info p { margin: 4px 0 0; color: rgba(111,106,95,.82); line-height: 1.6; font: 700 .78rem ui-sans-serif, system-ui, sans-serif; }
       .business-info .eyebrow { display: none; }
-      .info-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 22px; margin-top: 0; }
+      .info-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 0; align-items: start; }
       .info-card { padding: 0; border: 0; background: transparent; }
       .info-card h3 { margin: 0 0 4px; color: rgba(32,33,30,.88); font: 850 .82rem ui-sans-serif, system-ui, sans-serif; }
       .info-card a { color: var(--gold); font-weight: 850; overflow-wrap: anywhere; }
-      .newsletter { display: grid; grid-template-columns: minmax(0, .9fr) minmax(260px, .86fr); align-items: center; gap: 16px; margin: 22px 0 14px; padding: 4px 0 6px; border: 0; background: transparent; }
+      .newsletter { display: block; margin: 0; padding: 0; border: 0; background: transparent; }
       .newsletter-copy { text-align: left; }
-      .newsletter h2 { margin: 0; color: rgba(32,33,30,.82); font: 850 .88rem Georgia, "Times New Roman", serif; letter-spacing: .02em; }
-      .newsletter p { max-width: 360px; margin: 4px 0 0; color: rgba(111,106,95,.72); font: 700 .76rem/1.55 ui-sans-serif, system-ui, sans-serif; }
-      .newsletter-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 7px; margin: 0; align-items: stretch; }
-      .newsletter-form input { min-height: 36px; border-color: rgba(216,203,184,.54); border-radius: 8px; background: rgba(255,250,242,.3); font-size: .82rem; }
-      .newsletter-form button { width: auto; min-width: 86px; min-height: 36px; border-radius: 8px; letter-spacing: 0; font-size: .78rem; box-shadow: none; }
-      .newsletter-status { grid-column: 2; min-height: 1.2em; margin: 6px 0 0 !important; color: var(--muted); font: 800 .72rem/1.45 ui-sans-serif, system-ui, sans-serif !important; }
+      .newsletter h3 { margin: 0 0 4px; color: rgba(32,33,30,.88); font: 850 .82rem ui-sans-serif, system-ui, sans-serif; }
+      .newsletter p { margin: 4px 0 0; color: rgba(111,106,95,.82); line-height: 1.6; font: 700 .78rem ui-sans-serif, system-ui, sans-serif; }
+      .newsletter-form { display: grid; grid-template-columns: 1fr auto; gap: 6px; margin: 10px 0 0; align-items: stretch; }
+      .newsletter-form input { min-height: 34px; padding: 8px 10px; border-color: rgba(216,203,184,.54); border-radius: 8px; background: rgba(255,250,242,.28); font-size: .78rem; }
+      .newsletter-form button { width: auto; min-width: 70px; min-height: 34px; padding: 8px 10px; border-radius: 8px; letter-spacing: 0; font-size: .76rem; box-shadow: none; }
+      .newsletter-status { min-height: 1.2em; margin: 6px 0 0 !important; color: var(--muted); font: 800 .72rem/1.45 ui-sans-serif, system-ui, sans-serif !important; }
       .login-panel { max-width: 760px; margin: 38px auto 20px; padding: 28px 30px 30px; border: 1px solid rgba(216,203,184,.7); border-top: 5px solid var(--gold); border-radius: 10px; background: rgba(255,250,242,.82); box-shadow: 0 18px 48px rgba(32,33,30,.1); }
       .login-panel p { margin: 0; color: var(--muted); line-height: 1.7; }
       .login-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; align-items: end; }
@@ -212,8 +212,8 @@
       .social-button svg { width: 38px; height: 38px; display: block; }
       .site-footer { margin: 46px auto 0; padding: 18px 0 0; border-top: 1px solid rgba(216,203,184,.5); color: rgba(111,106,95,.86); font: 750 .82rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       .copyright { margin: 18px 0 0; text-align: center; color: rgba(111,106,95,.76); font: 750 .78rem/1.6 ui-sans-serif, system-ui, sans-serif; }
-      @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form, .newsletter { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } .newsletter-status { grid-column: 1; } }
-      @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd, .newsletter-form { grid-template-columns: 1fr; } .newsletter { padding: 4px 0 8px; gap: 12px; } .newsletter-copy { text-align: center; } .newsletter p { margin-left: auto; margin-right: auto; } .newsletter-form button { width: 100%; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
+      @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
+      @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd, .newsletter-form { grid-template-columns: 1fr; } .newsletter-form button { width: 100%; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
       @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
       @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { right: 18px; bottom: 78px; } .social-button { width: 56px; height: 56px; } .social-button svg { width: 34px; height: 34px; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
       @media (hover: none) { .social-button { transform: none; } }
@@ -447,22 +447,22 @@
         </div>
         </div>
       </section>
-      <section class="newsletter" aria-labelledby="newsletterTitle">
-        <div class="newsletter-copy">
-          <h2 id="newsletterTitle">Newsletter</h2>
-          <p id="newsletterText">訂閱五行美學更新，收到最新穿搭靈感、優惠及服務消息。</p>
-        </div>
-        <form class="newsletter-form" id="newsletterForm">
-          <input id="newsletterEmail" type="email" inputmode="email" autocomplete="email" placeholder="你的電郵地址" />
-          <button id="newsletterSubmit" type="submit">訂閱</button>
-        </form>
-        <p class="newsletter-status" id="newsletterStatus" aria-live="polite"></p>
-      </section>
       <footer class="site-footer">
         <section class="business-info" aria-labelledby="businessInfoTitle">
           <p class="eyebrow" id="businessInfoEyebrow">服務資料</p>
           <h2 id="businessInfoTitle" hidden>服務資料</h2>
           <div class="info-grid">
+            <article class="info-card newsletter" aria-labelledby="newsletterTitle">
+              <div class="newsletter-copy">
+                <h3 id="newsletterTitle">Newsletter</h3>
+                <p id="newsletterText">訂閱五行美學更新，收到最新穿搭靈感、優惠及服務消息。</p>
+              </div>
+              <form class="newsletter-form" id="newsletterForm">
+                <input id="newsletterEmail" type="email" inputmode="email" autocomplete="email" placeholder="你的電郵地址" />
+                <button id="newsletterSubmit" type="submit">訂閱</button>
+              </form>
+              <p class="newsletter-status" id="newsletterStatus" aria-live="polite"></p>
+            </article>
             <article class="info-card">
               <h3 id="contactTitle">聯絡我們</h3>
               <p id="contactText">如有付款、帳戶或使用問題，請電郵聯絡：</p>
