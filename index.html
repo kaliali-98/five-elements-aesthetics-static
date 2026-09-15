@@ -1440,18 +1440,18 @@
           status.style.color = "var(--cinnabar)";
           return;
         }
-        if (!supabaseClient) {
-          status.textContent = t("newsletterFailed");
-          status.style.color = "var(--cinnabar)";
-          return;
-        }
         submit.disabled = true;
         submit.textContent = t("newsletterSaving");
         try {
-          const { error } = await supabaseClient
-            .from("newsletter_signups")
-            .upsert({ email, source: "website" }, { onConflict: "email" });
-          if (error) throw error;
+          const response = await fetch("/api/newsletter-signup", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ email })
+          });
+          if (!response.ok) {
+            const payload = await response.json().catch(() => ({}));
+            throw new Error(payload.error || t("newsletterFailed"));
+          }
           emailInput.value = "";
           status.textContent = t("newsletterDone");
         } catch (_error) {
