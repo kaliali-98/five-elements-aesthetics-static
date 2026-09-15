@@ -110,18 +110,10 @@
       .business-info { margin: 0; padding: 0; background: transparent; text-align: left; }
       .business-info p { margin: 4px 0 0; color: rgba(111,106,95,.82); line-height: 1.6; font: 700 .78rem ui-sans-serif, system-ui, sans-serif; }
       .business-info .eyebrow { display: none; }
-      .info-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 22px; margin-top: 0; align-items: start; }
+      .info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 0; align-items: start; }
       .info-card { padding: 0; border: 0; background: transparent; }
       .info-card h3 { margin: 0 0 4px; color: rgba(32,33,30,.88); font: 850 .82rem ui-sans-serif, system-ui, sans-serif; }
       .info-card a { color: var(--gold); font-weight: 850; overflow-wrap: anywhere; }
-      .newsletter { display: block; margin: 0; padding: 0; border: 0; background: transparent; }
-      .newsletter-copy { text-align: left; }
-      .newsletter h3 { margin: 0 0 4px; color: rgba(32,33,30,.88); font: 850 .82rem ui-sans-serif, system-ui, sans-serif; }
-      .newsletter p { margin: 4px 0 0; color: rgba(111,106,95,.82); line-height: 1.6; font: 700 .78rem ui-sans-serif, system-ui, sans-serif; }
-      .newsletter-form { display: grid; grid-template-columns: 1fr auto; gap: 6px; margin: 10px 0 0; align-items: stretch; }
-      .newsletter-form input { min-height: 34px; padding: 8px 10px; border-color: rgba(216,203,184,.54); border-radius: 8px; background: rgba(255,250,242,.28); font-size: .78rem; }
-      .newsletter-form button { width: auto; min-width: 70px; min-height: 34px; padding: 8px 10px; border-radius: 8px; letter-spacing: 0; font-size: .76rem; box-shadow: none; }
-      .newsletter-status { min-height: 1.2em; margin: 6px 0 0 !important; color: var(--muted); font: 800 .72rem/1.45 ui-sans-serif, system-ui, sans-serif !important; }
       .login-panel { max-width: 760px; margin: 38px auto 20px; padding: 28px 30px 30px; border: 1px solid rgba(216,203,184,.7); border-top: 5px solid var(--gold); border-radius: 10px; background: rgba(255,250,242,.82); box-shadow: 0 18px 48px rgba(32,33,30,.1); }
       .login-panel p { margin: 0; color: var(--muted); line-height: 1.7; }
       .login-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; align-items: end; }
@@ -213,7 +205,7 @@
       .site-footer { margin: 46px auto 0; padding: 18px 0 0; border-top: 1px solid rgba(216,203,184,.5); color: rgba(111,106,95,.86); font: 750 .82rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       .copyright { margin: 18px 0 0; text-align: center; color: rgba(111,106,95,.76); font: 750 .78rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
-      @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd, .newsletter-form { grid-template-columns: 1fr; } .newsletter-form button { width: 100%; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
+      @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
       @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
       @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { right: 18px; bottom: 78px; } .social-button { width: 56px; height: 56px; } .social-button svg { width: 34px; height: 34px; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
       @media (hover: none) { .social-button { transform: none; } }
@@ -452,17 +444,6 @@
           <p class="eyebrow" id="businessInfoEyebrow">服務資料</p>
           <h2 id="businessInfoTitle" hidden>服務資料</h2>
           <div class="info-grid">
-            <article class="info-card newsletter" aria-labelledby="newsletterTitle">
-              <div class="newsletter-copy">
-                <h3 id="newsletterTitle">Newsletter</h3>
-                <p id="newsletterText">想收到最新穿搭靈感、優惠及服務消息，可電郵聯絡我們登記。</p>
-              </div>
-              <form class="newsletter-form" id="newsletterForm">
-                <input id="newsletterEmail" type="email" inputmode="email" autocomplete="email" placeholder="你的電郵地址" />
-                <button id="newsletterSubmit" type="submit">電郵登記</button>
-              </form>
-              <p class="newsletter-status" id="newsletterStatus" aria-live="polite"></p>
-            </article>
             <article class="info-card">
               <h3 id="contactTitle">聯絡我們</h3>
               <p id="contactText">如有付款、帳戶或使用問題，請電郵聯絡：</p>
@@ -592,12 +573,6 @@
           checkoutStarting: "正在前往 Stripe 付款頁...",
           checkoutUnavailable: "付款系統未完成設定。請稍後再試，或電郵聯絡 five.elements.aesthetics@gmail.com。",
           checkoutFailed: "未能開啟付款頁。請稍後再試。",
-          newsletterTitle: "登記最新消息",
-          newsletterText: "想收到最新穿搭靈感、優惠及服務消息，可電郵聯絡我們登記。",
-          newsletterPlaceholder: "你的電郵地址",
-          newsletterSubmit: "電郵登記",
-          newsletterRequired: "請先輸入正確的電郵地址。",
-          newsletterDone: "已為你開啟電郵草稿，請按送出完成登記。",
           businessInfoEyebrow: "服務資料",
           businessInfoTitle: "服務資料",
           contactTitle: "聯絡我們",
@@ -752,12 +727,6 @@
           checkoutStarting: "正在前往 Stripe 付款页...",
           checkoutUnavailable: "付款系统未完成设置。请稍后再试，或电邮联系 five.elements.aesthetics@gmail.com。",
           checkoutFailed: "未能开启付款页。请稍后再试。",
-          newsletterTitle: "登记最新消息",
-          newsletterText: "想收到最新穿搭灵感、优惠及服务消息，可电邮联系我们登记。",
-          newsletterPlaceholder: "你的电子邮箱",
-          newsletterSubmit: "电邮登记",
-          newsletterRequired: "请先输入正确的电子邮箱。",
-          newsletterDone: "已为你开启电邮草稿，请按发送完成登记。",
           businessInfoEyebrow: "服务资料",
           businessInfoTitle: "服务资料",
           contactTitle: "联系我们",
@@ -912,12 +881,6 @@
           checkoutStarting: "Opening Stripe checkout...",
           checkoutUnavailable: "Payment is not fully configured yet. Please try again later or contact five.elements.aesthetics@gmail.com.",
           checkoutFailed: "Could not open checkout. Please try again later.",
-          newsletterTitle: "Email updates",
-          newsletterText: "Email us to register for styling ideas, offers, and service updates.",
-          newsletterPlaceholder: "Your email",
-          newsletterSubmit: "Email us",
-          newsletterRequired: "Please enter a valid email address.",
-          newsletterDone: "Your email draft is open. Please send it to complete registration.",
           businessInfoEyebrow: "Service Information",
           businessInfoTitle: "Service Information",
           contactTitle: "Contact",
@@ -1236,10 +1199,6 @@
         setText("#paymentSecondary", t("paymentSecondary"));
         document.querySelector("#paymentClose").setAttribute("aria-label", t("paymentCloseLabel"));
         updatePaymentModal(selectedPaymentPlan);
-        setText("#newsletterTitle", t("newsletterTitle"));
-        setText("#newsletterText", t("newsletterText"));
-        setText("#newsletterSubmit", t("newsletterSubmit"));
-        document.querySelector("#newsletterEmail").placeholder = t("newsletterPlaceholder");
         setText("#businessInfoEyebrow", t("businessInfoEyebrow"));
         setText("#businessInfoTitle", t("businessInfoTitle"));
         setText("#contactTitle", t("contactTitle"));
@@ -1422,24 +1381,6 @@
         modal.setAttribute("aria-hidden", "true");
       }
 
-      function submitNewsletter(event) {
-        event.preventDefault();
-        const emailInput = document.querySelector("#newsletterEmail");
-        const status = document.querySelector("#newsletterStatus");
-        const email = emailInput.value.trim().toLowerCase();
-        status.style.color = "";
-        if (!isValidEmail(email)) {
-          status.textContent = t("newsletterRequired");
-          status.style.color = "var(--cinnabar)";
-          return;
-        }
-        const subject = encodeURIComponent("登記五行美學最新消息");
-        const body = encodeURIComponent(`你好，我想登記接收五行美學最新消息。\n\n我的電郵：${email}`);
-        window.location.href = `mailto:five.elements.aesthetics@gmail.com?subject=${subject}&body=${body}`;
-        emailInput.value = "";
-        status.textContent = t("newsletterDone");
-      }
-
       function replayIntroAnimation() {
         const introItems = [document.querySelector(".logo-mark"), document.querySelector("#heroTitle"), document.querySelector("#heroSlogan"), document.querySelector(".story")];
         introItems.forEach((item) => {
@@ -1469,7 +1410,6 @@
         });
       });
 
-      document.querySelector("#newsletterForm").addEventListener("submit", submitNewsletter);
       document.querySelector("#paymentClose").addEventListener("click", closePaymentModal);
       document.querySelector("#paymentSecondary").addEventListener("click", closePaymentModal);
       document.querySelector("#paymentPrimary").addEventListener("click", (event) => {
