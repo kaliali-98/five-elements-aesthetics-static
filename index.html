@@ -180,24 +180,7 @@
       .preview-lock p { margin: 8px 0 0; color: var(--muted); line-height: 1.7; }
       .preview-lock .plan-action { width: 100%; margin-top: 14px; }
       .status { margin: 10px 0 0; color: var(--muted); font: 750 .88rem ui-sans-serif, system-ui, sans-serif; }
-      .chat-panel { position: fixed; right: 22px; bottom: 22px; z-index: 20; width: min(360px, calc(100vw - 28px)); transform-origin: bottom right; transition: transform .22s ease, opacity .22s ease; }
-      .chat-panel.collapsed { opacity: 0; pointer-events: none; transform: scale(.92) translateY(12px); }
-      .chat-card { border: 1px solid var(--line); border-radius: 14px; background: rgba(255,250,242,.96); padding: 18px; box-shadow: 0 24px 80px rgba(32,33,30,.22); }
-      .chat-head { display: flex; align-items: start; justify-content: space-between; gap: 12px; }
-      .chat-actions { display: inline-flex; align-items: center; gap: 8px; }
-      .chat-lang { padding: 6px 8px; border: 1px solid rgba(167,123,66,.24); border-radius: 999px; color: var(--muted); background: rgba(255,255,255,.48); font: 800 .68rem ui-sans-serif, system-ui, sans-serif; }
-      .chat-close { width: 34px !important; min-width: 34px; min-height: 34px; border-radius: 999px; background: rgba(32,33,30,.08); color: var(--ink); font-size: 1.1rem; line-height: 1; }
-      .chat-window { display: grid; gap: 10px; max-height: 300px; overflow: auto; padding: 14px; border: 1px solid var(--line); border-radius: 10px; background: rgba(255,250,242,.62); }
-      .message { max-width: 82%; padding: 11px 13px; border-radius: 10px; line-height: 1.65; color: var(--muted); background: rgba(255,255,255,.72); }
-      .message.user { justify-self: end; color: var(--paper); background: var(--ink); }
-      .message.bot { justify-self: start; border: 1px solid rgba(167,123,66,.26); }
-      .chat-quick { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
-      .chat-quick button { width: 100%; min-height: 38px; padding: 8px 10px; border-radius: 999px; background: rgba(255,250,242,.86); border: 1px solid rgba(167,123,66,.28); color: var(--ink); font: 800 .74rem ui-sans-serif, system-ui, sans-serif; box-shadow: none; }
-      .chat-launcher { position: fixed; right: 22px; bottom: 22px; z-index: 19; width: 44px !important; height: 44px; min-height: 44px; padding: 0; border-radius: 12px; border: 1px solid rgba(167,123,66,.34); background: transparent; color: var(--ink); display: grid; place-items: center; box-shadow: 0 10px 22px rgba(32,33,30,.18); overflow: hidden; transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease; }
-      .chat-launcher:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 16px 38px rgba(32,33,30,.24); }
-      .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
-      .assistant-robot-icon { width: 100%; height: 100%; object-fit: cover; display: block; }
-      .social-dock { position: fixed; right: 22px; bottom: 78px; z-index: 18; display: grid; place-items: center; }
+      .social-dock { position: fixed; right: 22px; bottom: 22px; z-index: 18; display: grid; place-items: center; }
       .social-button { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; text-decoration: none; background: transparent; box-shadow: 0 10px 22px rgba(32,33,30,.18); transition: transform .24s cubic-bezier(.16, 1.45, .34, 1), filter .2s ease, box-shadow .2s ease; }
       .social-button:hover,
       .social-button:focus-visible { transform: translateY(-5px) scale(1.08); filter: saturate(1.08) brightness(1.02); box-shadow: 0 16px 34px rgba(32,33,30,.28); }
@@ -207,7 +190,7 @@
       @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
       @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
       @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
-      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; width: 40px !important; height: 40px; min-height: 40px; border-radius: 11px; } .social-dock { right: 14px; bottom: 66px; } .social-button { width: 40px; height: 40px; border-radius: 11px; } .social-button svg { width: 40px; height: 40px; } .chat-quick { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) { .social-dock { right: 14px; bottom: 14px; } .social-button { width: 40px; height: 40px; border-radius: 11px; } .social-button svg { width: 40px; height: 40px; } }
       @media (hover: none) { .social-button { transform: none; } }
       @media (prefers-reduced-motion: reduce) {
         .logo-mark,
@@ -394,9 +377,6 @@
         </section>
         </div>
       </section>
-      <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open AI chat">
-        <img class="assistant-robot-icon" src="assistant-robot.png" alt="" aria-hidden="true" />
-      </button>
       <nav class="social-dock" aria-label="Social links">
         <a class="social-button" href="https://www.instagram.com/five.elements.aesthetics/" target="_blank" rel="noopener noreferrer" aria-label="Open Five Elements Aesthetics Instagram">
           <svg viewBox="0 0 48 48" aria-hidden="true">
@@ -416,29 +396,6 @@
           </svg>
         </a>
       </nav>
-      <section class="chat-panel collapsed" id="chatPanel">
-        <div class="chat-card">
-        <div class="chat-head">
-          <div>
-            <p class="eyebrow" id="chatEyebrow">網站小助手</p>
-            <h2 id="chatTitle">問我點用五行美學。</h2>
-          </div>
-          <div class="chat-actions">
-            <span class="chat-lang" id="chatLang">繁</span>
-            <button class="chat-close" id="chatClose" type="button" aria-label="關閉 AI 聊天室">×</button>
-          </div>
-        </div>
-        <div class="chat-window" id="chatWindow"></div>
-        <div class="chat-quick" id="chatQuick">
-          <button type="button" data-chat-topic="start">點開始？</button>
-          <button type="button" data-chat-topic="payment">付款 / 開通</button>
-          <button type="button" data-chat-topic="account">登入問題</button>
-          <button type="button" data-chat-topic="privacy">私隱 / 自拍</button>
-          <button type="button" data-chat-topic="refund">退款問題</button>
-          <button type="button" data-chat-topic="contact">真人客服</button>
-        </div>
-        </div>
-      </section>
       <footer class="site-footer">
         <section class="business-info" aria-labelledby="businessInfoTitle">
           <p class="eyebrow" id="businessInfoEyebrow">服務資料</p>
@@ -623,32 +580,6 @@
           unlockAction: "查看付費方案",
           inputEyebrow: "輸入資料",
           inputTitle: "建立美學命盤",
-          chatEyebrow: "網站小助手",
-          chatTitle: "常見問題",
-          chatQuickStart: "點開始？",
-          chatQuickPayment: "付款 / 開通",
-          chatQuickAccount: "登入問題",
-          chatQuickPrivacy: "私隱 / 自拍",
-          chatQuickRefund: "退款問題",
-          chatQuickContact: "真人客服",
-          chatLang: "繁",
-          chatOpenLabel: "打開 AI 聊天室",
-          chatCloseLabel: "關閉 AI 聊天室",
-          chatWelcome: "你好，我係五行美學網站小助手。你可以問我點開始、免費體驗、付款、登入、私隱、退款，或者今日穿搭方向。",
-          chatFallback: "呢條問題我唔想亂答。正在為你接駁真人客服中... 如需跟進，請電郵 five.elements.aesthetics@gmail.com，寫低你的問題同登入電郵，我哋會人手處理。",
-          chatStartReply: "使用流程好簡單：先註冊或登入，填出生日期、時間、膚色、場合同衣櫃選項，系統就會生成今日五行穿搭方向。免費體驗可以先試一次。",
-          chatColorReply: "五行配色可以當成今日穿搭方向，唔需要全身同一隻色。最自然係用主色做上衣、袋、鞋或者飾物，再配返米白、黑、灰、牛仔藍呢類百搭色。",
-          chatWorkReply: "返工可以行乾淨、俐落、唔太搶眼嘅方向。恤衫、針織衫、西褲、直腳褲都穩陣；如果想有少少五行感，可以用袋、鞋或飾物帶出今日主色。",
-          chatDateReply: "約會唔一定要好誇張，保留一個溫柔細節就夠：柔和色上衣、小手袋、微光飾物，或者乾淨髮型。重點係舒服同有自己味道。",
-          chatPrivacyReply: "可以放心，五行美學唔需要你上傳自拍或衣櫃照片。系統只會根據你輸入嘅資料同選項，整理今日穿搭方向。",
-          chatPaymentReply: "付款會由 Stripe 官方頁面處理，信用卡資料唔會儲存在五行美學網站。請先登入帳戶再付款，正常情況下付款完成後方案會自動開通。",
-          chatPlanReply: "你可以先免費體驗一次。之後如果想每日生成，可以選擇月費或年費方案；付款成功後就會自動開通。",
-          chatAccountReply: "如果你已經註冊過但登入唔到，可以先確認 email 已驗證同密碼正確。唔記得密碼就喺登入畫面按「忘記密碼？」重設。",
-          chatFreeReply: "免費體驗係俾你先試一次流程同穿搭方向。試完覺得啱用，再考慮訂閱月費或年費就可以。",
-          chatRefundReply: "本服務提供數碼內容及個人化建議，付款完成後一般不設退款。如出現重複扣款、付款失敗但被扣數，或帳戶未開通，請電郵 five.elements.aesthetics@gmail.com 跟進。",
-          chatContactReply: "正在為你接駁真人客服中... 你可以電郵 five.elements.aesthetics@gmail.com 聯絡我們。請簡單寫低你的問題、登入電郵，以及付款時間或截圖，會較容易跟進。",
-          chatUpdatesReply: "「訂閱最新消息」暫時未開放自動登記。正式推出後會用正式訂閱方式處理，唔會用半成品表單。",
-          chatBoundaryReply: "呢個我唔會亂答。BR、稅務、法律、醫療或投資問題，最好以官方/專業人士意見為準；我可以幫你整理要問咩問題，但唔會當成正式意見。",
           birthDateLabel: "出生日期",
           birthTimeLabel: "出生時間",
           skinToneLabel: "皮膚色調",
@@ -787,32 +718,6 @@
           unlockAction: "查看付费方案",
           inputEyebrow: "输入资料",
           inputTitle: "建立美学命盘",
-          chatEyebrow: "网站小助手",
-          chatTitle: "常见问题",
-          chatQuickStart: "怎么开始？",
-          chatQuickPayment: "付款 / 开通",
-          chatQuickAccount: "登录问题",
-          chatQuickPrivacy: "隐私 / 自拍",
-          chatQuickRefund: "退款问题",
-          chatQuickContact: "真人客服",
-          chatLang: "简",
-          chatOpenLabel: "打开 AI 聊天室",
-          chatCloseLabel: "关闭 AI 聊天室",
-          chatWelcome: "你好，我是五行美学网站小助手。你可以问我怎么开始、免费体验、付款、登录、隐私、退款，或者今天穿搭方向。",
-          chatFallback: "这个问题我不想乱答。正在为你接驳真人客服中... 如需跟进，请电邮 five.elements.aesthetics@gmail.com，写下你的问题和登录电邮，我们会人手处理。",
-          chatStartReply: "使用流程很简单：先注册或登录，填写出生日期、时间、肤色、场合和衣橱选项，系统就会生成今天的五行穿搭方向。免费体验可以先试一次。",
-          chatColorReply: "五行配色可以当成今天的穿搭方向，不需要全身同一个颜色。比较自然的做法是用主色放在上衣、包、鞋或饰品，再搭配米白、黑、灰、牛仔蓝这类百搭色。",
-          chatWorkReply: "上班可以走干净、利落、不太抢眼的方向。衬衫、针织衫、西裤、直筒裤都稳妥；如果想带一点五行感，可以用包、鞋或饰品带出今天主色。",
-          chatDateReply: "约会不一定要很夸张，保留一个温柔细节就够：柔和色上衣、小包、微光饰品，或者干净发型。重点是舒服、有自己的感觉。",
-          chatPrivacyReply: "可以放心，五行美学不需要你上传自拍或衣橱照片。系统只会根据你输入的资料和选项，整理今天的穿搭方向。",
-          chatPaymentReply: "付款会由 Stripe 官方页面处理，信用卡资料不会储存在五行美学网站。请先登录账户再付款，正常情况下付款完成后方案会自动开通。",
-          chatPlanReply: "你可以先免费体验一次。之后如果想每天生成，可以选择月费或年费方案；付款成功后就会自动开通。",
-          chatAccountReply: "如果你已经注册过但登录不了，可以先确认 email 已验证和密码正确。忘记密码就可以在登录画面按「忘记密码？」重设。",
-          chatFreeReply: "免费体验是让你先试一次流程和穿搭方向。试完觉得适合，再考虑订阅月费或年费就可以。",
-          chatRefundReply: "本服务提供数字内容及个性化建议，付款完成后一般不设退款。如出现重复扣款、付款失败但被扣数，或账户未开通，请电邮 five.elements.aesthetics@gmail.com 跟进。",
-          chatContactReply: "正在为你接驳真人客服中... 你可以电邮 five.elements.aesthetics@gmail.com 联系我们。请简单写下你的问题、登录电邮，以及付款时间或截图，会比较容易跟进。",
-          chatUpdatesReply: "「订阅最新消息」暂时未开放自动登记。正式推出后会用正式订阅方式处理，不会用半成品表单。",
-          chatBoundaryReply: "这个我不会乱答。BR、税务、法律、医疗或投资问题，最好以官方/专业人士意见为准；我可以帮你整理要问的问题，但不会当成正式意见。",
           birthDateLabel: "出生日期",
           birthTimeLabel: "出生时间",
           skinToneLabel: "皮肤色调",
@@ -951,32 +856,6 @@
           unlockAction: "View Paid Plans",
           inputEyebrow: "Your Inputs",
           inputTitle: "Create Your Style Profile",
-          chatEyebrow: "Site Assistant",
-          chatTitle: "Common Questions",
-          chatQuickStart: "How to start?",
-          chatQuickPayment: "Payment / activation",
-          chatQuickAccount: "Login issues",
-          chatQuickPrivacy: "Privacy / selfies",
-          chatQuickRefund: "Refunds",
-          chatQuickContact: "Human support",
-          chatLang: "EN",
-          chatOpenLabel: "Open AI chat",
-          chatCloseLabel: "Close AI chat",
-          chatWelcome: "Hi, I’m the Five Elements Aesthetics site assistant. You can ask about getting started, the free trial, payment, login, privacy, refunds, or today’s styling direction.",
-          chatFallback: "I do not want to guess on this. Connecting you to human support... Please email five.elements.aesthetics@gmail.com with your question and login email so we can follow up manually.",
-          chatStartReply: "Start by signing up or logging in, then enter your birth date, time, skin tone, occasion, and wardrobe options. The site will generate today’s Five Elements styling direction. You can try the free experience once first.",
-          chatColorReply: "Treat the Five Elements palette as a styling direction, not a strict rule. You can carry the main color through a top, bag, shoes, or accessories, then balance it with ivory, black, grey, or denim.",
-          chatWorkReply: "For work, keep it clean and composed: a shirt or knit top with tailored pants, straight-leg trousers, or neat denim. If you want a Five Elements touch, use today’s main color in a bag, shoes, or accessory.",
-          chatDateReply: "For a date, one soft detail is enough: a gentle-toned top, small bag, subtle jewelry, or a clean hairstyle. The goal is to feel like yourself, just a little more intentional.",
-          chatPrivacyReply: "You don’t need to upload a selfie or wardrobe photo. Five Elements Aesthetics only uses the details and options you enter to shape today’s styling direction.",
-          chatPaymentReply: "Payments are handled by Stripe. Card details are not stored on the Five Elements Aesthetics website. Please log in before paying; in normal cases, your plan activates automatically after payment.",
-          chatPlanReply: "You can try the free experience once first. If you want daily recommendations after that, choose a monthly or yearly plan; it activates automatically after successful payment.",
-          chatAccountReply: "If you already signed up but cannot log in, check that your email is verified and the password is correct. If you forgot it, use “Forgot password?” on the login screen.",
-          chatFreeReply: "The free trial lets you try the flow and see your styling direction once. If it feels useful, you can subscribe monthly or yearly afterward.",
-          chatRefundReply: "This service provides digital content and personalized recommendations, so payments are generally non-refundable after completion. For duplicate charges, failed payment issues, or a plan that did not activate, email five.elements.aesthetics@gmail.com.",
-          chatContactReply: "Connecting you to human support... Please email five.elements.aesthetics@gmail.com. Include your issue, login email, and payment time or screenshot if relevant.",
-          chatUpdatesReply: "Updates registration is not open yet. When it launches, it will use a proper subscription flow, not a half-finished form.",
-          chatBoundaryReply: "I won’t guess on this. For business registration, tax, legal, medical, or investment questions, please rely on official or professional advice. I can help you organize questions, but not replace formal guidance.",
           birthDateLabel: "Birth Date",
           birthTimeLabel: "Time of Birth",
           skinToneLabel: "Skin Undertone",
@@ -1255,22 +1134,10 @@
         setText("#authError", authMode === "reset" ? t("resetPasswordRequired") : authMode === "login" ? t("authRequired") : t("registerRequired"));
         setText("#inputEyebrow", t("inputEyebrow"));
         setText("#inputTitle", t("inputTitle"));
-        setText("#chatEyebrow", t("chatEyebrow"));
-        setText("#chatTitle", t("chatTitle"));
-        document.querySelector('[data-chat-topic="start"]').textContent = t("chatQuickStart");
-        document.querySelector('[data-chat-topic="payment"]').textContent = t("chatQuickPayment");
-        document.querySelector('[data-chat-topic="account"]').textContent = t("chatQuickAccount");
-        document.querySelector('[data-chat-topic="privacy"]').textContent = t("chatQuickPrivacy");
-        document.querySelector('[data-chat-topic="refund"]').textContent = t("chatQuickRefund");
-        document.querySelector('[data-chat-topic="contact"]').textContent = t("chatQuickContact");
-        setText("#chatLang", t("chatLang"));
-        document.querySelector("#chatLauncher").setAttribute("aria-label", t("chatOpenLabel"));
-        document.querySelector("#chatClose").setAttribute("aria-label", t("chatCloseLabel"));
         if (memberName) {
           setText("#memberGreeting", t("memberGreeting")(memberName));
           setText("#stepGreeting", t("stepGreeting")(memberName));
         }
-        if (!document.querySelector("#chatWindow").dataset.started) resetChat();
         setText("#birthDateLabel", t("birthDateLabel"));
         setText("#birthTimeLabel", t("birthTimeLabel"));
         setText("#skinToneLabel", t("skinToneLabel"));
@@ -1316,39 +1183,6 @@
             <button class="plan-action" type="button" onclick="document.querySelector('#pricing').scrollIntoView({ behavior: 'smooth', block: 'start' });">${t("unlockAction")}</button>
           </div>
         `;
-      }
-
-      function addChatMessage(text, type = "bot") {
-        const chatWindow = document.querySelector("#chatWindow");
-        const bubble = document.createElement("div");
-        bubble.className = `message ${type}`;
-        bubble.textContent = text;
-        chatWindow.appendChild(bubble);
-        chatWindow.scrollTop = chatWindow.scrollHeight;
-      }
-
-      function resetChat() {
-        const chatWindow = document.querySelector("#chatWindow");
-        chatWindow.dataset.started = "true";
-        chatWindow.innerHTML = "";
-        addChatMessage(t("chatWelcome"), "bot");
-      }
-
-      function getChatTopicReply(topic) {
-        const replies = {
-          start: "chatStartReply",
-          payment: "chatPaymentReply",
-          account: "chatAccountReply",
-          privacy: "chatPrivacyReply",
-          refund: "chatRefundReply",
-          contact: "chatContactReply"
-        };
-        return t(replies[topic] || "chatContactReply");
-      }
-
-      function sendChatTopic(topic, label) {
-        addChatMessage(label, "user");
-        addChatMessage(getChatTopicReply(topic), "bot");
       }
 
       function getPaymentPlan(plan) {
@@ -1432,7 +1266,6 @@
 
       document.querySelector("#langToggle").addEventListener("click", () => {
         lang = lang === "zh" ? "cn" : lang === "cn" ? "en" : "zh";
-        delete document.querySelector("#chatWindow").dataset.started;
         syncStaticText();
         replayIntroAnimation();
       });
@@ -1586,21 +1419,6 @@
         } finally {
           document.querySelector("#authSubmitButton").disabled = false;
         }
-      });
-
-      document.querySelectorAll("[data-chat-topic]").forEach((button) => {
-        button.addEventListener("click", () => {
-          sendChatTopic(button.dataset.chatTopic, button.textContent.trim());
-        });
-      });
-      document.querySelector("#chatLauncher").addEventListener("click", () => {
-        document.querySelector("#chatPanel").classList.remove("collapsed");
-        document.querySelector("#chatLauncher").classList.add("hidden");
-        document.querySelector("[data-chat-topic]").focus();
-      });
-      document.querySelector("#chatClose").addEventListener("click", () => {
-        document.querySelector("#chatPanel").classList.add("collapsed");
-        document.querySelector("#chatLauncher").classList.remove("hidden");
       });
 
       document.querySelectorAll("#scenarioChips button").forEach((button) => {
