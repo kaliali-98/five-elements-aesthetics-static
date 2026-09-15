@@ -193,10 +193,10 @@
       .message.bot { justify-self: start; border: 1px solid rgba(167,123,66,.26); }
       .chat-quick { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; margin-top: 12px; }
       .chat-quick button { width: 100%; min-height: 38px; padding: 8px 10px; border-radius: 999px; background: rgba(255,250,242,.86); border: 1px solid rgba(167,123,66,.28); color: var(--ink); font: 800 .74rem ui-sans-serif, system-ui, sans-serif; box-shadow: none; }
-      .chat-launcher { position: fixed; right: 22px; bottom: 22px; z-index: 19; width: 46px !important; height: 46px; min-height: 46px; border-radius: 999px; border: 1px solid rgba(167,123,66,.38); background: #fffaf2; color: var(--ink); display: grid; place-items: center; box-shadow: 0 12px 30px rgba(32,33,30,.18); transition: transform .2s ease, opacity .2s ease; }
-      .chat-launcher:hover { transform: translateY(-2px); }
+      .chat-launcher { position: fixed; right: 22px; bottom: 22px; z-index: 19; width: 54px !important; height: 54px; min-height: 54px; padding: 0; border-radius: 16px; border: 1px solid rgba(167,123,66,.34); background: transparent; color: var(--ink); display: grid; place-items: center; box-shadow: 0 12px 30px rgba(32,33,30,.2); overflow: hidden; transition: transform .2s ease, opacity .2s ease, box-shadow .2s ease; }
+      .chat-launcher:hover { transform: translateY(-3px) scale(1.04); box-shadow: 0 16px 38px rgba(32,33,30,.24); }
       .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
-      .ai-bubble-icon { width: 24px; height: 24px; color: var(--ink); }
+      .assistant-robot-icon { width: 100%; height: 100%; object-fit: cover; display: block; }
       .social-dock { position: fixed; right: 26px; bottom: 86px; z-index: 18; display: grid; place-items: center; }
       .social-button { width: 44px; height: 44px; border-radius: 12px; display: grid; place-items: center; text-decoration: none; background: transparent; box-shadow: 0 10px 22px rgba(32,33,30,.18); transition: transform .24s cubic-bezier(.16, 1.45, .34, 1), filter .2s ease, box-shadow .2s ease; }
       .social-button:hover,
@@ -207,7 +207,7 @@
       @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
       @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
       @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
-      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { right: 18px; bottom: 78px; } .social-button { width: 40px; height: 40px; border-radius: 11px; } .social-button svg { width: 40px; height: 40px; } .chat-quick { grid-template-columns: 1fr; } }
+      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; width: 50px !important; height: 50px; min-height: 50px; border-radius: 15px; } .social-dock { right: 18px; bottom: 78px; } .social-button { width: 40px; height: 40px; border-radius: 11px; } .social-button svg { width: 40px; height: 40px; } .chat-quick { grid-template-columns: 1fr; } }
       @media (hover: none) { .social-button { transform: none; } }
       @media (prefers-reduced-motion: reduce) {
         .logo-mark,
@@ -395,11 +395,7 @@
         </div>
       </section>
       <button class="chat-launcher" id="chatLauncher" type="button" aria-label="Open AI chat">
-        <svg class="ai-bubble-icon" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M8.5 9.5h15a4 4 0 0 1 4 4v5.5a4 4 0 0 1-4 4H16l-5.7 4v-4H8.5a4 4 0 0 1-4-4v-5.5a4 4 0 0 1 4-4Z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/>
-          <path d="M13 16h6M13 19h3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-          <path d="M22.5 5.5l.7 1.7 1.8.7-1.8.7-.7 1.7-.7-1.7-1.8-.7 1.8-.7.7-1.7Z" fill="currentColor"/>
-        </svg>
+        <img class="assistant-robot-icon" src="assistant-robot.png" alt="" aria-hidden="true" />
       </button>
       <nav class="social-dock" aria-label="Social links">
         <a class="social-button" href="https://www.instagram.com/five.elements.aesthetics/" target="_blank" rel="noopener noreferrer" aria-label="Open Five Elements Aesthetics Instagram">
