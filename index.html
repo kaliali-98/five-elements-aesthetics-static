@@ -198,9 +198,19 @@
       .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
       .ai-bubble-icon { width: 24px; height: 24px; color: var(--ink); }
       .social-dock { position: fixed; right: 22px; bottom: 78px; z-index: 18; display: grid; gap: 10px; }
-      .social-button { width: 42px; height: 42px; display: grid; place-items: center; text-decoration: none; transition: transform .2s ease, filter .2s ease; }
-      .social-button:hover { transform: translateY(-2px); filter: saturate(1.08) brightness(1.02); }
+      .social-button { width: 42px; height: 42px; display: grid; place-items: center; text-decoration: none; animation: socialPop .72s cubic-bezier(.2, 1.35, .35, 1) .7s both, socialNudge 4.8s ease-in-out 2.1s infinite; transition: transform .2s ease, filter .2s ease; }
+      .social-button:hover { transform: translateY(-2px) scale(1.08); filter: saturate(1.08) brightness(1.02); }
       .social-button svg { width: 34px; height: 34px; display: block; }
+      @keyframes socialPop {
+        from { opacity: 0; transform: translateY(14px) scale(.68); }
+        to { opacity: 1; transform: translateY(0) scale(1); }
+      }
+      @keyframes socialNudge {
+        0%, 76%, 100% { transform: translateY(0) scale(1); }
+        82% { transform: translateY(-7px) scale(1.06); }
+        88% { transform: translateY(0) scale(1); }
+        93% { transform: translateY(-3px) scale(1.03); }
+      }
       .site-footer { margin: 46px auto 0; padding: 18px 0 0; border-top: 1px solid rgba(216,203,184,.5); color: rgba(111,106,95,.86); font: 750 .82rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       .copyright { margin: 18px 0 0; text-align: center; color: rgba(111,106,95,.76); font: 750 .78rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
@@ -212,6 +222,9 @@
         #heroTitle,
         #heroSlogan,
         .story {
+          animation: none;
+        }
+        .social-button {
           animation: none;
         }
       }
