@@ -455,11 +455,11 @@
             <article class="info-card newsletter" aria-labelledby="newsletterTitle">
               <div class="newsletter-copy">
                 <h3 id="newsletterTitle">Newsletter</h3>
-                <p id="newsletterText">訂閱五行美學更新，收到最新穿搭靈感、優惠及服務消息。</p>
+                <p id="newsletterText">想收到最新穿搭靈感、優惠及服務消息，可電郵聯絡我們登記。</p>
               </div>
               <form class="newsletter-form" id="newsletterForm">
                 <input id="newsletterEmail" type="email" inputmode="email" autocomplete="email" placeholder="你的電郵地址" />
-                <button id="newsletterSubmit" type="submit">訂閱</button>
+                <button id="newsletterSubmit" type="submit">電郵登記</button>
               </form>
               <p class="newsletter-status" id="newsletterStatus" aria-live="polite"></p>
             </article>
@@ -592,14 +592,12 @@
           checkoutStarting: "正在前往 Stripe 付款頁...",
           checkoutUnavailable: "付款系統未完成設定。請稍後再試，或電郵聯絡 five.elements.aesthetics@gmail.com。",
           checkoutFailed: "未能開啟付款頁。請稍後再試。",
-          newsletterTitle: "訂閱最新消息",
-          newsletterText: "訂閱五行美學更新，收到最新穿搭靈感、優惠及服務消息。",
+          newsletterTitle: "登記最新消息",
+          newsletterText: "想收到最新穿搭靈感、優惠及服務消息，可電郵聯絡我們登記。",
           newsletterPlaceholder: "你的電郵地址",
-          newsletterSubmit: "訂閱",
+          newsletterSubmit: "電郵登記",
           newsletterRequired: "請先輸入正確的電郵地址。",
-          newsletterSaving: "正在訂閱...",
-          newsletterDone: "確認電郵已寄出。請到 inbox 按確認連結，完成後先會正式訂閱。",
-          newsletterFailed: "暫時未能完成訂閱，請稍後再試或電郵聯絡我們。",
+          newsletterDone: "已為你開啟電郵草稿，請按送出完成登記。",
           businessInfoEyebrow: "服務資料",
           businessInfoTitle: "服務資料",
           contactTitle: "聯絡我們",
@@ -754,14 +752,12 @@
           checkoutStarting: "正在前往 Stripe 付款页...",
           checkoutUnavailable: "付款系统未完成设置。请稍后再试，或电邮联系 five.elements.aesthetics@gmail.com。",
           checkoutFailed: "未能开启付款页。请稍后再试。",
-          newsletterTitle: "订阅最新消息",
-          newsletterText: "订阅五行美学更新，收到最新穿搭灵感、优惠及服务消息。",
+          newsletterTitle: "登记最新消息",
+          newsletterText: "想收到最新穿搭灵感、优惠及服务消息，可电邮联系我们登记。",
           newsletterPlaceholder: "你的电子邮箱",
-          newsletterSubmit: "订阅",
+          newsletterSubmit: "电邮登记",
           newsletterRequired: "请先输入正确的电子邮箱。",
-          newsletterSaving: "正在订阅...",
-          newsletterDone: "确认电邮已寄出。请到 inbox 按确认链接，完成后才会正式订阅。",
-          newsletterFailed: "暂时未能完成订阅，请稍后再试或电邮联系。",
+          newsletterDone: "已为你开启电邮草稿，请按发送完成登记。",
           businessInfoEyebrow: "服务资料",
           businessInfoTitle: "服务资料",
           contactTitle: "联系我们",
@@ -916,14 +912,12 @@
           checkoutStarting: "Opening Stripe checkout...",
           checkoutUnavailable: "Payment is not fully configured yet. Please try again later or contact five.elements.aesthetics@gmail.com.",
           checkoutFailed: "Could not open checkout. Please try again later.",
-          newsletterTitle: "Newsletter",
-          newsletterText: "Sign up for Five Elements Aesthetics updates, styling ideas, offers, and service news.",
+          newsletterTitle: "Email updates",
+          newsletterText: "Email us to register for styling ideas, offers, and service updates.",
           newsletterPlaceholder: "Your email",
-          newsletterSubmit: "Subscribe",
+          newsletterSubmit: "Email us",
           newsletterRequired: "Please enter a valid email address.",
-          newsletterSaving: "Subscribing...",
-          newsletterDone: "Confirmation email sent. Please open your inbox and click the confirmation link to subscribe.",
-          newsletterFailed: "Could not subscribe right now. Please try again later or contact us by email.",
+          newsletterDone: "Your email draft is open. Please send it to complete registration.",
           businessInfoEyebrow: "Service Information",
           businessInfoTitle: "Service Information",
           contactTitle: "Contact",
@@ -1167,13 +1161,6 @@
       }
       function isValidEmail(value) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
-      }
-      function isPlausibleNewsletterEmail(value) {
-        if (!isValidEmail(value)) return false;
-        const localPart = value.split("@")[0] || "";
-        const simpleLocalPart = localPart.replace(/[^a-z]/gi, "").toLowerCase();
-        const blocked = ["a", "aa", "aaa", "abc", "abcd", "test", "fake", "email", "user", "sample"];
-        return localPart.length >= 4 && /[a-z]/i.test(localPart) && !blocked.includes(simpleLocalPart);
       }
       function authRedirectUrl() {
         if (window.location.protocol === "file:") return undefined;
@@ -1435,39 +1422,22 @@
         modal.setAttribute("aria-hidden", "true");
       }
 
-      async function submitNewsletter(event) {
+      function submitNewsletter(event) {
         event.preventDefault();
         const emailInput = document.querySelector("#newsletterEmail");
         const status = document.querySelector("#newsletterStatus");
-        const submit = document.querySelector("#newsletterSubmit");
         const email = emailInput.value.trim().toLowerCase();
         status.style.color = "";
-        if (!isPlausibleNewsletterEmail(email)) {
+        if (!isValidEmail(email)) {
           status.textContent = t("newsletterRequired");
           status.style.color = "var(--cinnabar)";
           return;
         }
-        submit.disabled = true;
-        submit.textContent = t("newsletterSaving");
-        try {
-          const response = await fetch("/api/newsletter-signup", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ email })
-          });
-          if (!response.ok) {
-            const payload = await response.json().catch(() => ({}));
-            throw new Error(payload.error || t("newsletterFailed"));
-          }
-          emailInput.value = "";
-          status.textContent = t("newsletterDone");
-        } catch (_error) {
-          status.textContent = t("newsletterFailed");
-          status.style.color = "var(--cinnabar)";
-        } finally {
-          submit.disabled = false;
-          submit.textContent = t("newsletterSubmit");
-        }
+        const subject = encodeURIComponent("登記五行美學最新消息");
+        const body = encodeURIComponent(`你好，我想登記接收五行美學最新消息。\n\n我的電郵：${email}`);
+        window.location.href = `mailto:five.elements.aesthetics@gmail.com?subject=${subject}&body=${body}`;
+        emailInput.value = "";
+        status.textContent = t("newsletterDone");
       }
 
       function replayIntroAnimation() {
