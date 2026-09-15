@@ -114,6 +114,13 @@
       .info-card { padding: 0; border: 0; background: transparent; }
       .info-card h3 { margin: 0 0 4px; color: rgba(32,33,30,.88); font: 850 .82rem ui-sans-serif, system-ui, sans-serif; }
       .info-card a { color: var(--gold); font-weight: 850; overflow-wrap: anywhere; }
+      .newsletter { margin: 42px 0 32px; padding: 38px 28px 42px; border: 1px solid rgba(216,203,184,.58); border-radius: 12px; background: rgba(238,216,210,.62); text-align: center; }
+      .newsletter h2 { margin: 0; color: var(--ink); font: 850 1.55rem Georgia, "Times New Roman", serif; letter-spacing: .04em; text-transform: uppercase; }
+      .newsletter p { max-width: 560px; margin: 14px auto 0; color: var(--muted); font: 750 1rem/1.75 ui-sans-serif, system-ui, sans-serif; }
+      .newsletter-form { display: grid; grid-template-columns: minmax(0, 1fr) auto; gap: 12px; max-width: 650px; margin: 28px auto 0; align-items: stretch; }
+      .newsletter-form input { min-height: 54px; border-radius: 0; background: rgba(255,255,255,.86); }
+      .newsletter-form button { width: auto; min-width: 150px; min-height: 54px; border-radius: 0; letter-spacing: .12em; text-transform: uppercase; }
+      .newsletter-status { min-height: 1.4em; margin: 12px auto 0 !important; color: var(--muted); font: 800 .86rem/1.5 ui-sans-serif, system-ui, sans-serif !important; }
       .login-panel { max-width: 760px; margin: 38px auto 20px; padding: 28px 30px 30px; border: 1px solid rgba(216,203,184,.7); border-top: 5px solid var(--gold); border-radius: 10px; background: rgba(255,250,242,.82); box-shadow: 0 18px 48px rgba(32,33,30,.1); }
       .login-panel p { margin: 0; color: var(--muted); line-height: 1.7; }
       .login-form { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px 14px; align-items: end; }
@@ -205,7 +212,7 @@
       .site-footer { margin: 46px auto 0; padding: 18px 0 0; border-top: 1px solid rgba(216,203,184,.5); color: rgba(111,106,95,.86); font: 750 .82rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       .copyright { margin: 18px 0 0; text-align: center; color: rgba(111,106,95,.76); font: 750 .78rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
-      @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
+      @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd, .newsletter-form { grid-template-columns: 1fr; } .newsletter { padding: 30px 18px 34px; } .newsletter-form button { width: 100%; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
       @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
       @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { right: 18px; bottom: 78px; } .social-button { width: 56px; height: 56px; } .social-button svg { width: 34px; height: 34px; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
       @media (hover: none) { .social-button { transform: none; } }
@@ -439,6 +446,15 @@
         </div>
         </div>
       </section>
+      <section class="newsletter" aria-labelledby="newsletterTitle">
+        <h2 id="newsletterTitle">Newsletter</h2>
+        <p id="newsletterText">訂閱五行美學更新，收到最新穿搭靈感、優惠及服務消息。</p>
+        <form class="newsletter-form" id="newsletterForm">
+          <input id="newsletterEmail" type="email" inputmode="email" autocomplete="email" placeholder="你的電郵地址" />
+          <button id="newsletterSubmit" type="submit">訂閱</button>
+        </form>
+        <p class="newsletter-status" id="newsletterStatus" aria-live="polite"></p>
+      </section>
       <footer class="site-footer">
         <section class="business-info" aria-labelledby="businessInfoTitle">
           <p class="eyebrow" id="businessInfoEyebrow">服務資料</p>
@@ -573,6 +589,14 @@
           checkoutStarting: "正在前往 Stripe 付款頁...",
           checkoutUnavailable: "付款系統未完成設定。請稍後再試，或電郵聯絡 five.elements.aesthetics@gmail.com。",
           checkoutFailed: "未能開啟付款頁。請稍後再試。",
+          newsletterTitle: "Newsletter",
+          newsletterText: "訂閱五行美學更新，收到最新穿搭靈感、優惠及服務消息。",
+          newsletterPlaceholder: "你的電郵地址",
+          newsletterSubmit: "訂閱",
+          newsletterRequired: "請先輸入正確的電郵地址。",
+          newsletterSaving: "正在訂閱...",
+          newsletterDone: "已收到你的訂閱，之後有更新會通知你。",
+          newsletterFailed: "暫時未能完成訂閱，請稍後再試或電郵聯絡我們。",
           businessInfoEyebrow: "服務資料",
           businessInfoTitle: "服務資料",
           contactTitle: "聯絡我們",
@@ -727,6 +751,14 @@
           checkoutStarting: "正在前往 Stripe 付款页...",
           checkoutUnavailable: "付款系统未完成设置。请稍后再试，或电邮联系 five.elements.aesthetics@gmail.com。",
           checkoutFailed: "未能开启付款页。请稍后再试。",
+          newsletterTitle: "Newsletter",
+          newsletterText: "订阅五行美学更新，收到最新穿搭灵感、优惠及服务消息。",
+          newsletterPlaceholder: "你的电子邮箱",
+          newsletterSubmit: "订阅",
+          newsletterRequired: "请先输入正确的电子邮箱。",
+          newsletterSaving: "正在订阅...",
+          newsletterDone: "已收到你的订阅，之后有更新会通知你。",
+          newsletterFailed: "暂时未能完成订阅，请稍后再试或电邮联系。",
           businessInfoEyebrow: "服务资料",
           businessInfoTitle: "服务资料",
           contactTitle: "联系我们",
@@ -881,6 +913,14 @@
           checkoutStarting: "Opening Stripe checkout...",
           checkoutUnavailable: "Payment is not fully configured yet. Please try again later or contact five.elements.aesthetics@gmail.com.",
           checkoutFailed: "Could not open checkout. Please try again later.",
+          newsletterTitle: "Newsletter",
+          newsletterText: "Sign up for Five Elements Aesthetics updates, styling ideas, offers, and service news.",
+          newsletterPlaceholder: "Your email",
+          newsletterSubmit: "Subscribe",
+          newsletterRequired: "Please enter a valid email address.",
+          newsletterSaving: "Subscribing...",
+          newsletterDone: "You are subscribed. We will send updates when they are ready.",
+          newsletterFailed: "Could not subscribe right now. Please try again later or contact us by email.",
           businessInfoEyebrow: "Service Information",
           businessInfoTitle: "Service Information",
           contactTitle: "Contact",
@@ -1199,6 +1239,10 @@
         setText("#paymentSecondary", t("paymentSecondary"));
         document.querySelector("#paymentClose").setAttribute("aria-label", t("paymentCloseLabel"));
         updatePaymentModal(selectedPaymentPlan);
+        setText("#newsletterTitle", t("newsletterTitle"));
+        setText("#newsletterText", t("newsletterText"));
+        setText("#newsletterSubmit", t("newsletterSubmit"));
+        document.querySelector("#newsletterEmail").placeholder = t("newsletterPlaceholder");
         setText("#businessInfoEyebrow", t("businessInfoEyebrow"));
         setText("#businessInfoTitle", t("businessInfoTitle"));
         setText("#contactTitle", t("contactTitle"));
@@ -1381,6 +1425,41 @@
         modal.setAttribute("aria-hidden", "true");
       }
 
+      async function submitNewsletter(event) {
+        event.preventDefault();
+        const emailInput = document.querySelector("#newsletterEmail");
+        const status = document.querySelector("#newsletterStatus");
+        const submit = document.querySelector("#newsletterSubmit");
+        const email = emailInput.value.trim().toLowerCase();
+        status.style.color = "";
+        if (!isValidEmail(email)) {
+          status.textContent = t("newsletterRequired");
+          status.style.color = "var(--cinnabar)";
+          return;
+        }
+        if (!supabaseClient) {
+          status.textContent = t("newsletterFailed");
+          status.style.color = "var(--cinnabar)";
+          return;
+        }
+        submit.disabled = true;
+        submit.textContent = t("newsletterSaving");
+        try {
+          const { error } = await supabaseClient
+            .from("newsletter_signups")
+            .upsert({ email, source: "website" }, { onConflict: "email" });
+          if (error) throw error;
+          emailInput.value = "";
+          status.textContent = t("newsletterDone");
+        } catch (_error) {
+          status.textContent = t("newsletterFailed");
+          status.style.color = "var(--cinnabar)";
+        } finally {
+          submit.disabled = false;
+          submit.textContent = t("newsletterSubmit");
+        }
+      }
+
       function replayIntroAnimation() {
         const introItems = [document.querySelector(".logo-mark"), document.querySelector("#heroTitle"), document.querySelector("#heroSlogan"), document.querySelector(".story")];
         introItems.forEach((item) => {
@@ -1410,6 +1489,7 @@
         });
       });
 
+      document.querySelector("#newsletterForm").addEventListener("submit", submitNewsletter);
       document.querySelector("#paymentClose").addEventListener("click", closePaymentModal);
       document.querySelector("#paymentSecondary").addEventListener("click", closePaymentModal);
       document.querySelector("#paymentPrimary").addEventListener("click", (event) => {
