@@ -198,8 +198,9 @@
       .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
       .ai-bubble-icon { width: 24px; height: 24px; color: var(--ink); }
       .social-dock { position: fixed; right: 22px; bottom: 78px; z-index: 18; display: grid; gap: 10px; }
-      .social-button { width: 46px; height: 46px; border-radius: 999px; border: 1px solid rgba(167,123,66,.38); background: #fffaf2; color: var(--ink); display: grid; place-items: center; text-decoration: none; box-shadow: 0 12px 30px rgba(32,33,30,.14); transition: transform .2s ease, background .2s ease; font: 900 .78rem/1 ui-sans-serif, system-ui, sans-serif; }
+      .social-button { width: 46px; height: 46px; border-radius: 999px; border: 1px solid rgba(167,123,66,.38); background: #fffaf2; color: var(--ink); display: grid; place-items: center; text-decoration: none; box-shadow: 0 12px 30px rgba(32,33,30,.14); transition: transform .2s ease, background .2s ease; }
       .social-button:hover { transform: translateY(-2px); background: #fff4e6; }
+      .social-button svg { width: 23px; height: 23px; }
       .social-links { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 12px; }
       .social-links a { display: inline-flex; align-items: center; gap: 8px; padding: 9px 12px; border: 1px solid rgba(167,123,66,.26); border-radius: 999px; background: rgba(255,250,242,.68); color: var(--ink); text-decoration: none; font: 850 .78rem/1 ui-sans-serif, system-ui, sans-serif; }
       .site-footer { margin: 46px auto 0; padding: 18px 0 0; border-top: 1px solid rgba(216,203,184,.5); color: rgba(111,106,95,.86); font: 750 .82rem/1.6 ui-sans-serif, system-ui, sans-serif; }
@@ -401,7 +402,13 @@
         </svg>
       </button>
       <nav class="social-dock" aria-label="Social links">
-        <a class="social-button" href="https://www.instagram.com/five.elements.aesthetics/" target="_blank" rel="noopener noreferrer" aria-label="Open Five Elements Aesthetics Instagram">IG</a>
+        <a class="social-button" href="https://www.instagram.com/five.elements.aesthetics/" target="_blank" rel="noopener noreferrer" aria-label="Open Five Elements Aesthetics Instagram">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <rect x="3.5" y="3.5" width="17" height="17" rx="5" fill="none" stroke="currentColor" stroke-width="1.9"/>
+            <circle cx="12" cy="12" r="4.1" fill="none" stroke="currentColor" stroke-width="1.9"/>
+            <circle cx="17.1" cy="6.9" r="1.2" fill="currentColor"/>
+          </svg>
+        </a>
       </nav>
       <section class="chat-panel collapsed" id="chatPanel">
         <div class="chat-card">
