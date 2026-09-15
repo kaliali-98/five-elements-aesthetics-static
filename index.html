@@ -598,7 +598,7 @@
           newsletterSubmit: "訂閱",
           newsletterRequired: "請先輸入正確的電郵地址。",
           newsletterSaving: "正在訂閱...",
-          newsletterDone: "已收到你的訂閱，之後有更新會通知你。",
+          newsletterDone: "確認電郵已寄出。請到 inbox 按確認連結，完成後先會正式訂閱。",
           newsletterFailed: "暫時未能完成訂閱，請稍後再試或電郵聯絡我們。",
           businessInfoEyebrow: "服務資料",
           businessInfoTitle: "服務資料",
@@ -760,7 +760,7 @@
           newsletterSubmit: "订阅",
           newsletterRequired: "请先输入正确的电子邮箱。",
           newsletterSaving: "正在订阅...",
-          newsletterDone: "已收到你的订阅，之后有更新会通知你。",
+          newsletterDone: "确认电邮已寄出。请到 inbox 按确认链接，完成后才会正式订阅。",
           newsletterFailed: "暂时未能完成订阅，请稍后再试或电邮联系。",
           businessInfoEyebrow: "服务资料",
           businessInfoTitle: "服务资料",
@@ -922,7 +922,7 @@
           newsletterSubmit: "Subscribe",
           newsletterRequired: "Please enter a valid email address.",
           newsletterSaving: "Subscribing...",
-          newsletterDone: "You are subscribed. We will send updates when they are ready.",
+          newsletterDone: "Confirmation email sent. Please open your inbox and click the confirmation link to subscribe.",
           newsletterFailed: "Could not subscribe right now. Please try again later or contact us by email.",
           businessInfoEyebrow: "Service Information",
           businessInfoTitle: "Service Information",
@@ -1167,6 +1167,13 @@
       }
       function isValidEmail(value) {
         return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value);
+      }
+      function isPlausibleNewsletterEmail(value) {
+        if (!isValidEmail(value)) return false;
+        const localPart = value.split("@")[0] || "";
+        const simpleLocalPart = localPart.replace(/[^a-z]/gi, "").toLowerCase();
+        const blocked = ["a", "aa", "aaa", "abc", "abcd", "test", "fake", "email", "user", "sample"];
+        return localPart.length >= 4 && /[a-z]/i.test(localPart) && !blocked.includes(simpleLocalPart);
       }
       function authRedirectUrl() {
         if (window.location.protocol === "file:") return undefined;
@@ -1435,7 +1442,7 @@
         const submit = document.querySelector("#newsletterSubmit");
         const email = emailInput.value.trim().toLowerCase();
         status.style.color = "";
-        if (!isValidEmail(email)) {
+        if (!isPlausibleNewsletterEmail(email)) {
           status.textContent = t("newsletterRequired");
           status.style.color = "var(--cinnabar)";
           return;
