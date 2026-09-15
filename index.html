@@ -197,17 +197,18 @@
       .chat-launcher:hover { transform: translateY(-2px); }
       .chat-launcher.hidden { opacity: 0; pointer-events: none; transform: scale(.86); }
       .ai-bubble-icon { width: 24px; height: 24px; color: var(--ink); }
-      .social-dock { position: fixed; right: 0; bottom: 78px; z-index: 18; width: 76px; height: 64px; display: grid; place-items: center end; padding-right: 10px; }
-      .social-button { width: 42px; height: 42px; display: grid; place-items: center; text-decoration: none; opacity: .34; transform: translateX(32px) scale(.72); transition: transform .32s cubic-bezier(.16, 1.55, .36, 1), opacity .22s ease, filter .2s ease; }
+      .social-dock { position: fixed; right: 0; top: 50%; z-index: 18; width: 96px; height: 120px; display: grid; place-items: center end; transform: translateY(-50%); }
+      .social-dock::before { content: ""; position: absolute; inset: 0 0 0 auto; width: 26px; border-radius: 14px 0 0 14px; background: rgba(167,123,66,.12); }
+      .social-button { width: 48px; height: 48px; display: grid; place-items: center; text-decoration: none; opacity: 0; transform: translateX(56px) scale(.6); transition: transform .34s cubic-bezier(.16, 1.6, .34, 1), opacity .16s ease, filter .2s ease; }
       .social-dock:hover .social-button,
-      .social-button:focus-visible { opacity: 1; transform: translateX(-8px) scale(1.2); filter: saturate(1.14) brightness(1.04); }
-      .social-button svg { width: 34px; height: 34px; display: block; }
+      .social-button:focus-visible { opacity: 1; transform: translateX(-18px) scale(1.18); filter: saturate(1.14) brightness(1.04); }
+      .social-button svg { width: 40px; height: 40px; display: block; filter: drop-shadow(0 12px 18px rgba(32,33,30,.22)); }
       .site-footer { margin: 46px auto 0; padding: 18px 0 0; border-top: 1px solid rgba(216,203,184,.5); color: rgba(111,106,95,.86); font: 750 .82rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       .copyright { margin: 18px 0 0; text-align: center; color: rgba(111,106,95,.76); font: 750 .78rem/1.6 ui-sans-serif, system-ui, sans-serif; }
       @media (max-width: 860px) { .studio, .pricing-grid, .info-grid, .login-form { grid-template-columns: 1fr; } .pricing-head { grid-template-columns: 1fr; gap: 10px; } }
       @media (max-width: 560px) { body { padding: 16px; } .topbar { align-items: start; } .logo-mark { width: 96px; height: 96px; } .lang-toggle { min-width: 128px; } h1 { margin-top: 10px; font-size: clamp(2rem, 11vw, 2.85rem); } .slogan { margin-top: 14px; } .story, .plan-card, .login-panel, .business-info { padding: 18px; } .pricing { margin-top: 24px; } .panel { padding: 22px 18px; } .fields, .palette, .ootd { grid-template-columns: 1fr; } .chips { gap: 10px; } .chips button { padding: 10px 14px; } }
       @media (max-width: 560px) { html[lang="en"] h1 { white-space: normal; font-size: clamp(1.75rem, 9vw, 2.35rem); } }
-      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { right: 8px; bottom: 72px; width: 48px; height: 48px; padding-right: 0; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
+      @media (max-width: 560px) { .chat-panel { right: 14px; bottom: 14px; } .chat-launcher { right: 14px; bottom: 14px; } .social-dock { top: auto; right: 8px; bottom: 72px; width: 48px; height: 48px; transform: none; } .social-dock::before { display: none; } .chat-form { grid-template-columns: 1fr; } .chat-form button { width: 100%; } }
       @media (hover: none) { .social-button { opacity: 1; transform: translateX(0) scale(1); } }
       @media (prefers-reduced-motion: reduce) {
         .logo-mark,
