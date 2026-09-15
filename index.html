@@ -110,7 +110,7 @@
       .business-info { margin: 0; padding: 0; background: transparent; text-align: left; }
       .business-info p { margin: 4px 0 0; color: rgba(111,106,95,.82); line-height: 1.6; font: 700 .78rem ui-sans-serif, system-ui, sans-serif; }
       .business-info .eyebrow { display: none; }
-      .info-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 28px; margin-top: 0; align-items: start; }
+      .info-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 24px; margin-top: 0; align-items: start; }
       .info-card { padding: 0; border: 0; background: transparent; }
       .info-card h3 { margin: 0 0 4px; color: rgba(32,33,30,.88); font: 850 .82rem ui-sans-serif, system-ui, sans-serif; }
       .info-card a { color: var(--gold); font-weight: 850; overflow-wrap: anywhere; }
@@ -445,6 +445,10 @@
           <h2 id="businessInfoTitle" hidden>服務資料</h2>
           <div class="info-grid">
             <article class="info-card">
+              <h3 id="updatesTitle">訂閱最新消息</h3>
+              <p id="updatesText">最新穿搭靈感、優惠及服務消息將於正式推出後開放登記。</p>
+            </article>
+            <article class="info-card">
               <h3 id="contactTitle">聯絡我們</h3>
               <p id="contactText">如有付款、帳戶或使用問題，請電郵聯絡：</p>
               <p><a href="mailto:five.elements.aesthetics@gmail.com">five.elements.aesthetics@gmail.com</a></p>
@@ -575,6 +579,8 @@
           checkoutFailed: "未能開啟付款頁。請稍後再試。",
           businessInfoEyebrow: "服務資料",
           businessInfoTitle: "服務資料",
+          updatesTitle: "訂閱最新消息",
+          updatesText: "最新穿搭靈感、優惠及服務消息將於正式推出後開放登記。",
           contactTitle: "聯絡我們",
           contactText: "如有付款、帳戶或使用問題，請電郵聯絡：",
           refundTitle: "付款及退款",
@@ -729,6 +735,8 @@
           checkoutFailed: "未能开启付款页。请稍后再试。",
           businessInfoEyebrow: "服务资料",
           businessInfoTitle: "服务资料",
+          updatesTitle: "订阅最新消息",
+          updatesText: "最新穿搭灵感、优惠及服务消息将于正式推出后开放登记。",
           contactTitle: "联系我们",
           contactText: "如有付款、账户或使用问题，请电邮联系：",
           refundTitle: "付款及退款",
@@ -883,6 +891,8 @@
           checkoutFailed: "Could not open checkout. Please try again later.",
           businessInfoEyebrow: "Service Information",
           businessInfoTitle: "Service Information",
+          updatesTitle: "Updates",
+          updatesText: "Styling ideas, offers, and service updates will open for registration after launch.",
           contactTitle: "Contact",
           contactText: "For payment, account, or service questions, please contact:",
           refundTitle: "Payments and Refunds",
@@ -1201,6 +1211,8 @@
         updatePaymentModal(selectedPaymentPlan);
         setText("#businessInfoEyebrow", t("businessInfoEyebrow"));
         setText("#businessInfoTitle", t("businessInfoTitle"));
+        setText("#updatesTitle", t("updatesTitle"));
+        setText("#updatesText", t("updatesText"));
         setText("#contactTitle", t("contactTitle"));
         setText("#contactText", t("contactText"));
         setText("#refundTitle", t("refundTitle"));
